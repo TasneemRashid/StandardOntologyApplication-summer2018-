@@ -1,0 +1,589 @@
+@prefix cc:    <http://creativecommons.org/ns#> .
+@prefix schema: <http://schema.org/> .
+@prefix :      <https://w3id.org/i40/sto#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix voaf:  <http://purl.org/vocommons/voaf#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sto:   <https://w3id.org/i40/sto#> .
+@prefix deo:   <http://purl.org/spar/deo/> .
+@prefix dbo:   <http://dbpedia.org/ontology#> .
+@prefix muto:  <http://purl.org/muto/core#> .
+@prefix geo:   <http://www.geonames.org/ontology#> .
+@prefix dc11:  <http://purl.org/dc/elements/1.1/> .
+@prefix dbr:   <http://dbpedia.org/resource#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix doap:  <http://usefulinc.com/ns/doap#> .
+@prefix xml:   <http://www.w3.org/XML/1998/namespace> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dul:   <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix vann:  <http://purl.org/vocab/vann/> .
+@prefix prov:  <http://www.w3.org/ns/prov#> .
+@prefix rami:  <https://w3id.org/i40/rami#> .
+@prefix foaf:  <http://xmlns.com/foaf/0.1/> .
+
+sto:hasAvailableLanguage
+        a                   owl:DatatypeProperty ;
+        rdfs:comment        "Languages in which the document of the Standard is available, e.g., English, French, Spanish"@en ;
+        rdfs:label          "sto:hasAvailableLanguage"@en ;
+        rdfs:subPropertyOf  dcterms:language .
+
+rdfs:commment  a  owl:AnnotationProperty .
+
+foaf:maker  a   owl:ObjectProperty .
+
+sto:hasImplementationFormat
+        a             owl:DatatypeProperty ;
+        rdfs:comment  "Describes the name of the implementation or serialization format of the standard, e.g., XML, Document, binary, batch"@en ;
+        rdfs:domain   sto:Standard ;
+        rdfs:label    "has Implementation Format"@en ;
+        rdfs:range    xsd:string .
+
+sto:TechnicalCommitteeOrSubCommittee
+        a                 owl:Class ;
+        rdfs:comment      "Specifies the representitive code name of the Technical or Sub-Committee that covers a Standard for e.g, TC 1, SC 3C."@en ;
+        rdfs:isDefinedBy  sto:IEC ;
+        rdfs:label        "TechnicalCommitte/Sub-Committe"@en ;
+        rdfs:seeAlso      "http://www.iec.ch/dyn/www/f?p=103:62:9979528650478:::62:FSP_ORG_ID,FSP_LANG_ID:,25" ;
+        sto:abbreviation  "TC/SC" .
+
+dbr:_New_York  a  owl:NamedIndividual .
+
+skos:note  a    owl:AnnotationProperty .
+
+sto:hasOfficialResource
+        a             owl:DatatypeProperty ;
+        rdfs:comment  "Standard Official Website"@en ;
+        rdfs:label    "has Official Resource"@en ;
+        rdfs:range    xsd:string .
+
+sto:ISA95Level  a        owl:Class ;
+        rdfs:comment     "Describes the ISA95 levels to classify the industry Standards according to those levels. Eg., Device, SCADA, etc. It has strong relation to the RAMI Hierarchy levels"@en ;
+        rdfs:label       "ISA95 Level"@en ;
+        rdfs:subClassOf  sto:StandardClassification .
+
+sto:StandardClassification
+        a             owl:Class ;
+        rdfs:comment  "Describes categorization areas that the different Standardizations Initiatives use to category Standards."@en ;
+        rdfs:label    "Standard Classification"@en .
+
+rami:InstanceMaintenance
+        a           rami:RAMILifeCycleLayer , owl:NamedIndividual ;
+        rdfs:label  "Instance Maintenance"@en .
+
+sto:hasHeadquaterIn  a  owl:ObjectProperty ;
+        rdfs:comment  "Denotes the countries in which the Headquarter of the organization who publishes the Standart"@en ;
+        rdfs:domain   sto:StandardOrganization ;
+        rdfs:label    "has Headquater In"@en ;
+        rdfs:range    dbo:Place .
+
+rami:Business  a           rami:RAMIITLayer , owl:NamedIndividual ;
+        sto:isDescribedin  sto:RAMI40 .
+
+rami:Security  a           rami:AdminShellSubmodel , owl:NamedIndividual ;
+        sto:isDescribedin  sto:AdministrationShell .
+
+sto:uses  a                 owl:ObjectProperty ;
+        rdfs:comment        "Defines that Standard A uses Standard B. For example, IEC_62714(AML) uses MathML."@en ;
+        rdfs:label          "uses"@en ;
+        rdfs:subPropertyOf  sto:relatedTo .
+
+rami:LifeCycle_Status
+        a       owl:NamedIndividual .
+
+sto:isDescribedin  a  owl:ObjectProperty ;
+        rdfs:comment  "Links the Standarization Frameworks with the Classification of Standards"@en ;
+        rdfs:domain   sto:StandardClassification ;
+        rdfs:label    "is Described in"@en ;
+        rdfs:range    sto:StandardizationFramework .
+
+sto:isPartOf  a             owl:ObjectProperty ;
+        rdfs:comment        "Represents Standards that are part of other Standards"@en ;
+        rdfs:domain         sto:Standard ;
+        rdfs:label          "is Part Of"@en ;
+        rdfs:range          sto:Standard ;
+        rdfs:subPropertyOf  sto:relatedTo .
+
+dcterms:license  a   owl:ObjectProperty ;
+        rdfs:domain  sto:Standard ;
+        rdfs:range   dcterms:LicenseDocument .
+
+dcterms:hasVersion  a  owl:AnnotationProperty .
+
+dbr:_Texas  a   owl:NamedIndividual .
+
+rami:RAMIITLayer  a          owl:Class ;
+        rdfs:label           "RAMI IT Layer"@en ;
+        rdfs:subClassOf      sto:StandardClassification ;
+        owl:equivalentClass  [ a          owl:Class ;
+                               owl:oneOf  ( rami:Asset rami:Business rami:Communication rami:Functional rami:Information rami:Integration )
+                             ] .
+
+sto:hasDBpediaResource
+        a             owl:DatatypeProperty ;
+        rdfs:comment  "Instance's DBpedia Resource"@en ;
+        rdfs:label    "has DBpedia Resource"@en ;
+        rdfs:range    xsd:string .
+
+dbr:Boston  a   owl:NamedIndividual .
+
+sto:IIRA  a                      "sto:StandardizationFramework" , "owl:NamedIndividual" ;
+        a                        sto:StandardizationFramework , owl:NamedIndividual ;
+        rdfs:comment             "\"Industrial Internet Reference Architecture\"@en" ;
+        rdfs:label               "\"IIRA\"@en" ;
+        sto:hasOfficialResource  "\"http://www.iiconsortium.org/IIRA.htm\"" .
+
+rami:TypeMaintenance  a  rami:RAMILifeCycleLayer , owl:NamedIndividual ;
+        rdfs:label  "Type Maintenance"@en .
+
+rami:InformationLayer
+        a                  rami:RAMIITLayer , owl:NamedIndividual ;
+        rdfs:label         "Information Layer"@en ;
+        sto:isDescribedin  sto:RAMI40 .
+
+rami:Assest  a  owl:NamedIndividual .
+
+sto:hasTag  a         owl:DatatypeProperty , owl:ObjectProperty ;
+        rdfs:comment  "Points to the identification of the standards"@en ;
+        rdfs:domain   sto:Standard ;
+        rdfs:label    "has Tag"@en ;
+        rdfs:range    rdfs:Literal , muto:Tag .
+
+sto:IEC_14443  a                 "sto:Standard" , "owl:NamedIndividual" ;
+        a                        owl:NamedIndividual , sto:Standard ;
+        rdfs:comment             "\"The ISO/IEC 14443 standard is a four-part international standard for contact-less smart cards operating at 13.56 MHz in close proximity (~10cm) with a reader antenna. This ISO standard describes the modulation and transmission protocols between card and reader to create interoperability for contact-less smart card products. There are two main communication protocols supported by the ISO/IEC 14443 standard, they are addressed as Type A and Type B. Most High Frequency (13.56 MHz) proximity tags are using these guidelines for their communication.\"@en" ;
+        rdfs:label               "\"ISO/IEC 14443\"@en" ;
+        owl:sameAs               "sto:ISO_14443" ;
+        sto:hasDBpediaResource   "\"http://dbpedia.org/resource/ISO/IEC_14443\"" ;
+        sto:hasOfficialResource  "\"https://www.iso.org/standard/70170.html\"" ;
+        sto:hasTag               "\"IEC 14443\"@en" ;
+        sto:hasWikipediaArticle  "\"https://en.wikipedia.org/wiki/ISO/IEC_14443\"" ;
+        sto:publisher            "sto:ISO" , "sto:IEC" .
+
+rami:CommunicationSubModel
+        a       owl:NamedIndividual .
+
+skos:prefLabel  a  owl:AnnotationProperty .
+
+cc:attributionURL  a  owl:AnnotationProperty .
+
+dbr:Geneva  a   owl:NamedIndividual .
+
+sto:hasStabilityDate  a  owl:DatatypeProperty ;
+        rdfs:comment  "The contents of the publications will remain unchanged up to the Stability date. At this date, the publication will be either reconfirmed, withdrawn, replaced by a revised edition or amended. If there is a revision or amendment on-going then this is mentioned under the publication in the \"Work in progress\" tab, if you don't see this tab it means that there is no project under development."@en ;
+        rdfs:domain   sto:Standard ;
+        rdfs:label    "sto:hasStabilityDate"@en ;
+        rdfs:range    xsd:gYear ;
+        rdfs:seeAlso  "https://webstore.iec.ch/webstore/webstore.nsf/xpFAQ.xsp?Open&id=ADMN-7NALM5" .
+
+rami:InstanceProduction
+        a           rami:RAMILifeCycleLayer , owl:NamedIndividual ;
+        rdfs:label  "Instance Production"@en .
+
+rami:AdminShellGeneral
+        a                  rami:AdminShellSubmodel , owl:NamedIndividual ;
+        sto:isDescribedin  sto:AdministrationShell .
+
+rami:Asset  a              rami:RAMIITLayer , owl:NamedIndividual ;
+        sto:isDescribedin  sto:RAMI40 .
+
+rami:TypeDevelopment  a  rami:RAMILifeCycleLayer , owl:NamedIndividual ;
+        rdfs:label  "Type Development"@en .
+
+dbr:_North_Carolina  a  owl:NamedIndividual .
+
+rami:Station  a            rami:RAMIHierarchyLevel , owl:NamedIndividual ;
+        sto:isDescribedin  sto:RAMI40 .
+
+rami:WorkCenter  a         rami:RAMIHierarchyLevel , owl:NamedIndividual ;
+        sto:isDescribedin  sto:RAMI40 .
+
+sto:hasTask  a        owl:DatatypeProperty ;
+        rdfs:comment  "Specifies the tasks for the different ISA 95 levels."@en ;
+        rdfs:domain   sto:ISA95Level ;
+        rdfs:label    "has Task"@en ;
+        rdfs:range    xsd:string .
+
+rami:RAMILifeCycleLayer
+        a                owl:Class ;
+        rdfs:label       "RAMI Life Cycle Layer"@en ;
+        rdfs:seeAlso     "http://www.zvei.org/en/subjects/Industry-40/Pages/The-Reference-Architectural-Model-RAMI-40-and-the-Industrie-40-Component.aspx" ;
+        rdfs:subClassOf  sto:StandardClassification ;
+        skos:definition  "It describes the different Life Cycle and Value Stream layers for the RAMI model according to the IEC 62890 Standard."@en ;
+        skos:prefLabel   "RAMI Life Cycle Layer"@en .
+
+rami:Product  a            rami:RAMIHierarchyLevel , owl:NamedIndividual ;
+        sto:isDescribedin  sto:RAMI40 .
+
+rami:Work_Centers  a  owl:NamedIndividual .
+
+sto:relatedTo  a       owl:TransitiveProperty , owl:SymmetricProperty , owl:ObjectProperty ;
+        rdfs:comment   "Represent any type of relation that connects two standards."@en ;
+        rdfs:domain    sto:Standard ;
+        rdfs:label     "related To"@en ;
+        rdfs:range     sto:Standard ;
+        skos:altLabel  "has Associated Standard"@en .
+
+sto:hasPublicationDate
+        a             owl:DatatypeProperty ;
+        rdfs:comment  "Publication date of the Standard"@en ;
+        rdfs:domain   sto:Standard ;
+        rdfs:label    "has Publication Date"@en ;
+        rdfs:range    xsd:date .
+
+rami:Integration  a        rami:RAMIITLayer , owl:NamedIndividual ;
+        sto:isDescribedin  sto:RAMI40 .
+
+rami:Asst  a    owl:NamedIndividual .
+
+sto:ProductionSystemLifeCycle
+        a                 owl:Class ;
+        rdfs:comment      "Collections of machines, equipment, and auxiliary systems organized to create goods and services from various resources."@en ;
+        rdfs:isDefinedBy  "http://nvlpubs.nist.gov/nistpubs/ir/2016/NIST.IR.8107.pdf" ;
+        rdfs:label        "Production System Life Cycle"@en ;
+        rdfs:subClassOf   sto:StandardClassification .
+
+prov:wasGeneratedBy  a      owl:ObjectProperty ;
+        rdfs:comment        "Standard A has influences in Standard B. For example, IEC_61499 hasInfluenceIn IEC_61804-2(EDDL)"@en ;
+        rdfs:subPropertyOf  sto:relatedTo .
+
+skos:altLabel  a  owl:AnnotationProperty .
+
+sto:hasTechnicalCommitteeOrSubCommittee
+        a             owl:ObjectProperty ;
+        rdfs:comment  "Specifies the Technical Committe or a Sub-Committee that is responsible for creation and maintenance of a standard"@en ;
+        rdfs:domain   sto:Standard ;
+        rdfs:label    "sto:hasTechnicalCommitteeOrSubCommittee"@en ;
+        rdfs:range    sto:TechnicalCommitteeOrSubCommittee .
+
+sto:isImplementationOf
+        a                   owl:ObjectProperty ;
+        rdfs:comment        "Represent the relation that connects two standards when standard A is the implementation of standard B, e.g., B2MML isImplementationOf ISA-95."@en ;
+        rdfs:label          "is Implementation Of"@en ;
+        rdfs:subPropertyOf  sto:relatedTo .
+
+dbr:China  a    owl:NamedIndividual .
+
+dbr:_Arizona  a  owl:NamedIndividual .
+
+sto:edition  a  owl:AnnotationProperty .
+
+rami:LifecycleStatus  a    rami:AdminShellSubmodel , owl:NamedIndividual ;
+        sto:isDescribedin  sto:AdministrationShell .
+
+rami:Enterprise  a         rami:RAMIHierarchyLevel , owl:NamedIndividual ;
+        sto:isDescribedin  sto:RAMI40 .
+
+dbr:Frankfurt  a  owl:NamedIndividual .
+
+sto:BusinessCycleSCM  a   owl:Class ;
+        rdfs:comment      "Suply Chain Management Business Cycle."@en ;
+        rdfs:isDefinedBy  "http://nvlpubs.nist.gov/nistpubs/ir/2016/NIST.IR.8107.pdf" ;
+        rdfs:label        "Business Cycle SCM"@en ;
+        rdfs:seeAlso      "https://en.wikipedia.org/wiki/Supply_chain_management" ;
+        rdfs:subClassOf   sto:StandardClassification .
+
+dbr:Berlin  a   owl:NamedIndividual .
+
+rami:safety  a  owl:NamedIndividual .
+
+<http://dbpedia.org/resource#Washington,_D.C.>
+        a       owl:NamedIndividual .
+
+rami:ConditionMonitoring
+        a       owl:NamedIndividual .
+
+dbr:Germany  a  owl:NamedIndividual .
+
+dbr:Cologne  a  owl:NamedIndividual .
+
+sto:StandardPart  a      owl:Class ;
+        rdfs:comment     "Typically Standards are divided into parts. E.g., ISA 95 has part Part 1: Models and Terminology, Part 2: Object Model Attributes, etc."@en ;
+        rdfs:label       "StandardPart" ;
+        rdfs:subClassOf  foaf:Document .
+
+rami:Communications  a  owl:NamedIndividual .
+
+rami:Functional  a         rami:RAMIITLayer , owl:NamedIndividual ;
+        sto:isDescribedin  sto:RAMI40 .
+
+sto:developer  a            owl:ObjectProperty ;
+        rdfs:comment        "The organization that developed this Standard"@en ;
+        rdfs:domain         sto:Standard ;
+        rdfs:label          "developer"@en ;
+        rdfs:range          sto:StandardOrganization ;
+        rdfs:subPropertyOf  foaf:maker .
+
+dcterms:LicenseDocument
+        a                 owl:Class ;
+        rdfs:comment      "A legal document giving official permission to do something with a Resource."@en ;
+        rdfs:isDefinedBy  dcterms: ;
+        rdfs:label        "License Document"@en .
+
+foaf:Document  a  owl:Class .
+
+dbr:United_States  a  owl:NamedIndividual .
+
+rami:Identification  a     rami:AdminShellSubmodel , owl:NamedIndividual ;
+        sto:isDescribedin  sto:AdministrationShell .
+
+rami:Communication  a      rami:RAMIITLayer , owl:NamedIndividual ;
+        sto:isDescribedin  sto:RAMI40 .
+
+rami:ConnectedWorld  a     rami:RAMIHierarchyLevel , owl:NamedIndividual ;
+        sto:isDescribedin  sto:RAMI40 .
+
+rami:RAMIHierarchyLevel
+        a                    owl:Class ;
+        rdfs:label           "RAMI Hierarchy Level"@en ;
+        rdfs:subClassOf      sto:StandardClassification ;
+        owl:equivalentClass  [ a          owl:Class ;
+                               owl:oneOf  ( rami:ConnectedWorld rami:ControlDevice rami:Enterprise rami:FieldDevice rami:Product rami:Station rami:WorkCenter )
+                             ] .
+
+sto:StandardOrganization
+        a                owl:Class ;
+        rdfs:comment     "Define the standards organizations that develop and publish industry standards"@en ;
+        rdfs:label       "StandardOrganization"@en ;
+        rdfs:subClassOf  foaf:Organization .
+
+sto:domainName  a     owl:DatatypeProperty ;
+        rdfs:comment  "Points the Standard with the name of the Industrial Domain"@en ;
+        rdfs:domain   sto:Domain ;
+        rdfs:label    "has Domain Name"@en ;
+        rdfs:range    rdf:PlainLiteral .
+
+sto:DMSC  a                      "sto:StandardOrganization" , "owl:NamedIndividual" ;
+        a                        sto:StandardOrganization , owl:NamedIndividual ;
+        rdfs:comment             "\"Dimensional Metrology Standards Consortium (DMSC) is to identify urgently needed standards in the field of dimensional metrology, and to promote, foster, and encourage the development and interoperability of these standards, along with related and supporting standards that will benefit the industry as a whole.\"@en" ;
+        rdfs:label               "\"Dimensional Metrology Standards Consortium\"@en" ;
+        sto:hasHeadquaterIn      "dbr:_Texas" ;
+        sto:hasOfficialResource  "“http://www.dmis.org/”" .
+
+sto:hasStatus  a      owl:DatatypeProperty ;
+        rdfs:comment  "Publication status of the Standard, e.g., Published, under preparation, Released"@en ;
+        rdfs:domain   sto:Standard ;
+        rdfs:label    "has Status"@en ;
+        rdfs:range    xsd:string .
+
+dbr:New_York_City  a  owl:NamedIndividual .
+
+rami:FieldDevice  a        rami:RAMIHierarchyLevel , owl:NamedIndividual ;
+        sto:isDescribedin  sto:RAMI40 .
+
+sto:StandardizationFramework
+        a              owl:Class ;
+        rdfs:comment   "Describes existings Standardizations Initiatives, e.g, RAMI, NIST."@en ;
+        rdfs:label     "Standarization Framework"@en ;
+        skos:altLabel  "Reference Architecture"@en .
+
+dbr:_Michigan  a  owl:NamedIndividual .
+
+dbr:South_Korea  a  owl:NamedIndividual .
+
+dcterms:modified  a  owl:AnnotationProperty .
+
+sto:orgName  a         owl:DatatypeProperty ;
+        rdfs:commment  "Name of the Organization"@en ;
+        rdfs:domain    sto:StandardOrganization ;
+        rdfs:label     "Org Name"@en ;
+        rdfs:range     rdf:PlainLiteral .
+
+dbr:_Maryland  a  owl:NamedIndividual .
+
+dbo:Country  a  owl:Class .
+
+dbr:Chicago  a  owl:NamedIndividual .
+
+rami:Safety  a             rami:AdminShellSubmodel , owl:NamedIndividual ;
+        sto:isDescribedin  sto:AdministrationShell .
+
+cc:attributionName  a  owl:AnnotationProperty .
+
+dbr:Höhenkirchen-Siegertsbrunn
+        a       owl:NamedIndividual .
+
+sto:Domain  a         owl:Class ;
+        rdfs:comment  "Represents the Domains in which the Standards can be used"@en ;
+        rdfs:label    "Domain"@en .
+
+sto:hasObjective  a   owl:DatatypeProperty ;
+        rdfs:comment  "Specifies the objectives for the different ISA 95 levels."@en ;
+        rdfs:domain   sto:ISA95Level ;
+        rdfs:label    "has Objective"@en ;
+        rdfs:range    xsd:string .
+
+dbr:Beijing  a  owl:NamedIndividual .
+
+dc11:rights  a  owl:AnnotationProperty .
+
+dbr:_Massachusetts  a  owl:NamedIndividual .
+
+rami:Engineering  a        rami:AdminShellSubmodel , owl:NamedIndividual ;
+        sto:isDescribedin  sto:AdministrationShell .
+
+skos:definition  a  owl:AnnotationProperty .
+
+sto:    a                              owl:Ontology ;
+        dc11:description               "An ontology to describe industry standards related to Smart Manufacturing" ;
+        dc11:title                     "Standards Ontology"@en ;
+        dcterms:created                "2017-01-25"^^xsd:date ;
+        dcterms:creator                <http://http://sda.cs.uni-bonn.de/people/irlan-grangel-gonzalez/> , <http://data.semanticweb.org/person/steffen-lohmann> , <https://www.linkedin.com/in/paul-baptista-601177b2> ;
+        dcterms:modified               "2017-09-08"^^xsd:date ;
+        dcterms:publisher              <http://de.dbpedia.org/resource/Fraunhofer-Gesellschaft> ;
+        dcterms:rights                 "This work is distributed under a Creative Commons Attribution License (http://creativecommons.org/licenses/by/3.0/)."@en ;
+        vann:preferredNamespacePrefix  "sto" ;
+        vann:preferredNamespaceUri     "https://w3id.org/i40/sto#" ;
+        doap:repository                <https://github.com/i40-Tools/StandardsOntology> ;
+        owl:imports                    sto: ;
+        owl:versionInfo                "0.2" .
+
+sto:belongsTo  a      owl:ObjectProperty ;
+        rdfs:comment  "A Standard Organization that belongs to the country"@en ;
+        rdfs:domain   sto:StandardOrganization ;
+        rdfs:label    "belongs To"@en ;
+        rdfs:range    dbo:Country .
+
+rami:Other  a   owl:NamedIndividual .
+
+foaf:Organization  a  owl:Class .
+
+sto:motivation  a     owl:ObjectProperty ;
+        rdfs:comment  "Describes the motivation of the standards"@en ;
+        rdfs:domain   sto:Standard ;
+        rdfs:label    "Motivation"@en ;
+        rdfs:range    deo:Motivation .
+
+sto:stoPartName  a    owl:DatatypeProperty ;
+        rdfs:comment  "Name of the standard part."@en ;
+        rdfs:domain   sto:StandardPart ;
+        rdfs:label    "std Part Name"@en ;
+        rdfs:range    xsd:string .
+
+rami:Conditional_Monitoring
+        a       owl:NamedIndividual .
+
+rami:ControlDevice  a      rami:RAMIHierarchyLevel , owl:NamedIndividual ;
+        sto:isDescribedin  sto:RAMI40 .
+
+sto:hasWikipediaArticle
+        a             owl:DatatypeProperty ;
+        rdfs:comment  "Wikipedia Article about the Standard"@en ;
+        rdfs:label    "has Wikipedia Article"@en ;
+        rdfs:range    rdfs:Literal .
+
+dbr:_California  a  owl:NamedIndividual .
+
+rami:Configuration  a  owl:NamedIndividual .
+
+sto:formationDate  a  owl:DatatypeProperty ;
+        rdfs:comment  "Formation date of the Organization"@en ;
+        rdfs:domain   sto:StandardOrganization ;
+        rdfs:label    "has Formation Date"@en ;
+        rdfs:range    xsd:date .
+
+sto:useStructureOf  a       owl:ObjectProperty ;
+        rdfs:comment        "Standard A uses the structure of Standard B. For example, OPC UA uses Structure Of IEC_61804 (EDDL)"@en ;
+        rdfs:label          "useStructureOf"@en ;
+        rdfs:subPropertyOf  sto:relatedTo .
+
+dbr:_Georgia  a  owl:NamedIndividual .
+
+sto:hasClassification
+        a             owl:ObjectProperty ;
+        rdfs:comment  "An Standard is isCategorizedBy a given Categorization Area which is connected to a specific Standarization Initiative"@en ;
+        rdfs:domain   sto:Standard ;
+        rdfs:label    "has Classification"@en ;
+        rdfs:range    sto:StandardClassification .
+
+sto:abbreviation  a   owl:DatatypeProperty ;
+        rdfs:comment  "Abbreviated  name of the organization"@en ;
+        rdfs:domain   sto:StandardOrganization ;
+        rdfs:label    "has Abbreviated Name"@en ;
+        rdfs:range    rdf:PlainLiteral .
+
+rami:Information  a        rami:RAMIITLayer , owl:NamedIndividual ;
+        sto:isDescribedin  sto:RAMI40 .
+
+dbr:Valbonne  a  owl:NamedIndividual .
+
+deo:Motivation  a  owl:Class .
+
+sto:hasOntology  a    owl:DatatypeProperty ;
+        rdfs:comment  "Point to the URL of a recognized Ontology representation of the Standard"@en ;
+        rdfs:domain   sto:Standard ;
+        rdfs:label    "has Ontology"@en ;
+        rdfs:range    xsd:anyURI .
+
+sto:Standard  a             owl:Class ;
+        rdfs:comment        "A document, established by consensus and approved by a recognized body, that provides, for common and repeated use, rules, guidelines or characteristics for activities or their results, aimed at the achievement of the optimum degree of order in a given context."@en ;
+        rdfs:isDefinedBy    sto:IEC ;
+        rdfs:label          "Standard" ;
+        rdfs:seeAlso        <http://www.iec.ch/standardsdev/publications/is.htm> ;
+        rdfs:subClassOf     foaf:Document ;
+        cc:attributionName  "Copyright © 2016 IEC Geneva, Switzerland." ;
+        cc:attributionURL   "http://www.iec.ch" ;
+        owl:disjointWith    sto:StandardOrganization .
+
+rami:AdminShellSubmodel
+        a                 owl:Class ;
+        rdfs:comment      "Describes the Administration Shell concept to organize/classify standards into submodels"@en ;
+        rdfs:isDefinedBy  <https://www.plattform-i40.de/I40/Redaktion/EN/Downloads/Publikation/structure-of-the-administration-shell.pdf?__blob=publicationFile&v=7> ;
+        rdfs:label        "Admin Shell Sub Model"@en ;
+        rdfs:subClassOf   sto:StandardClassification .
+
+xsd:date  a     rdfs:Datatype .
+
+sto:ProductDevelopmentLifeCycle
+        a                 owl:Class ;
+        rdfs:comment      "Product Development Life-Cycle Phase"@en , "PLM is the process of managing the entire lifecycle of a product from inception, through engineering design and manufacture, to service and disposal of manufactured products. Related areas are PLMManagement, Modeling Practice, Product Model Data exchange, Manufacturing Model Data, Product Catalog Data."@en ;
+        rdfs:isDefinedBy  "https://en.wikipedia.org/wiki/Product_lifecycle" ;
+        rdfs:label        "Product Development Life Cycle"@en ;
+        rdfs:subClassOf   sto:StandardClassification .
+
+sto:publisher  a            owl:ObjectProperty ;
+        rdfs:comment        "The organization that published this Standard"@en ;
+        rdfs:domain         sto:Standard ;
+        rdfs:label          "publisher"@en ;
+        rdfs:range          sto:StandardOrganization ;
+        rdfs:subPropertyOf  foaf:maker .
+
+dbr:Switzerland  a  owl:NamedIndividual .
+
+dbr:Paris  a    owl:NamedIndividual .
+
+rami:GeneralAdminShell
+        a       owl:NamedIndividual .
+
+dcterms:issued  a  owl:AnnotationProperty .
+
+dul:isMemberOf  a  owl:AnnotationProperty .
+
+sto:hasDomain  a      owl:ObjectProperty ;
+        rdfs:comment  "Describes the domain, in which the standard is used"@en ;
+        rdfs:domain   sto:Standard ;
+        rdfs:label    "has Domain"@en ;
+        rdfs:range    sto:Domain .
+
+rami:EnergyEfficiency
+        a                  rami:AdminShellSubmodel , owl:NamedIndividual ;
+        sto:isDescribedin  sto:AdministrationShell .
+
+muto:Tag  a     owl:Class .
+
+sto:IEC_15459  a                 "sto:Standard" , "owl:NamedIndividual" ;
+        a                        sto:Standard , owl:NamedIndividual ;
+        rdfs:comment             "\"ISO/IEC 15459-1:2014 specifies a unique string of characters for the identification of individual transport units. The character string is intended to be represented in a bar code label or other AIDC media attached to the entity to meet management needs. To address management needs, different types of entities are recognized in the various parts of ISO/IEC 15459, which allows different requirements to be met by the identities associated with each type. The rules for the unique identification for individual transport units, to identify physical logistical transfers, with the identity relevant for the duration of one or more items in the load being held or transported as part of that load, are defined and supported by example.\"@en" ;
+        rdfs:label               "\"IEC 15459\"@en" ;
+        owl:sameAs               "sto:ISO_15459" ;
+        sto:hasOfficialResource  "\"https://www.iso.org/standard/54779.html\"" ;
+        sto:hasTag               "\"Information technology -- Automatic identification and data capture techniques -- Unique identification\"@en" ;
+        sto:publisher            "sto:IEC" , "sto:ISO" .
+
+dbr:Eumseong  a  owl:NamedIndividual .
+
+rami:Lifecycle_Status
+        a       owl:NamedIndividual .
+
+dbo:Place  a    owl:Class .

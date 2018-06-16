@@ -1,0 +1,895 @@
+@prefix : <https://w3id.org/i40/sto#> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix dbo: <http://dbpedia.org/ontology#> .
+@prefix dbr: <http://dbpedia.org/resource#> .
+@prefix deo: <http://purl.org/spar/deo/> .
+@prefix dul: <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#> .
+@prefix geo: <http://www.geonames.org/ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sto: <https://w3id.org/i40/sto#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dc11: <http://purl.org/dc/elements/1.1/> .
+@prefix doap: <http://usefulinc.com/ns/doap#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix muto: <http://purl.org/muto/core#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rami: <https://w3id.org/i40/rami#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix schema: <http://schema.org/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@base <https://w3id.org/i40/sto#> .
+
+<https://w3id.org/i40/sto#> rdf:type owl:Ontology ;
+                             owl:imports <https://w3id.org/i40/sto#> ;
+                             dcterms:modified "2017-09-08"^^xsd:date ;
+                             dc11:title "Standards Ontology"@en ;
+                             dcterms:creator <http://data.semanticweb.org/person/steffen-lohmann> ;
+                             owl:versionInfo "0.2" ;
+                             dcterms:rights "This work is distributed under a Creative Commons Attribution License (http://creativecommons.org/licenses/by/3.0/)."@en ;
+                             dcterms:publisher <http://de.dbpedia.org/resource/Fraunhofer-Gesellschaft> ;
+                             dcterms:creator <https://www.linkedin.com/in/paul-baptista-601177b2> ,
+                                             <http://http://sda.cs.uni-bonn.de/people/irlan-grangel-gonzalez/> ;
+                             doap:repository <https://github.com/i40-Tools/StandardsOntology> ;
+                             dc11:description "An ontology to describe industry standards related to Smart Manufacturing" ;
+                             vann:preferredNamespacePrefix "sto" ;
+                             vann:preferredNamespaceUri "https://w3id.org/i40/sto#" ;
+                             dcterms:created "2017-01-25"^^xsd:date .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://creativecommons.org/ns#attributionName
+cc:attributionName rdf:type owl:AnnotationProperty .
+
+
+###  http://creativecommons.org/ns#attributionURL
+cc:attributionURL rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/rights
+dc11:rights rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/hasVersion
+dcterms:hasVersion rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/issued
+dcterms:issued rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/modified
+dcterms:modified rdf:type owl:AnnotationProperty .
+
+
+###  http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#isMemberOf
+dul:isMemberOf rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2000/01/rdf-schema#commment
+rdfs:commment rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#altLabel
+skos:altLabel rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#definition
+skos:definition rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#note
+skos:note rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#prefLabel
+skos:prefLabel rdf:type owl:AnnotationProperty .
+
+
+###  https://w3id.org/i40/sto#edition
+sto:edition rdf:type owl:AnnotationProperty .
+
+
+
+
+
+
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.w3.org/2001/XMLSchema#date
+xsd:date rdf:type rdfs:Datatype .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://purl.org/dc/terms/license
+dcterms:license rdf:type owl:ObjectProperty ;
+                rdfs:domain sto:Standard ;
+                rdfs:range dcterms:LicenseDocument .
+
+
+###  http://www.w3.org/ns/prov#wasGeneratedBy
+prov:wasGeneratedBy rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf sto:relatedTo ;
+                    rdfs:comment "Standard A has influences in Standard B. For example, IEC_61499 hasInfluenceIn IEC_61804-2(EDDL)"@en .
+
+
+###  http://xmlns.com/foaf/0.1/maker
+foaf:maker rdf:type owl:ObjectProperty .
+
+
+###  https://w3id.org/i40/sto#belongsTo
+sto:belongsTo rdf:type owl:ObjectProperty ;
+              rdfs:domain sto:StandardOrganization ;
+              rdfs:range dbo:Country ;
+              rdfs:comment "A Standard Organization that belongs to the country"@en ;
+              rdfs:label "belongs To"@en .
+
+
+###  https://w3id.org/i40/sto#developer
+sto:developer rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf foaf:maker ;
+              rdfs:domain sto:Standard ;
+              rdfs:range sto:StandardOrganization ;
+              rdfs:comment "The organization that developed this Standard"@en ;
+              rdfs:label "developer"@en .
+
+
+###  https://w3id.org/i40/sto#hasClassification
+sto:hasClassification rdf:type owl:ObjectProperty ;
+                      rdfs:domain sto:Standard ;
+                      rdfs:range sto:StandardClassification ;
+                      rdfs:comment "An Standard is isCategorizedBy a given Categorization Area which is connected to a specific Standarization Initiative"@en ;
+                      rdfs:label "has Classification"@en .
+
+
+###  https://w3id.org/i40/sto#hasDomain
+sto:hasDomain rdf:type owl:ObjectProperty ;
+              rdfs:domain sto:Standard ;
+              rdfs:range sto:Domain .
+
+
+###  https://w3id.org/i40/sto#hasHeadquaterIn
+sto:hasHeadquaterIn rdf:type owl:ObjectProperty ;
+                    rdfs:domain sto:StandardOrganization ;
+                    rdfs:range dbo:Place ;
+                    rdfs:comment "Denotes the countries in which the Headquarter of the organization who publishes the Standart"@en ;
+                    rdfs:label "has Headquater In"@en .
+
+
+###  https://w3id.org/i40/sto#hasTag
+sto:hasTag rdf:type owl:ObjectProperty ;
+           rdfs:domain sto:Standard ;
+           rdfs:range muto:Tag .
+
+
+###  https://w3id.org/i40/sto#isDescribedin
+sto:isDescribedin rdf:type owl:ObjectProperty ;
+                  rdfs:domain sto:StandardClassification ;
+                  rdfs:range sto:StandardizationFramework ;
+                  rdfs:comment "Links the Standarization Frameworks with the Classification of Standards"@en ;
+                  rdfs:label "is Described in"@en .
+
+
+###  https://w3id.org/i40/sto#isImplementationOf
+sto:isImplementationOf rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf sto:relatedTo ;
+                       rdfs:comment "Represent the relation that connects two standards when standard A is the implementation of standard B, e.g., B2MML isImplementationOf ISA-95."@en ;
+                       rdfs:label "is Implementation Of"@en .
+
+
+###  https://w3id.org/i40/sto#isPartOf
+sto:isPartOf rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf sto:relatedTo ;
+             rdfs:domain sto:Standard ;
+             rdfs:range sto:Standard ;
+             rdfs:comment "Represents Standards that are part of other Standards"@en ;
+             rdfs:label "is Part Of"@en .
+
+
+###  https://w3id.org/i40/sto#motivation
+sto:motivation rdf:type owl:ObjectProperty ;
+               rdfs:domain sto:Standard ;
+               rdfs:range deo:Motivation .
+
+
+###  https://w3id.org/i40/sto#publisher
+sto:publisher rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf foaf:maker ;
+              rdfs:domain sto:Standard ;
+              rdfs:range sto:StandardOrganization ;
+              rdfs:comment "The organization that published this Standard"@en ;
+              rdfs:label "publisher"@en .
+
+
+###  https://w3id.org/i40/sto#relatedTo
+sto:relatedTo rdf:type owl:ObjectProperty ,
+                       owl:SymmetricProperty ,
+                       owl:TransitiveProperty ;
+              rdfs:domain sto:Standard ;
+              rdfs:range sto:Standard ;
+              rdfs:comment "Represent any type of relation that connects two standards."@en ;
+              rdfs:label "related To"@en ;
+              skos:altLabel "has Associated Standard"@en .
+
+
+###  https://w3id.org/i40/sto#useStructureOf
+sto:useStructureOf rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf sto:relatedTo ;
+                   rdfs:comment "Standard A uses the structure of Standard B. For example, OPC UA uses Structure Of IEC_61804 (EDDL)"@en ;
+                   rdfs:label "useStructureOf"@en .
+
+
+###  https://w3id.org/i40/sto#uses
+sto:uses rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf sto:relatedTo ;
+         rdfs:comment "Defines that Standard A uses Standard B. For example, IEC_62714(AML) uses MathML."@en ;
+         rdfs:label "uses"@en .
+
+
+
+###  https://w3id.org/i40/sto#hasTechnicalCommitteeOrSubCommittee
+sto:hasTechnicalCommitteeOrSubCommittee rdf:type owl:ObjectProperty ;
+              rdfs:comment "Specifies the Technical Committe or a Sub-Committee that is responsible for creation and maintenance of a standard"@en ;
+              rdfs:label "sto:hasTechnicalCommitteeOrSubCommittee"@en ;
+              rdfs:domain sto:Standard ;
+              rdfs:range sto:TechnicalCommitteeOrSubCommittee
+              .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  https://w3id.org/i40/sto#abbreviation
+sto:abbreviation rdf:type owl:DatatypeProperty ;
+                 rdfs:domain sto:StandardOrganization ;
+                 rdfs:range rdf:PlainLiteral ;
+                 rdfs:comment "Abbreviated  name of the organization"@en ;
+                 rdfs:label "has Abbreviated Name"@en .
+
+
+###  https://w3id.org/i40/sto#domainName
+sto:domainName rdf:type owl:DatatypeProperty ;
+               rdfs:domain sto:Domain ;
+               rdfs:range rdf:PlainLiteral ;
+               rdfs:comment "Points the Standard with the name of the Industrial Domain"@en ;
+               rdfs:label "has Domain Name"@en .
+
+
+###  https://w3id.org/i40/sto#formationDate
+sto:formationDate rdf:type owl:DatatypeProperty ;
+                  rdfs:domain sto:StandardOrganization ;
+                  rdfs:range xsd:date ;
+                  rdfs:comment "Formation date of the Organization"@en ;
+                  rdfs:label "has Formation Date"@en .
+
+
+###  https://w3id.org/i40/sto#hasDBpediaResource
+sto:hasDBpediaResource rdf:type owl:DatatypeProperty ;
+                       rdfs:range xsd:string .
+
+
+###  https://w3id.org/i40/sto#hasImplementationFormat
+sto:hasImplementationFormat rdf:type owl:DatatypeProperty ;
+                            rdfs:domain sto:Standard ;
+                            rdfs:range xsd:string ;
+                            rdfs:comment "Describes the name of the implementation or serialization format of the standard, e.g., XML, Document, binary, batch"@en ;
+                            rdfs:label "has Implementation Format"@en .
+
+
+###  https://w3id.org/i40/sto#hasObjective
+sto:hasObjective rdf:type owl:DatatypeProperty ;
+                 rdfs:domain sto:ISA95Level ;
+                 rdfs:range xsd:string ;
+                 rdfs:comment "Specifies the objectives for the different ISA 95 levels."@en ;
+                 rdfs:label "has Objective"@en .
+
+
+###  https://w3id.org/i40/sto#hasOfficialResource
+sto:hasOfficialResource rdf:type owl:DatatypeProperty ;
+                        rdfs:range xsd:string .
+
+
+###  https://w3id.org/i40/sto#hasOntology
+sto:hasOntology rdf:type owl:DatatypeProperty ;
+                rdfs:domain sto:Standard ;
+                rdfs:range xsd:anyURI ;
+                rdfs:comment "Point to the URL of a recognized Ontology representation of the Standard"@en ;
+                rdfs:label "has Ontology"@en .
+
+
+###  https://w3id.org/i40/sto#hasPublicationDate
+sto:hasPublicationDate rdf:type owl:DatatypeProperty ;
+                       rdfs:domain sto:Standard ;
+                       rdfs:range xsd:date ;
+                       rdfs:comment "Publication date of the Standard"@en ;
+                       rdfs:label "has Publication Date"@en .
+
+
+###  https://w3id.org/i40/sto#hasStatus
+sto:hasStatus rdf:type owl:DatatypeProperty ;
+              rdfs:domain sto:Standard ;
+              rdfs:range xsd:string ;
+              rdfs:comment "Publication status of the Standard, e.g., Published, under preparation, Released"@en ;
+              rdfs:label "has Status"@en .
+
+
+
+###  https://w3id.org/i40/sto#hasTag
+sto:hasTag rdf:type owl:DatatypeProperty ;
+           rdfs:range rdfs:Literal .
+
+
+###  https://w3id.org/i40/sto#hasTask
+sto:hasTask rdf:type owl:DatatypeProperty ;
+            rdfs:domain sto:ISA95Level ;
+            rdfs:range xsd:string ;
+            rdfs:comment "Specifies the tasks for the different ISA 95 levels."@en ;
+            rdfs:label "has Task"@en .
+
+
+###  https://w3id.org/i40/sto#hasWikipediaArticle
+sto:hasWikipediaArticle rdf:type owl:DatatypeProperty ;
+                        rdfs:range rdfs:Literal .
+
+
+###  https://w3id.org/i40/sto#orgName
+sto:orgName rdf:type owl:DatatypeProperty ;
+            rdfs:domain sto:StandardOrganization ;
+            rdfs:range rdf:PlainLiteral ;
+            rdfs:commment "Name of the Organization"@en ;
+            rdfs:label "Org Name"@en .
+
+
+###  https://w3id.org/i40/sto#stoPartName
+sto:stoPartName rdf:type owl:DatatypeProperty ;
+                rdfs:domain sto:StandardPart ;
+                rdfs:range xsd:string ;
+                rdfs:comment "Name of the standard part."@en ;
+                rdfs:label "std Part Name"@en .
+
+###  https://w3id.org/i40/sto#hasAvailableLanguage
+sto:hasAvailableLanguage rdf:type owl:DatatypeProperty ;
+			  rdfs:subPropertyOf dcterms:language;
+              rdfs:comment "Languages in which the document of the Standard is available, e.g., English, French, Spanish"@en ;
+              rdfs:label "sto:hasAvailableLanguage"@en .
+
+
+
+###  https://w3id.org/i40/sto#hasStabilityDate
+###  The data specified is not actually a Date but an Year  
+sto:hasStabilityDate rdf:type owl:DatatypeProperty ;
+              rdfs:domain sto:Standard ;
+              rdfs:range xsd:gYear ;
+              rdfs:comment "The contents of the publications will remain unchanged up to the Stability date. At this date, the publication will be either reconfirmed, withdrawn, replaced by a revised edition or amended. If there is a revision or amendment on-going then this is mentioned under the publication in the \"Work in progress\" tab, if you don't see this tab it means that there is no project under development."@en ;
+              rdfs:seeAlso "https://webstore.iec.ch/webstore/webstore.nsf/xpFAQ.xsp?Open&id=ADMN-7NALM5";
+              rdfs:label "sto:hasStabilityDate"@en .
+
+
+
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://dbpedia.org/ontology#Country
+dbo:Country rdf:type owl:Class .
+
+
+###  http://dbpedia.org/ontology#Place
+dbo:Place rdf:type owl:Class .
+
+
+###  http://purl.org/dc/terms/LicenseDocument
+dcterms:LicenseDocument rdf:type owl:Class ;
+                        rdfs:comment "A legal document giving official permission to do something with a Resource."@en ;
+                        rdfs:isDefinedBy dcterms: ;
+                        rdfs:label "License Document"@en .
+
+
+###  http://purl.org/muto/core#Tag
+muto:Tag rdf:type owl:Class .
+
+
+###  http://purl.org/spar/deo/Motivation
+deo:Motivation rdf:type owl:Class .
+
+
+###  http://xmlns.com/foaf/0.1/Document
+foaf:Document rdf:type owl:Class .
+
+
+###  http://xmlns.com/foaf/0.1/Organization
+foaf:Organization rdf:type owl:Class .
+
+
+###  https://w3id.org/i40/rami#AdminShellSubmodel
+rami:AdminShellSubmodel rdf:type owl:Class ;
+                        rdfs:subClassOf sto:StandardClassification ;
+                        rdfs:comment "Describes the Administration Shell concept to organize/classify standards into submodels"@en ;
+                        rdfs:isDefinedBy <https://www.plattform-i40.de/I40/Redaktion/EN/Downloads/Publikation/structure-of-the-administration-shell.pdf?__blob=publicationFile&v=7> ;
+                        rdfs:label "Admin Shell Sub Model"@en .
+
+
+###  https://w3id.org/i40/rami#RAMIHierarchyLevel
+rami:RAMIHierarchyLevel rdf:type owl:Class ;
+                        owl:equivalentClass [ rdf:type owl:Class ;
+                                              owl:oneOf ( rami:ConnectedWorld
+                                                          rami:ControlDevice
+                                                          rami:Enterprise
+                                                          rami:FieldDevice
+                                                          rami:Product
+                                                          rami:Station
+                                                          rami:WorkCenter
+                                                        )
+                                            ] ;
+                        rdfs:subClassOf sto:StandardClassification ;
+                        rdfs:label "RAMI Hierarchy Level"@en .
+
+
+###  https://w3id.org/i40/rami#RAMIITLayer
+rami:RAMIITLayer rdf:type owl:Class ;
+                 owl:equivalentClass [ rdf:type owl:Class ;
+                                       owl:oneOf ( rami:Asset
+                                                   rami:Business
+                                                   rami:Communication
+                                                   rami:Functional
+                                                   rami:Information
+                                                   rami:Integration
+                                                 )
+                                     ] ;
+                 rdfs:subClassOf sto:StandardClassification ;
+                 rdfs:label "RAMI IT Layer"@en .
+
+
+###  https://w3id.org/i40/rami#RAMILifeCycleLayer
+rami:RAMILifeCycleLayer rdf:type owl:Class ;
+                        rdfs:subClassOf sto:StandardClassification ;
+                        rdfs:label "RAMI Life Cycle Layer"@en ;
+                        rdfs:seeAlso "http://www.zvei.org/en/subjects/Industry-40/Pages/The-Reference-Architectural-Model-RAMI-40-and-the-Industrie-40-Component.aspx" ;
+                        skos:definition "It describes the different Life Cycle and Value Stream layers for the RAMI model according to the IEC 62890 Standard."@en ;
+                        skos:prefLabel "RAMI Life Cycle Layer"@en .
+
+
+###  https://w3id.org/i40/sto#BusinessCycleSCM
+sto:BusinessCycleSCM rdf:type owl:Class ;
+                     rdfs:subClassOf sto:StandardClassification ;
+                     rdfs:comment "Suply Chain Management Business Cycle."@en ;
+                     rdfs:isDefinedBy "http://nvlpubs.nist.gov/nistpubs/ir/2016/NIST.IR.8107.pdf" ;
+                     rdfs:label "Business Cycle SCM"@en ;
+                     rdfs:seeAlso "https://en.wikipedia.org/wiki/Supply_chain_management" .
+
+
+###  https://w3id.org/i40/sto#Domain
+sto:Domain rdf:type owl:Class ;
+           rdfs:comment "Represents the Domains in which the Standards can be used"@en ;
+           rdfs:label "Domain"@en .
+
+
+###  https://w3id.org/i40/sto#ISA95Level
+sto:ISA95Level rdf:type owl:Class ;
+               rdfs:subClassOf sto:StandardClassification ;
+               rdfs:comment "Describes the ISA95 levels to classify the industry Standards according to those levels. Eg., Device, SCADA, etc. It has strong relation to the RAMI Hierarchy levels"@en ;
+               rdfs:label "ISA95 Level"@en .
+
+
+###  https://w3id.org/i40/sto#ProductDevelopmentLifeCycle
+sto:ProductDevelopmentLifeCycle rdf:type owl:Class ;
+                                rdfs:subClassOf sto:StandardClassification ;
+                                rdfs:comment "PLM is the process of managing the entire lifecycle of a product from inception, through engineering design and manufacture, to service and disposal of manufactured products. Related areas are PLMManagement, Modeling Practice, Product Model Data exchange, Manufacturing Model Data, Product Catalog Data."@en ,
+                                             "Product Development Life-Cycle Phase"@en ;
+                                rdfs:isDefinedBy "https://en.wikipedia.org/wiki/Product_lifecycle" ;
+                                rdfs:label "Product Development Life Cycle"@en .
+
+
+###  https://w3id.org/i40/sto#ProductionSystemLifeCycle
+sto:ProductionSystemLifeCycle rdf:type owl:Class ;
+                              rdfs:subClassOf sto:StandardClassification ;
+                              rdfs:comment "Collections of machines, equipment, and auxiliary systems organized to create goods and services from various resources."@en ;
+                              rdfs:isDefinedBy "http://nvlpubs.nist.gov/nistpubs/ir/2016/NIST.IR.8107.pdf" ;
+                              rdfs:label "Production System Life Cycle"@en .
+
+
+###  https://w3id.org/i40/sto#Standard
+sto:Standard rdf:type owl:Class ;
+             rdfs:subClassOf foaf:Document ;
+             owl:disjointWith sto:StandardOrganization ;
+             cc:attributionName "Copyright © 2016 IEC Geneva, Switzerland." ;
+             cc:attributionURL "http://www.iec.ch" ;
+             rdfs:comment "A document, established by consensus and approved by a recognized body, that provides, for common and repeated use, rules, guidelines or characteristics for activities or their results, aimed at the achievement of the optimum degree of order in a given context."@en ;
+             rdfs:isDefinedBy sto:IEC ;
+             rdfs:label "Standard" ;
+             rdfs:seeAlso <http://www.iec.ch/standardsdev/publications/is.htm> .
+
+
+###  https://w3id.org/i40/sto#StandardClassification
+sto:StandardClassification rdf:type owl:Class ;
+                           rdfs:comment "Describes categorization areas that the different Standardizations Initiatives use to category Standards."@en ;
+                           rdfs:label "Standard Classification"@en .
+
+
+###  https://w3id.org/i40/sto#StandardOrganization
+sto:StandardOrganization rdf:type owl:Class ;
+                         rdfs:subClassOf foaf:Organization ;
+                         rdfs:comment "Define the standards organizations that develop and publish industry standards"@en ;
+                         rdfs:label "StandardOrganization"@en .
+
+
+###  https://w3id.org/i40/sto#StandardPart
+sto:StandardPart rdf:type owl:Class ;
+                 rdfs:subClassOf foaf:Document ;
+                 rdfs:comment "Typically Standards are divided into parts. E.g., ISA 95 has part Part 1: Models and Terminology, Part 2: Object Model Attributes, etc."@en ;
+                 rdfs:label "StandardPart" .
+
+
+###  https://w3id.org/i40/sto#StandardizationFramework
+sto:StandardizationFramework rdf:type owl:Class ;
+                             rdfs:comment "Describes existings Standardizations Initiatives, e.g, RAMI, NIST."@en ;
+                             rdfs:label "Standarization Framework"@en ;
+                             skos:altLabel "Reference Architecture"@en .
+
+###  https://w3id.org/i40/sto#TechnicalCommitteeOrSubCommittee
+###    sto:hastitle property needs to be added. Description of the Committee Code
+###    sto:         a property explaining that TC and SC are managed by SMB (Standardization Management Board) needs to be added
+sto:TechnicalCommitteeOrSubCommittee rdf:type owl:Class ;
+                             rdfs:comment "Specifies the representitive code name of the Technical or Sub-Committee that covers a Standard for e.g, TC 1, SC 3C."@en ;
+                             rdfs:label "TechnicalCommitte/Sub-Committe"@en ;
+                             sto:abbreviation "TC/SC";
+                             rdfs:isDefinedBy sto:IEC ;
+                             rdfs:seeAlso "http://www.iec.ch/dyn/www/f?p=103:62:9979528650478:::62:FSP_ORG_ID,FSP_LANG_ID:,25".
+
+
+
+sto:hasDBpediaResource rdfs:label "has DBpedia Resource"@en ;
+                       rdfs:comment "Instance's DBpedia Resource"@en .
+
+
+sto:hasDomain rdfs:label "has Domain"@en ;
+              rdfs:comment "Describes the domain, in which the standard is used"@en .
+
+
+sto:hasOfficialResource rdfs:comment "Standard Official Website"@en ;
+                        rdfs:label "has Official Resource"@en .
+
+
+sto:hasTag rdfs:label "has Tag"@en ;
+           rdfs:comment "Points to the identification of the standards"@en .
+
+
+sto:hasWikipediaArticle rdfs:label "has Wikipedia Article"@en ;
+                        rdfs:comment "Wikipedia Article about the Standard"@en .
+
+
+sto:motivation rdfs:label "Motivation"@en ;
+               rdfs:comment "Describes the motivation of the standards"@en .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://dbpedia.org/resource#Beijing
+dbr:Beijing rdf:type owl:NamedIndividual .
+
+
+###  http://dbpedia.org/resource#Berlin
+dbr:Berlin rdf:type owl:NamedIndividual .
+
+
+###  http://dbpedia.org/resource#Boston
+dbr:Boston rdf:type owl:NamedIndividual .
+
+
+###  http://dbpedia.org/resource#Chicago
+dbr:Chicago rdf:type owl:NamedIndividual .
+
+
+###  http://dbpedia.org/resource#China
+dbr:China rdf:type owl:NamedIndividual .
+
+
+###  http://dbpedia.org/resource#Cologne
+dbr:Cologne rdf:type owl:NamedIndividual .
+
+
+###  http://dbpedia.org/resource#Eumseong
+dbr:Eumseong rdf:type owl:NamedIndividual .
+
+
+###  http://dbpedia.org/resource#Frankfurt
+dbr:Frankfurt rdf:type owl:NamedIndividual .
+
+
+###  http://dbpedia.org/resource#Geneva
+dbr:Geneva rdf:type owl:NamedIndividual .
+
+
+###  http://dbpedia.org/resource#Germany
+dbr:Germany rdf:type owl:NamedIndividual .
+
+
+###  http://dbpedia.org/resource#Höhenkirchen-Siegertsbrunn
+dbr:Höhenkirchen-Siegertsbrunn rdf:type owl:NamedIndividual .
+
+
+###  http://dbpedia.org/resource#New_York_City
+dbr:New_York_City rdf:type owl:NamedIndividual .
+
+
+###  http://dbpedia.org/resource#Paris
+dbr:Paris rdf:type owl:NamedIndividual .
+
+
+###  http://dbpedia.org/resource#South_Korea
+dbr:South_Korea rdf:type owl:NamedIndividual .
+
+
+###  http://dbpedia.org/resource#Switzerland
+dbr:Switzerland rdf:type owl:NamedIndividual .
+
+
+###  http://dbpedia.org/resource#United_States
+dbr:United_States rdf:type owl:NamedIndividual .
+
+
+###  http://dbpedia.org/resource#Valbonne
+dbr:Valbonne rdf:type owl:NamedIndividual .
+
+
+###  http://dbpedia.org/resource#_Arizona
+dbr:_Arizona rdf:type owl:NamedIndividual .
+
+
+###  http://dbpedia.org/resource#_California
+dbr:_California rdf:type owl:NamedIndividual .
+
+
+###  http://dbpedia.org/resource#_Georgia
+dbr:_Georgia rdf:type owl:NamedIndividual .
+
+
+###  http://dbpedia.org/resource#_Maryland
+dbr:_Maryland rdf:type owl:NamedIndividual .
+
+
+###  http://dbpedia.org/resource#_Massachusetts
+dbr:_Massachusetts rdf:type owl:NamedIndividual .
+
+
+###  http://dbpedia.org/resource#_Michigan
+dbr:_Michigan rdf:type owl:NamedIndividual .
+
+
+###  http://dbpedia.org/resource#_New_York
+dbr:_New_York rdf:type owl:NamedIndividual .
+
+
+###  http://dbpedia.org/resource#_North_Carolina
+dbr:_North_Carolina rdf:type owl:NamedIndividual .
+
+
+###  http://dbpedia.org/resource#_Texas
+dbr:_Texas rdf:type owl:NamedIndividual .
+
+
+###  http://dbpedia.org/resource#Washington,_D.C.
+<http://dbpedia.org/resource#Washington,_D.C.> rdf:type owl:NamedIndividual .
+
+
+###  https://w3id.org/i40/rami#AdminShellGeneral
+rami:AdminShellGeneral rdf:type owl:NamedIndividual ,
+                                rami:AdminShellSubmodel ;
+                       sto:isDescribedin sto:AdministrationShell .
+
+
+###  https://w3id.org/i40/rami#Assest
+rami:Assest rdf:type owl:NamedIndividual .
+
+
+###  https://w3id.org/i40/rami#Asset
+rami:Asset rdf:type owl:NamedIndividual ,
+                    rami:RAMIITLayer ;
+           sto:isDescribedin sto:RAMI40 .
+
+
+###  https://w3id.org/i40/rami#Asst
+rami:Asst rdf:type owl:NamedIndividual .
+
+
+###  https://w3id.org/i40/rami#Business
+rami:Business rdf:type owl:NamedIndividual ,
+                       rami:RAMIITLayer ;
+              sto:isDescribedin sto:RAMI40 .
+
+
+###  https://w3id.org/i40/rami#Communication
+rami:Communication rdf:type owl:NamedIndividual ,
+                            rami:RAMIITLayer ;
+                   sto:isDescribedin sto:RAMI40 .
+
+
+###  https://w3id.org/i40/rami#CommunicationSubModel
+rami:CommunicationSubModel rdf:type owl:NamedIndividual .
+
+
+###  https://w3id.org/i40/rami#Communications
+rami:Communications rdf:type owl:NamedIndividual .
+
+
+###  https://w3id.org/i40/rami#ConditionMonitoring
+rami:ConditionMonitoring rdf:type owl:NamedIndividual .
+
+
+###  https://w3id.org/i40/rami#Conditional_Monitoring
+rami:Conditional_Monitoring rdf:type owl:NamedIndividual .
+
+
+###  https://w3id.org/i40/rami#Configuration
+rami:Configuration rdf:type owl:NamedIndividual .
+
+
+###  https://w3id.org/i40/rami#ConnectedWorld
+rami:ConnectedWorld rdf:type owl:NamedIndividual ,
+                             rami:RAMIHierarchyLevel ;
+                    sto:isDescribedin sto:RAMI40 .
+
+
+###  https://w3id.org/i40/rami#ControlDevice
+rami:ControlDevice rdf:type owl:NamedIndividual ,
+                            rami:RAMIHierarchyLevel ;
+                   sto:isDescribedin sto:RAMI40 .
+
+
+###  https://w3id.org/i40/rami#EnergyEfficiency
+rami:EnergyEfficiency rdf:type owl:NamedIndividual ,
+                               rami:AdminShellSubmodel ;
+                      sto:isDescribedin sto:AdministrationShell .
+
+
+###  https://w3id.org/i40/rami#Engineering
+rami:Engineering rdf:type owl:NamedIndividual ,
+                          rami:AdminShellSubmodel ;
+                 sto:isDescribedin sto:AdministrationShell .
+
+
+###  https://w3id.org/i40/rami#Enterprise
+rami:Enterprise rdf:type owl:NamedIndividual ,
+                         rami:RAMIHierarchyLevel ;
+                sto:isDescribedin sto:RAMI40 .
+
+
+###  https://w3id.org/i40/rami#FieldDevice
+rami:FieldDevice rdf:type owl:NamedIndividual ,
+                          rami:RAMIHierarchyLevel ;
+                 sto:isDescribedin sto:RAMI40 .
+
+
+###  https://w3id.org/i40/rami#Functional
+rami:Functional rdf:type owl:NamedIndividual ,
+                         rami:RAMIITLayer ;
+                sto:isDescribedin sto:RAMI40 .
+
+
+###  https://w3id.org/i40/rami#GeneralAdminShell
+rami:GeneralAdminShell rdf:type owl:NamedIndividual .
+
+
+###  https://w3id.org/i40/rami#Identification
+rami:Identification rdf:type owl:NamedIndividual ,
+                             rami:AdminShellSubmodel ;
+                    sto:isDescribedin sto:AdministrationShell .
+
+
+###  https://w3id.org/i40/rami#Information
+rami:Information rdf:type owl:NamedIndividual ,
+                          rami:RAMIITLayer ;
+                 sto:isDescribedin sto:RAMI40 .
+
+
+###  https://w3id.org/i40/rami#InformationLayer
+rami:InformationLayer rdf:type owl:NamedIndividual ,
+                               rami:RAMIITLayer ;
+                      sto:isDescribedin sto:RAMI40 ;
+                      rdfs:label "Information Layer"@en .
+
+
+###  https://w3id.org/i40/rami#InstanceMaintenance
+rami:InstanceMaintenance rdf:type owl:NamedIndividual ,
+                                  rami:RAMILifeCycleLayer ;
+                         rdfs:label "Instance Maintenance"@en .
+
+
+###  https://w3id.org/i40/rami#InstanceProduction
+rami:InstanceProduction rdf:type owl:NamedIndividual ,
+                                 rami:RAMILifeCycleLayer ;
+                        rdfs:label "Instance Production"@en .
+
+
+###  https://w3id.org/i40/rami#Integration
+rami:Integration rdf:type owl:NamedIndividual ,
+                          rami:RAMIITLayer ;
+                 sto:isDescribedin sto:RAMI40 .
+
+
+###  https://w3id.org/i40/rami#LifeCycle_Status
+rami:LifeCycle_Status rdf:type owl:NamedIndividual .
+
+
+###  https://w3id.org/i40/rami#LifecycleStatus
+rami:LifecycleStatus rdf:type owl:NamedIndividual ,
+                              rami:AdminShellSubmodel ;
+                     sto:isDescribedin sto:AdministrationShell .
+
+
+###  https://w3id.org/i40/rami#Lifecycle_Status
+rami:Lifecycle_Status rdf:type owl:NamedIndividual .
+
+
+###  https://w3id.org/i40/rami#Other
+rami:Other rdf:type owl:NamedIndividual .
+
+
+###  https://w3id.org/i40/rami#Product
+rami:Product rdf:type owl:NamedIndividual ,
+                      rami:RAMIHierarchyLevel ;
+             sto:isDescribedin sto:RAMI40 .
+
+
+###  https://w3id.org/i40/rami#Safety
+rami:Safety rdf:type owl:NamedIndividual ,
+                     rami:AdminShellSubmodel ;
+            sto:isDescribedin sto:AdministrationShell .
+
+
+###  https://w3id.org/i40/rami#Security
+rami:Security rdf:type owl:NamedIndividual ,
+                       rami:AdminShellSubmodel ;
+              sto:isDescribedin sto:AdministrationShell .
+
+
+###  https://w3id.org/i40/rami#Station
+rami:Station rdf:type owl:NamedIndividual ,
+                      rami:RAMIHierarchyLevel ;
+             sto:isDescribedin sto:RAMI40 .
+
+
+###  https://w3id.org/i40/rami#TypeDevelopment
+rami:TypeDevelopment rdf:type owl:NamedIndividual ,
+                              rami:RAMILifeCycleLayer ;
+                     rdfs:label "Type Development"@en .
+
+
+###  https://w3id.org/i40/rami#TypeMaintenance
+rami:TypeMaintenance rdf:type owl:NamedIndividual ,
+                              rami:RAMILifeCycleLayer ;
+                     rdfs:label "Type Maintenance"@en .
+
+
+###  https://w3id.org/i40/rami#WorkCenter
+rami:WorkCenter rdf:type owl:NamedIndividual ,
+                         rami:RAMIHierarchyLevel ;
+                sto:isDescribedin sto:RAMI40 .
+
+
+###  https://w3id.org/i40/rami#Work_Centers
+rami:Work_Centers rdf:type owl:NamedIndividual .
+
+
+###  https://w3id.org/i40/rami#safety
+rami:safety rdf:type owl:NamedIndividual .
+
+
+###  Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi

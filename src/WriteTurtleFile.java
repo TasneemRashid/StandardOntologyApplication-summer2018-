@@ -5,6 +5,7 @@
 import org.apache.jena.rdf.model.*;
 import java.io.*;
 import org.apache.jena.ontology.*;
+import org.apache.jena.vocabulary.OWL;
 import org.apache.jena.vocabulary.RDFS;
 
 public class WriteTurtleFile 
@@ -36,7 +37,7 @@ public class WriteTurtleFile
      */
     public void read()
     {
-        this.base.read(path, "");
+        this.base.read(path);
     }
     
     /**
@@ -56,12 +57,17 @@ public class WriteTurtleFile
             standard = excelSheet[0][mCol];// gets the name of the standard
             temp1 = excelSheet[1][mCol].split(","); //congtains multiple ranges of rdf:type of the instance
             ind = createIndividualInstance(temp1); 
+            
             String property;
             String rangeOfProp;
             for(int mRow = 2; mRow < excelSheet.length; mRow++)
             {
                 property = excelSheet[mRow][0];
                 rangeOfProp = excelSheet[mRow][mCol];
+                /**
+                 * property = sto:Publisher 
+                 * rangeOfProperty = sto:ISO, sto:IEC
+                 */
                 ind = addProperties(ind, property, rangeOfProp);
             }
             write(outputFilePath);
@@ -103,20 +109,50 @@ public class WriteTurtleFile
     {
         if(!rangeOfProp.isEmpty())
         {
+            /**
+             * 
+             * property = sto:Publisher 
+             * rangeOfProperty = sto:ISO, sto:IEC (also some String e.g "this is a comment")             
+             * temp2[0] = sto (also canbe rdfs, owl etc)
+             * temp2[1] = publisher (also comment, sameAs etc)
+             */
             String[] temp2 = property.split(":");
+            
             switch (temp2[1]) {
-                case "comment":
-                    indiv.addProperty(RDFS.comment, rangeOfProp);
+                case "comment": //built-in in the library
+                    indiv.addProperty(RDFS.comment, rangeOfProp, "en");
                     break;
-                case "label":
-                    indiv.addProperty(RDFS.label, rangeOfProp);
+                case "label": //built-in in the library
+                    indiv.addProperty(RDFS.label, rangeOfProp, "en");
+                    break;
+                case "sameAs": //built-in in the library
+                    boolean flag = checkIfString(rangeOfProp);
+                    if (flag == true) {
+                        indiv.addProperty(OWL.sameAs, rangeOfProp);
+                    } else {
+                        Property p = createProperty(rangeOfProp);
+                        indiv.addProperty(OWL.sameAs, p);
+                    }   
                     break;
                 default:
+                    /**
+                     * For other properties created in the ontology,
+                     * these properties may have multiple ranges.
+                     * e.g. property sto:publisher may have ranges sto:IEC, sto:ISO.
+                     * so temp3[0] = sto:IEC and temp3[1] = sto:ISO.
+                     */
+                    Property p = createProperty(property);
                     String[] temp3 = rangeOfProp.split(",");
-                    String URI;
-                    for (int i = 0; i < temp3.length; i++) {
-                        URI = base.getNsPrefixURI(temp2[0]);
-                        indiv.addProperty(base.getProperty(URI + temp2[1]), temp3[i]);
+                    for (int i = 0; i < temp3.length; i++) 
+                    {
+                        //indiv.addProperty(p, range);
+                        flag = checkIfString(rangeOfProp);
+                        if (flag == true) {
+                            indiv.addProperty(p, temp3[i], "en");
+                        } else {
+                            Property range = createProperty(temp3[i]);
+                            indiv.addProperty(p, range);
+                        }                        
                     }                    
                     break;
             }
@@ -146,5 +182,44 @@ public class WriteTurtleFile
     {
         FileOutputStream oFile = new FileOutputStream(createFile(outputFilePath), false);
         this.base.write(oFile, "TTL");
+    }
+    
+    /**
+     * Checks if the parameter holds a String or a property
+     * @param check the value to be evaluated
+     * @return true is the parameter is a String
+     */
+    public boolean checkIfString(String check)
+    {
+        String [] temp = check.split(":");        
+        if (temp.length == 1)
+        {
+            return true;
+        }
+        else if (temp.length == 2)
+        {
+            try
+            {
+                base.getNsPrefixURI(temp[0]);
+                return false;
+            }
+            catch(Exception e)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    /**
+     * Creates the property from the String value.
+     * @param value String. e.g. sto:IEC
+     * @return the property
+     */
+    public Property createProperty(String value)
+    {
+        String [] temp = value.split(":");        
+        String URI = base.getNsPrefixURI(temp[0]);        
+        return base.getProperty(URI + temp[1]);
     }
 }

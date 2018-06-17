@@ -58,7 +58,7 @@ public class WriteTurtleFile
             ind = createIndividualInstance(temp1); 
             String property;
             String rangeOfProp;
-            for(int mRow = 1; mRow < excelSheet.length; mRow++)
+            for(int mRow = 2; mRow < excelSheet.length; mRow++)
             {
                 property = excelSheet[mRow][0];
                 rangeOfProp = excelSheet[mRow][mCol];
@@ -81,7 +81,7 @@ public class WriteTurtleFile
         OntClass oClass;
         Individual indiv = null;
         String [] temp2;
-        String stoURI = base.getNsPrefixURI(""); //extracts the default URI (sto) 
+        String stoURI = base.getNsPrefixURI("sto"); //extracts the default URI (sto) 
 
         for (int multRange = 0; multRange < temp1.length; multRange++) {
             temp2 = temp1[multRange].split(":"); //splits 'sto:Standard' to get URI(sto) and name(Standard) 

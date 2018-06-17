@@ -128,8 +128,7 @@ sto:hasDBpediaResource
 
 dbr:Boston  a   owl:NamedIndividual .
 
-sto:IIRA  a                      "sto:StandardizationFramework" , "owl:NamedIndividual" ;
-        a                        sto:StandardizationFramework , owl:NamedIndividual ;
+sto:IIRA  a                      sto:StandardizationFramework , owl:NamedIndividual ;
         rdfs:comment             "\"Industrial Internet Reference Architecture\"@en" ;
         rdfs:label               "\"IIRA\"@en" ;
         sto:hasOfficialResource  "\"http://www.iiconsortium.org/IIRA.htm\"" .
@@ -150,8 +149,7 @@ sto:hasTag  a         owl:DatatypeProperty , owl:ObjectProperty ;
         rdfs:label    "has Tag"@en ;
         rdfs:range    rdfs:Literal , muto:Tag .
 
-sto:IEC_14443  a                 "sto:Standard" , "owl:NamedIndividual" ;
-        a                        owl:NamedIndividual , sto:Standard ;
+sto:IEC_14443  a                 owl:NamedIndividual , sto:Standard ;
         rdfs:comment             "\"The ISO/IEC 14443 standard is a four-part international standard for contact-less smart cards operating at 13.56 MHz in close proximity (~10cm) with a reader antenna. This ISO standard describes the modulation and transmission protocols between card and reader to create interoperability for contact-less smart card products. There are two main communication protocols supported by the ISO/IEC 14443 standard, they are addressed as Type A and Type B. Most High Frequency (13.56 MHz) proximity tags are using these guidelines for their communication.\"@en" ;
         rdfs:label               "\"ISO/IEC 14443\"@en" ;
         owl:sameAs               "sto:ISO_14443" ;
@@ -354,8 +352,7 @@ sto:domainName  a     owl:DatatypeProperty ;
         rdfs:label    "has Domain Name"@en ;
         rdfs:range    rdf:PlainLiteral .
 
-sto:DMSC  a                      "sto:StandardOrganization" , "owl:NamedIndividual" ;
-        a                        sto:StandardOrganization , owl:NamedIndividual ;
+sto:DMSC  a                      sto:StandardOrganization , owl:NamedIndividual ;
         rdfs:comment             "\"Dimensional Metrology Standards Consortium (DMSC) is to identify urgently needed standards in the field of dimensional metrology, and to promote, foster, and encourage the development and interoperability of these standards, along with related and supporting standards that will benefit the industry as a whole.\"@en" ;
         rdfs:label               "\"Dimensional Metrology Standards Consortium\"@en" ;
         sto:hasHeadquaterIn      "dbr:_Texas" ;
@@ -572,14 +569,13 @@ rami:EnergyEfficiency
 
 muto:Tag  a     owl:Class .
 
-sto:IEC_15459  a                 "sto:Standard" , "owl:NamedIndividual" ;
-        a                        sto:Standard , owl:NamedIndividual ;
+sto:IEC_15459  a                 sto:Standard , owl:NamedIndividual ;
         rdfs:comment             "\"ISO/IEC 15459-1:2014 specifies a unique string of characters for the identification of individual transport units. The character string is intended to be represented in a bar code label or other AIDC media attached to the entity to meet management needs. To address management needs, different types of entities are recognized in the various parts of ISO/IEC 15459, which allows different requirements to be met by the identities associated with each type. The rules for the unique identification for individual transport units, to identify physical logistical transfers, with the identity relevant for the duration of one or more items in the load being held or transported as part of that load, are defined and supported by example.\"@en" ;
         rdfs:label               "\"IEC 15459\"@en" ;
         owl:sameAs               "sto:ISO_15459" ;
         sto:hasOfficialResource  "\"https://www.iso.org/standard/54779.html\"" ;
         sto:hasTag               "\"Information technology -- Automatic identification and data capture techniques -- Unique identification\"@en" ;
-        sto:publisher            "sto:IEC" , "sto:ISO" .
+        sto:publisher            "sto:ISO" , "sto:IEC" .
 
 dbr:Eumseong  a  owl:NamedIndividual .
 

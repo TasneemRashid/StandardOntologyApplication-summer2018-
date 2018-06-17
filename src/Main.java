@@ -1,5 +1,4 @@
 
-import java.io.File;
 import java.io.IOException;
 
 /** *
@@ -11,12 +10,13 @@ import java.io.IOException;
  *      1. Read excel file with all standards and their properties
  *      2. Automatically add the the instances of the standards 
  *         in the turtle file.
+ * For problem with libraries: change the file path 
  */
 public class Main 
 {    
     public static void main (String [] args)
     {
-        //for the warning, without this line, there will be no errors
+        //to turn off log4j(API) warnings
         org.apache.log4j.Logger.getRootLogger().setLevel(org.apache.log4j.Level.OFF);
         
         //create file path for all files

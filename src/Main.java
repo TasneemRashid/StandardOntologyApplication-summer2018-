@@ -1,6 +1,6 @@
 
 import java.io.IOException;
-
+import java.util.*;
 /** *
  * @author tasneem
  * Java application for standardOntology Project for automation.
@@ -25,8 +25,13 @@ public class Main
         String turtleFilePath = cfp.createFilePath("checkSTO.ttl");
         String outputTurtleFilePath = cfp.createFilePath("outputTTLFile.ttl");
         ReadExcel  r = new ReadExcel(excelFilePath);
+        ReadExcel  r2 = new ReadExcel(cfp.createFilePath("input2.xls"));
         try
         {
+           String [][] es = r2.read();
+           Check c = new Check(es, turtleFilePath, "output2.ttl");
+           c.runMethod();
+        
            String [][] excelSheet = r.read();
            WriteTurtleFile w = new WriteTurtleFile(turtleFilePath, excelSheet, outputTurtleFilePath);
            w.createInstance();

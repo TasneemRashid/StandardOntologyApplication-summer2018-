@@ -52,7 +52,6 @@ public class WriteTurtleFile
     {
         read();
         for(int mCol = 1; mCol < excelSheet[0].length; mCol++)
-        //for(int mCol = 1; mCol < 2; mCol++)
         {
             standard = excelSheet[0][mCol];// gets the name of the standard
             temp1 = excelSheet[1][mCol].split(","); //congtains multiple ranges of rdf:type of the instance
@@ -87,13 +86,15 @@ public class WriteTurtleFile
         OntClass oClass;
         Individual indiv = null;
         String [] temp2;
-        String stoURI = base.getNsPrefixURI("sto"); //extracts the default URI (sto) 
+        String stoURI = base.getNsPrefixURI("sto"); //extracts the default URI (sto)
+        //System.out.println(stoURI);
 
         for (int multRange = 0; multRange < temp1.length; multRange++) {
             temp2 = temp1[multRange].split(":"); //splits 'sto:Standard' to get URI(sto) and name(Standard) 
             getURI = base.getNsPrefixURI(temp2[0]);//temp2[0] is the URI (sto)
             oClass = base.getOntClass(getURI + temp2[1]);//temp2[1] is the name of the standard
             indiv = oClass.createIndividual(stoURI + standard);//creates the individual
+            //System.out.println(indiv);
         }
         return indiv;
     }

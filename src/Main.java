@@ -1,6 +1,11 @@
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.*;
+import org.apache.jena.ontology.OntModel;
+import org.apache.jena.rdf.model.ModelFactory;
+
 /** *
  * @author tasneem
  * Java application for standardOntology Project for automation.
@@ -23,16 +28,13 @@ public class Main
         CreateFilePath cfp = new CreateFilePath();
         String excelFilePath = cfp.createFilePath("input.xls");
         String turtleFilePath = cfp.createFilePath("checkSTO.ttl");
-        String outputTurtleFilePath = cfp.createFilePath("outputTTLFile.ttl");
+        String outputTurtleFilePath = cfp.createFilePath("checkSTO.ttl");
         ReadExcel  r = new ReadExcel(excelFilePath);
-        ReadExcel  r2 = new ReadExcel(cfp.createFilePath("input2.xls"));
         try
         {
-           String [][] es = r2.read();
-           Check c = new Check(es, turtleFilePath, "output2.ttl");
-           c.runMethod();
-        
-           String [][] excelSheet = r.read();
+           Scanner key = new Scanner(System.in);  
+           System.out.print("Enter sheet number: ");
+           String [][] excelSheet = r.read(key.nextInt());
            WriteTurtleFile w = new WriteTurtleFile(turtleFilePath, excelSheet, outputTurtleFilePath);
            w.createInstance();
         }

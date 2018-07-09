@@ -26,7 +26,7 @@ public class ReadExcel
      * @return the matrix of the excel file     * 
      * @throws java.io.IOException
     */
-    public String [][] read() throws IOException 
+    public String [][] read(int sheetNumber) throws IOException 
     {
         Workbook w;
         try 
@@ -37,7 +37,7 @@ public class ReadExcel
              * To get the number of excel sheets in the file
              * use w.getNumberOfSheets() 
              */
-            Sheet sheet = w.getSheet(0);
+            Sheet sheet = w.getSheet(sheetNumber);
             
             int sheetRow = sheet.getRows();
             int sheetCol = sheet.getColumns();

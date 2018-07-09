@@ -7,6 +7,7 @@ import java.io.*;
 import org.apache.jena.ontology.*;
 import org.apache.jena.vocabulary.OWL;
 import org.apache.jena.vocabulary.RDFS;
+import org.apache.jena.datatypes.xsd.*;
 
 public class WriteTurtleFile 
 {
@@ -51,22 +52,30 @@ public class WriteTurtleFile
     public void createInstance() throws IOException
     {
         read();
+        System.out.println("number of collumns in excel sheet: " + excelSheet[0].length );
         for(int mCol = 1; mCol < excelSheet[0].length; mCol++)
+        //for(int mCol = 1; mCol < 2; mCol++)
         {
             standard = excelSheet[0][mCol];// gets the name of the standard
+           // System.out.println("Collumn: " + mCol);
+           // System.out.println("Name: " + standard );
             temp1 = excelSheet[1][mCol].split(","); //congtains multiple ranges of rdf:type of the instance
+           // System.out.println(temp1[0] + " " + temp1[1]);
             ind = createIndividualInstance(temp1); 
-            
+            //System.out.println("Create individual success");
             String property;
             String rangeOfProp;
             for(int mRow = 2; mRow < excelSheet.length; mRow++)
             {
+                //System.out.println("row accessed: " + mRow);
                 property = excelSheet[mRow][0];
                 rangeOfProp = excelSheet[mRow][mCol];
                 /**
                  * property = sto:Publisher 
                  * rangeOfProperty = sto:ISO, sto:IEC
                  */
+                //System.out.println("property: " + property );
+                //System.out.println(property + ": rangeOfProp: " + rangeOfProp );
                 ind = addProperties(ind, property, rangeOfProp);
             }
             write(outputFilePath);
@@ -87,11 +96,13 @@ public class WriteTurtleFile
         Individual indiv = null;
         String [] temp2;
         String stoURI = base.getNsPrefixURI("sto"); //extracts the default URI (sto)
-        //System.out.println(stoURI);
-
+        
         for (int multRange = 0; multRange < temp1.length; multRange++) {
+            //System.out.println("come"+temp1[multRange]);
             temp2 = temp1[multRange].split(":"); //splits 'sto:Standard' to get URI(sto) and name(Standard) 
             getURI = base.getNsPrefixURI(temp2[0]);//temp2[0] is the URI (sto)
+            //System.out.println("temp2-0"+temp2[0]);
+            //System.out.println("temp2-1"+temp2[1]);
             oClass = base.getOntClass(getURI + temp2[1]);//temp2[1] is the name of the standard
             indiv = oClass.createIndividual(stoURI + standard);//creates the individual
             //System.out.println(indiv);
@@ -108,6 +119,7 @@ public class WriteTurtleFile
      */
     public Individual addProperties(Individual indiv, String property, String rangeOfProp)
     {
+        
         if(!rangeOfProp.isEmpty())
         {
             /**
@@ -118,8 +130,7 @@ public class WriteTurtleFile
              * temp2[1] = publisher (also comment, sameAs etc)
              */
             String[] temp2 = property.split(":");
-            
-            switch (temp2[1]) {
+            switch (temp2[1]) {                
                 case "comment": //built-in in the library
                     indiv.addProperty(RDFS.comment, rangeOfProp, "en");
                     break;
@@ -131,9 +142,38 @@ public class WriteTurtleFile
                     if (flag == true) {
                         indiv.addProperty(OWL.sameAs, rangeOfProp);
                     } else {
+                        //System.out.println("In gorbor");
                         Property p = createProperty(rangeOfProp);
                         indiv.addProperty(OWL.sameAs, p);
                     }   
+                    break;
+                case "hasEdition":  
+                    Property p = createProperty(property);
+                    indiv.addLiteral(p, Float.parseFloat(rangeOfProp));
+                    break;
+                case "hasPublicationDate":  
+                    p = createProperty(property);
+                    indiv.addLiteral(p, ResourceFactory.createTypedLiteral(rangeOfProp,XSDDatatype.XSDdate));
+                    break;
+                case "hasStabilityDate":  
+                    p = createProperty(property);
+                    indiv.addLiteral(p, ResourceFactory.createTypedLiteral(rangeOfProp,XSDDatatype.XSDgYear));
+                    break; 
+                case "hasTitle": //built-in in the library
+                    p = createProperty(property);                    
+                    indiv.addProperty(p, rangeOfProp, "en");
+                    break;
+                case "hasNumericalValue":  
+                    p = createProperty(property);
+                    indiv.addLiteral(p, Float.parseFloat(rangeOfProp));
+                    break;  
+                case "hasPages":  
+                    p = createProperty(property);
+                    indiv.addLiteral(p, ResourceFactory.createTypedLiteral(Integer.parseInt(rangeOfProp)));
+                    break;
+                case "hasTag":  
+                    p = createProperty(property);                    
+                    indiv.addProperty(p, rangeOfProp, "en");
                     break;
                 default:
                     /**
@@ -142,7 +182,7 @@ public class WriteTurtleFile
                      * e.g. property sto:publisher may have ranges sto:IEC, sto:ISO.
                      * so temp3[0] = sto:IEC and temp3[1] = sto:ISO.
                      */
-                    Property p = createProperty(property);
+                    p = createProperty(property);
                     String[] temp3 = rangeOfProp.split(",");
                     for (int i = 0; i < temp3.length; i++) 
                     {
@@ -219,6 +259,7 @@ public class WriteTurtleFile
      */
     public Property createProperty(String value)
     {
+       // System.out.println(value);
         String [] temp = value.split(":");        
         String URI = base.getNsPrefixURI(temp[0]);        
         return base.getProperty(URI + temp[1]);

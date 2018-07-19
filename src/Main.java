@@ -32,11 +32,15 @@ public class Main
         ReadExcel  r = new ReadExcel(excelFilePath);
         try
         {
-           Scanner key = new Scanner(System.in);  
-           System.out.print("Enter sheet number: ");
-           String [][] excelSheet = r.read(key.nextInt());
-           WriteTurtleFile w = new WriteTurtleFile(turtleFilePath, excelSheet, outputTurtleFilePath);
-           w.createInstance();
+           //Scanner key = new Scanner(System.in);  
+           String[][] excelSheet;
+           for(int i = 3; i >= 0; i--)
+           {
+               System.out.println("Running excel sheet number : " + i);
+               excelSheet = r.read(i);
+               WriteTurtleFile w = new WriteTurtleFile(turtleFilePath, excelSheet, outputTurtleFilePath);
+               w.createInstance();
+           }           
         }
         catch (IOException e)
         {

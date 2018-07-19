@@ -53,9 +53,10 @@ public class WriteTurtleFile
     {
         read();
         System.out.println("number of collumns in excel sheet: " + excelSheet[0].length );
-        for(int mCol = 1; mCol < excelSheet[0].length; mCol++)
-        //for(int mCol = 1; mCol < 2; mCol++)
+        //for(int mCol = 1; mCol < excelSheet[0].length; mCol++)
+        for(int mCol = 1; mCol < 2; mCol++)
         {
+            System.out.println(mCol);
             standard = excelSheet[0][mCol];// gets the name of the standard
            // System.out.println("Collumn: " + mCol);
            // System.out.println("Name: " + standard );
@@ -259,7 +260,7 @@ public class WriteTurtleFile
      */
     public Property createProperty(String value)
     {
-       // System.out.println(value);
+       //System.out.println(value);
         String [] temp = value.split(":");        
         String URI = base.getNsPrefixURI(temp[0]);        
         return base.getProperty(URI + temp[1]);

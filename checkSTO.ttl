@@ -160,6 +160,22 @@ sto:IndustrialProcessMeasurementControl
         rdfs:comment    "Industrial process measurement and control"@en ;
         sto:domainName  "Industrial process measurement and control"@en .
 
+sto:IEC_60839_P7_5  a              sto:Standard , owl:NamedIndividual ;
+        rdfs:comment               "Specifies the requirements for standard interfaces using a two-wire connection employing ISO/IEC 8482 signalling for use between the control and indicating equipment of an alarm system and one or more alarm system transceivers connected to alarm transmission systems."@en ;
+        rdfs:label                 "IEC 60839-7-5:2001"@en ;
+        sto:hasAvailableLanguage   " English/French"@en , "English"@en ;
+        sto:hasEdition             "1.0"^^xsd:float ;
+        sto:hasFileSize            sto:FileSizeIEC_60839_P7_5 ;
+        sto:hasICS                 sto:ICS_13_320 ;
+        sto:hasOfficialResource    <null//webstore.iec.ch/publication/3673> ;
+        sto:hasPages               "13"^^xsd:int ;
+        sto:hasPublicationDate     "68/03/01"^^xsd:date ;
+        sto:hasPublisher           sto:IEC ;
+        sto:hasStabilityDate       "2018"^^xsd:gYear ;
+        sto:hasTag                 "IEC 60839-7-5:2001"@en ;
+        sto:hasTechnicalCommittee  sto:TC_79 ;
+        sto:hasTitle               "Alarm systems - Part 7-5: Message formats and protocols for serial data interfaces in alarm transmission systems - Alarm system interfaces employing a two-wire configuration in accordance with ISO/IEC 8482"@en .
+
 sto:IEC_62714  a                 owl:NamedIndividual , sto:Standard ;
         rdfs:comment             "Engineering data exchange format for use in industrial automation systems engineering - Automation markup language - Architecture and general requirements"@en ;
         rdfs:label               "IEC 62714"@en ;
@@ -180,6 +196,13 @@ dcterms:LicenseDocument
         rdfs:comment      "A legal document giving official permission to do something with a Resource."@en ;
         rdfs:isDefinedBy  dcterms: ;
         rdfs:label        "License Document"@en .
+
+sto:FileSizeIEC_60839_P7_1
+        a                      om2:Measure , owl:NamedIndividual ;
+        rdfs:comment           "Specifies the file size of the document for standard IEC 60839-7-1:2001"@en ;
+        rdfs:label             "FileSize IEC 60839-7-1:2001"@en ;
+        om2:hasNumericalValue  "1137.0"^^xsd:float ;
+        om2:hasUnit            om2:kilobyte .
 
 sto:EndOfLifeReclying
         a       owl:NamedIndividual .
@@ -453,6 +476,22 @@ sto:GPLv2  a            owl:NamedIndividual , dcterms:LicenseDocument ;
         rdfs:label      "GNU General Public License"@en ;
         rdfs:seeAlso    "<https://opcfoundation.org/license/gpl.htm>" ;
         skos:prefLabel  "OCL 1.0" .
+
+sto:IEC_60864_P1  a                owl:NamedIndividual , sto:Standard ;
+        rdfs:comment               "Applies to all classes of transmitters for sound and television broadcasting. Deals with the interface between a transmitter (or system of transmitters) and the supervisory equipment which is intended to remotely monitor and/or control the transmitter(s). Details the interconnections and facilities to be provided with a view to achieving compatibility between different types and makes of transmitters and supervisory equipment."@en ;
+        rdfs:label                 "IEC 60864-1:1986 "@en ;
+        sto:hasAvailableLanguage   "English/French"@en ;
+        sto:hasEdition             "1.0"^^xsd:float ;
+        sto:hasFileSize            <https://w3id.org/i40/sto#FileSizeIEC_60864_P1 > ;
+        sto:hasICS                 sto:ICS_33_060_20 , sto:ICS_33_200 ;
+        sto:hasOfficialResource    <null//webstore.iec.ch/publication/3727> ;
+        sto:hasPages               "43"^^xsd:int ;
+        sto:hasPublicationDate     "1986-01-01"^^xsd:date ;
+        sto:hasPublisher           sto:IEC ;
+        sto:hasStabilityDate       "2020"^^xsd:gYear ;
+        sto:hasTag                 "IEC 60864-1:1986 "@en ;
+        sto:hasTechnicalCommittee  sto:TC_103 ;
+        sto:hasTitle               "Standardization of interconnections between broadcasting transmitters or transmitter systems and supervisory equipment. Part 1: Interface standards for systems using dedicated interconnections"@en .
 
 rami:TypeMaintenance  a  owl:NamedIndividual , rami:RAMILifeCycleLayer ;
         rdfs:label  "Type Maintenance"@en .
@@ -975,10 +1014,33 @@ sto:DeviceLevel  a    owl:NamedIndividual , sto:ISA95Level ;
         rdfs:comment  "Describes the device level according to the ISA95 level classification."@en ;
         rdfs:label    "Device Level"@en .
 
+sto:IEC_60839_P7_6  a              sto:Standard , owl:NamedIndividual ;
+        rdfs:comment               "Specifies the requirements for standard interfaces employing ITU-T V.24/V.28 signalling for communications between the control and indicating equipment of an alarm system and transmission equipment used for remote communications, where the transmission equipment is general purpose equipment. Is intended to be used as interfacing to standard modems, packet switching networks, X.25 PADs, etc."@en ;
+        rdfs:label                 "IEC 60839-7-6:2001"@en ;
+        sto:hasAvailableLanguage   "English"@en , " English/French"@en ;
+        sto:hasEdition             "1.0"^^xsd:float ;
+        sto:hasFileSize            sto:FileSizeIEC_60839_P7_6 ;
+        sto:hasICS                 sto:ICS_13_320 ;
+        sto:hasOfficialResource    <null//webstore.iec.ch/publication/3674> ;
+        sto:hasPages               "9"^^xsd:int ;
+        sto:hasPublicationDate     "68/03/01"^^xsd:date ;
+        sto:hasPublisher           sto:IEC ;
+        sto:hasStabilityDate       "2018"^^xsd:gYear ;
+        sto:hasTag                 "IEC 60839-7-6:2001"@en ;
+        sto:hasTechnicalCommittee  sto:TC_79 ;
+        sto:hasTitle               "Alarm systems - Part 7-6: Message formats and protocols for serial data interfaces in alarm transmission systems - Alarm system interfaces employing ITU-T Recommendation V.24/V.28 signalling"@en .
+
 sto:ICS_29_240_20  a  owl:NamedIndividual , sto:InternationalClassificationForStandards ;
         rdfs:comment  "This is ICS for “Power transmission and distribution lines”"@en ;
         rdfs:label    "ICS 29.240.20"@en ;
         sto:hasTitle  "Power transmission and distribution lines"@en .
+
+sto:FileSizeIEC_60839_P7_2
+        a                      om2:Measure , owl:NamedIndividual ;
+        rdfs:comment           "Specifies the file size of the document for standard IEC 60839-7-2:2001"@en ;
+        rdfs:label             "FileSize IEC 60839-7-2:2001"@en ;
+        om2:hasNumericalValue  "1047.0"^^xsd:float ;
+        om2:hasUnit            om2:kilobyte .
 
 sto:IEC_60870  a                 owl:NamedIndividual , sto:Standard ;
         rdfs:comment             "In electrical engineering and power system automation, the IEC 60870 series define systems used for telecontrol (supervisory control and data acquisition)"@en ;
@@ -1152,9 +1214,9 @@ sto:FileSizeIEC_61334_2000_P6
         om2:hasNumericalValue  "294.0"^^xsd:float ;
         om2:hasUnit            om2:kilobyte .
 
-skos:prefLabel  a  owl:AnnotationProperty .
-
 dul:isMemberOf  a  owl:AnnotationProperty .
+
+skos:prefLabel  a  owl:AnnotationProperty .
 
 sto:hasAvailableLanguage
         a                   owl:ObjectProperty ;
@@ -1312,6 +1374,22 @@ sto:FileSizeIEC_60255_2010
         rdfs:label             "FileSize 60255-127:2010"@en ;
         om2:hasNumericalValue  "1215.0"^^xsd:float ;
         om2:hasUnit            om2:kilobyte .
+
+sto:IEC_60839_P7_1  a              owl:NamedIndividual , sto:Standard ;
+        rdfs:comment               "Describes the requirements for standard serial data interfaces in alarm transmission systems. Gives an outline of how alarm transmission systems are connected and the various types of serial data interfaces that might be employed."@en ;
+        rdfs:label                 "IEC 60839-7-1:2001"@en ;
+        sto:hasAvailableLanguage   " English/French"@en , "English"@en ;
+        sto:hasEdition             "1.0"^^xsd:float ;
+        sto:hasFileSize            sto:FileSizeIEC_60839_P7_1 ;
+        sto:hasICS                 sto:ICS_13_320 ;
+        sto:hasOfficialResource    <null//webstore.iec.ch/publication/3666> ;
+        sto:hasPages               "39"^^xsd:int ;
+        sto:hasPublicationDate     "68/03/01"^^xsd:date ;
+        sto:hasPublisher           sto:IEC ;
+        sto:hasStabilityDate       "2018"^^xsd:gYear ;
+        sto:hasTag                 "IEC 60839-7-1:2001"@en ;
+        sto:hasTechnicalCommittee  sto:TC_79 ;
+        sto:hasTitle               "Alarm systems - Part 7-1: Message formats and protocols for serial data interfaces in alarm transmission systems – General"@en .
 
 sto:ISO_11898-1  a               owl:NamedIndividual , sto:Standard ;
         rdfs:comment             "Used mainly for Road vehicles Controller area network (CAN) Data link layer and physical signalling."@en ;
@@ -1697,6 +1775,13 @@ rami:Station  a            owl:NamedIndividual , rami:RAMIHierarchyLevel ;
 rami:Security  a           owl:NamedIndividual , rami:AdminShellSubmodel ;
         sto:isDescribedin  sto:AdministrationShell .
 
+sto:FileSizeIEC_60839_P7_3
+        a                      om2:Measure , owl:NamedIndividual ;
+        rdfs:comment           "Specifies the file size of the document for standard IEC 60839-7-3:2001"@en ;
+        rdfs:label             "FileSize IEC 60839-7-3:2001"@en ;
+        om2:hasNumericalValue  "975.0"^^xsd:float ;
+        om2:hasUnit            om2:kilobyte .
+
 sto:ISO_1302  a                  owl:NamedIndividual , sto:Standard ;
         rdfs:comment             "Geometrical product specifications Standards"@en ;
         rdfs:label               "ISO 1302"@en ;
@@ -1987,6 +2072,22 @@ sto:NISTIR_8107  a         owl:NamedIndividual ;
         rdfs:label         "NISTIR_8107"@en ;
         skos:note          "TODO - improve this classification" ;
         sto:isDescribedin  sto:BusinessProcessExecution , sto:SCM .
+
+sto:IEC_60839_P7_2  a              sto:Standard , owl:NamedIndividual ;
+        rdfs:comment               "Specifies a common application layer protocol (message structure, formats and transmission procedures) to be used at standard interfaces in alarm transmission systems. Should be used at all such interfaces where equipment from one supplier is intended to inter-work with equipment from other suppliers."@en ;
+        rdfs:label                 "IEC 60839-7-2:2001"@en ;
+        sto:hasAvailableLanguage   " English/French"@en , "English"@en ;
+        sto:hasEdition             "1.0"^^xsd:float ;
+        sto:hasFileSize            sto:FileSizeIEC_60839_P7_2 ;
+        sto:hasICS                 sto:ICS_13_320 ;
+        sto:hasOfficialResource    <null//webstore.iec.ch/publication/3669> ;
+        sto:hasPages               "53"^^xsd:int ;
+        sto:hasPublicationDate     "68/03/01"^^xsd:date ;
+        sto:hasPublisher           sto:IEC ;
+        sto:hasStabilityDate       "2018"^^xsd:gYear ;
+        sto:hasTag                 "IEC 60839-7-2:2001"@en ;
+        sto:hasTechnicalCommittee  sto:TC_79 ;
+        sto:hasTitle               "Alarm systems - Part 7-2: Message formats and protocols for serial data interfaces in alarm transmission systems - Common application layer protocol"@en .
 
 sto:IEC_62837  a                 owl:NamedIndividual , sto:Standard ;
         rdfs:comment             "Provides to the technical committees a framework for the development and adaptation of documents in order to improve energy efficiency in manufacturing, process control and industrial facility management."@en ;
@@ -2340,6 +2441,8 @@ sto:IEC_60870_P5_S3_1992
         sto:hasTitle               "Telecontrol equipment and systems - Part 5: Transmission protocols - Section 3: General structure of application data"@en ;
         sto:hasWikipediaArticle    <null//en.wikipedia.org/wiki/IEC_60870> , <https://en.wikipedia.org/wiki/IEC_60870> .
 
+dbr:_North_Carolina  a  owl:NamedIndividual .
+
 sto:ISO_11783  a                 owl:NamedIndividual , sto:Standard ;
         rdfs:comment             "ISO 11783, known as Tractors and machinery for agriculture and forestry—Serial control and communications data network is a communication protocol for the agriculture industry based on the SAE J1939 protocol (which includes CANbus)."@en ;
         rdfs:label               "ISO 11783"@en ;
@@ -2349,8 +2452,6 @@ sto:ISO_11783  a                 owl:NamedIndividual , sto:Standard ;
         sto:hasTag               "ISOBUS"@en ;
         sto:hasWikipediaArticle  "https://en.wikipedia.org/wiki/ISO_11783" .
 
-dbr:_North_Carolina  a  owl:NamedIndividual .
-
 rami:Functional  a         owl:NamedIndividual , rami:RAMIITLayer ;
         sto:isDescribedin  sto:RAMI40 .
 
@@ -2359,6 +2460,13 @@ sto:FileSizeIEC_61690_P2_2000
         rdfs:comment           "Specifies the file size of the document for standard IEC 61690-2:2000 ."@en ;
         rdfs:label             "FileSize IEC 61690-2:2000 "@en ;
         om2:hasNumericalValue  "6700.0"^^xsd:float ;
+        om2:hasUnit            om2:kilobyte .
+
+sto:FileSizeIEC_60839_P7_4
+        a                      om2:Measure , owl:NamedIndividual ;
+        rdfs:comment           "Specifies the file size of the document for standard IEC 60839-7-4:2001"@en ;
+        rdfs:label             "FileSize IEC 60839-7-4:2001"@en ;
+        om2:hasNumericalValue  "967.0"^^xsd:float ;
         om2:hasUnit            om2:kilobyte .
 
 sto:hasOfficialResource
@@ -2590,23 +2698,6 @@ sto:IEC_62591  a                 owl:NamedIndividual , sto:Standard ;
         sto:hasPublisher         sto:IEC ;
         sto:hasWikipediaArticle  "https://en.wikipedia.org/wiki/WirelessHART" .
 
-<https://w3id.org/i40/sto#IEC_60864_P1 >
-        a                          owl:NamedIndividual , sto:Standard ;
-        rdfs:comment               "Applies to all classes of transmitters for sound and television broadcasting. Deals with the interface between a transmitter (or system of transmitters) and the supervisory equipment which is intended to remotely monitor and/or control the transmitter(s). Details the interconnections and facilities to be provided with a view to achieving compatibility between different types and makes of transmitters and supervisory equipment."@en ;
-        rdfs:label                 "IEC 60864-1:1986 "@en ;
-        sto:hasAvailableLanguage   "English/French"@en ;
-        sto:hasEdition             "1.0"^^xsd:float ;
-        sto:hasFileSize            <https://w3id.org/i40/sto#FileSizeIEC_60864_P1 > ;
-        sto:hasICS                 sto:ICS_33_060_20 , sto:ICS_33_200 ;
-        sto:hasOfficialResource    <null//webstore.iec.ch/publication/3727> ;
-        sto:hasPages               "43"^^xsd:int ;
-        sto:hasPublicationDate     "1986-01-01"^^xsd:date ;
-        sto:hasPublisher           sto:IEC ;
-        sto:hasStabilityDate       "2020"^^xsd:gYear ;
-        sto:hasTag                 "IEC 60864-1:1986 "@en ;
-        sto:hasTechnicalCommittee  sto:TC_103 ;
-        sto:hasTitle               "Standardization of interconnections between broadcasting transmitters or transmitter systems and supervisory equipment. Part 1: Interface standards for systems using dedicated interconnections"@en .
-
 sto:MOMLevel  a          owl:NamedIndividual , sto:ISA95Level ;
         rdfs:comment     "Describes the MOM level according to the ISA95 level classification."@en ;
         rdfs:label       "MOM Level"@en ;
@@ -2639,6 +2730,22 @@ sto:ICS_01_060  a     owl:NamedIndividual , sto:InternationalClassificationForSt
         rdfs:comment  "This is ICS for Quantities and units"@en ;
         rdfs:label    "ICS 01.060"@en ;
         sto:hasTitle  "Quantities and units "@en .
+
+sto:IEC_60839_P7_3  a              sto:Standard , owl:NamedIndividual ;
+        rdfs:comment               "Specifies the data link layer message structure, formats and transmission procedures which should be used at standard serial data interfaces in alarm transmission systems where the transmission network employed does not offer a standard protocol. Is necessary in order to ensure compatibility of equipment from different suppliers."@en ;
+        rdfs:label                 "IEC 60839-7-3:2001"@en ;
+        sto:hasAvailableLanguage   " English/French"@en , "English"@en ;
+        sto:hasEdition             "1.0"^^xsd:float ;
+        sto:hasFileSize            sto:FileSizeIEC_60839_P7_3 ;
+        sto:hasICS                 sto:ICS_13_320 ;
+        sto:hasOfficialResource    <null//webstore.iec.ch/publication/3671> ;
+        sto:hasPages               "29"^^xsd:int ;
+        sto:hasPublicationDate     "68/03/01"^^xsd:date ;
+        sto:hasPublisher           sto:IEC ;
+        sto:hasStabilityDate       "2018"^^xsd:gYear ;
+        sto:hasTag                 "IEC 60839-7-3:2001"@en ;
+        sto:hasTechnicalCommittee  sto:TC_79 ;
+        sto:hasTitle               "Alarm systems - Part 7-3: Message formats and protocols for serial data interfaces in alarm transmission systems - Common data link layer protocol"@en .
 
 sto:ISO_22400  a                 owl:NamedIndividual , sto:Standard ;
         rdfs:comment             "Automation systems and integration -- Key performance indicators (KPIs) for manufacturing operations management."@en ;
@@ -2776,6 +2883,14 @@ sto:IEC_61512  a                 owl:NamedIndividual , sto:Standard ;
         sto:hasTag               "ISA-88"@en ;
         sto:hasWikipediaArticle  "https://en.wikipedia.org/wiki/ISA-88" .
 
+sto:ISO_20140_5  a               owl:NamedIndividual , sto:Standard ;
+        rdfs:comment             "Automation systems and integration -- Evaluating energy efficiency and other factors of manufacturing systems that influence the environment"@en ;
+        rdfs:label               "ISO 20140-5"@en ;
+        sto:hasClassification    rami:EnergyEfficiency ;
+        sto:hasOfficialResource  "http://www.iso.org/iso/catalogue_detail.htm?csnumber=54809" ;
+        sto:hasPublisher         sto:ISO ;
+        sto:hasTag               "Energy Efficiency"@en .
+
 sto:FileSizeIEC_60286_3_2013
         a                      owl:NamedIndividual , om2:Measure ;
         rdfs:comment           "Specifies the file size of the document for standard IEC IEC 60286-3:2013 "@en ;
@@ -2809,14 +2924,6 @@ sto:IEC_60050_1998  a                owl:NamedIndividual , sto:Standard ;
         sto:hasTechnicalCommittee    sto:TC_1 ;
         sto:hasTitle                 "International Electrotechnical Vocabulary - Part 101: Mathematics"@en ;
         sto:hasWikipediaArticle      <https://en.wikipedia.org/wiki/International_Electrotechnical_Vocabulary> .
-
-sto:ISO_20140_5  a               owl:NamedIndividual , sto:Standard ;
-        rdfs:comment             "Automation systems and integration -- Evaluating energy efficiency and other factors of manufacturing systems that influence the environment"@en ;
-        rdfs:label               "ISO 20140-5"@en ;
-        sto:hasClassification    rami:EnergyEfficiency ;
-        sto:hasOfficialResource  "http://www.iso.org/iso/catalogue_detail.htm?csnumber=54809" ;
-        sto:hasPublisher         sto:ISO ;
-        sto:hasTag               "Energy Efficiency"@en .
 
 cc:attributionURL  a  owl:AnnotationProperty .
 
@@ -3065,6 +3172,13 @@ sto:FileSizeIEC_60286_4_2013
         om2:hasNumericalValue  "1129.0"^^xsd:float ;
         om2:hasUnit            om2:kilobyte .
 
+sto:FileSizeIEC_60839_P7_5
+        a                      om2:Measure , owl:NamedIndividual ;
+        rdfs:comment           "Specifies the file size of the document for standard IEC 60839-7-5:2001"@en ;
+        rdfs:label             "FileSize IEC 60839-7-5:2001"@en ;
+        om2:hasNumericalValue  "939.0"^^xsd:float ;
+        om2:hasUnit            om2:kilobyte .
+
 rami:ConnectedWorld  a     owl:NamedIndividual , rami:RAMIHierarchyLevel ;
         sto:isDescribedin  sto:RAMI40 .
 
@@ -3273,24 +3387,6 @@ sto:ISO_TS_14649-201  a          sto:Standard , owl:NamedIndividual ;
         sto:hasPublicationDate   "2011-12-01"^^xsd:date ;
         sto:hasPublisher         sto:ISO .
 
-sto:IEC_60381_1982  a                sto:Standard , owl:NamedIndividual ;
-        rdfs:comment                 "Applicable to analogue direct current signals used in industrial-process measurement and control systems to transmit information between elements of systems. Does not apply to signals used entirely within an element."@en ;
-        rdfs:label                   "IEC 60381-1:1982"@en ;
-        sto:hasAvailableLanguage     "English/French"@en ;
-        sto:hasEdition               "2.0"^^xsd:float ;
-        sto:hasFileSize              sto:FileSizeIEC_60381_1982 ;
-        sto:hasICS                   sto:ICS_33_200 ;
-        sto:hasImplementationFormat  "Document"@en ;
-        sto:hasOfficialResource      <https://webstore.iec.ch/publication/1948> ;
-        sto:hasPages                 9 ;
-        sto:hasPublicationDate       "1982-01-01"^^xsd:date ;
-        sto:hasPublisher             sto:IEC ;
-        sto:hasStabilityDate         "2018"^^xsd:gYear ;
-        sto:hasStatus                "Valid"@en ;
-        sto:hasTag                   "IEC 60381-1:1982"@en ;
-        sto:hasTechnicalCommittee    sto:TC_40 ;
-        sto:hasTitle                 "Analogue signals for process control systems. Part 1: Direct current signals"@en .
-
 sto:IEC_60870_P5_S1_1990
         a                          owl:NamedIndividual , sto:Standard ;
         rdfs:comment               "Covers asynchronous data transmission with half duplex and duplex link protocols operating with window size one for message transfers. Specifies the basic requirements for services to be provided by the link plus physical layers, for telecontrol applications. In particular it specifies standards on coding, formatting and synchronizing data frames of variable and filed lengths which meet specified data integrity requirements."@en ;
@@ -3309,6 +3405,24 @@ sto:IEC_60870_P5_S1_1990
         sto:hasTechnicalCommittee  sto:TC_57 ;
         sto:hasTitle               "Telecontrol equipment and systems. Part 5: Transmission protocols - Section One: Transmission frame formats"@en ;
         sto:hasWikipediaArticle    <https://en.wikipedia.org/wiki/IEC_60870> , <null//en.wikipedia.org/wiki/IEC_60870> .
+
+sto:IEC_60381_1982  a                sto:Standard , owl:NamedIndividual ;
+        rdfs:comment                 "Applicable to analogue direct current signals used in industrial-process measurement and control systems to transmit information between elements of systems. Does not apply to signals used entirely within an element."@en ;
+        rdfs:label                   "IEC 60381-1:1982"@en ;
+        sto:hasAvailableLanguage     "English/French"@en ;
+        sto:hasEdition               "2.0"^^xsd:float ;
+        sto:hasFileSize              sto:FileSizeIEC_60381_1982 ;
+        sto:hasICS                   sto:ICS_33_200 ;
+        sto:hasImplementationFormat  "Document"@en ;
+        sto:hasOfficialResource      <https://webstore.iec.ch/publication/1948> ;
+        sto:hasPages                 9 ;
+        sto:hasPublicationDate       "1982-01-01"^^xsd:date ;
+        sto:hasPublisher             sto:IEC ;
+        sto:hasStabilityDate         "2018"^^xsd:gYear ;
+        sto:hasStatus                "Valid"@en ;
+        sto:hasTag                   "IEC 60381-1:1982"@en ;
+        sto:hasTechnicalCommittee    sto:TC_40 ;
+        sto:hasTitle                 "Analogue signals for process control systems. Part 1: Direct current signals"@en .
 
 sto:FunctionalSafety  a  owl:NamedIndividual , sto:Domain ;
         rdfs:comment  "Functional Safety"@en ;
@@ -3348,6 +3462,22 @@ dbr:Eumseong  a  owl:NamedIndividual .
 sto:RAMI40  a         owl:NamedIndividual , sto:StandardizationFramework ;
         rdfs:comment  "Describes the Reference Architecture Model for Industry 4.0, i.e., the RAMI Initiative."@en ;
         rdfs:label    "RAMI 4.0"@en .
+
+sto:IEC_60839_P7_4  a              sto:Standard , owl:NamedIndividual ;
+        rdfs:comment               "Specifies the transport layer message structure, formats and transmission procedures to be used at standard interfaces in alarm transmission systems. Should be used at all such interfaces where equipment from one supplier is intended to inter-work with equipment from other suppliers, and where the underlying system architecture does not provide the necessary facilities to support the common application layer."@en ;
+        rdfs:label                 "IEC 60839-7-4:2001"@en ;
+        sto:hasAvailableLanguage   " English/French"@en , "English"@en ;
+        sto:hasEdition             "1.0"^^xsd:float ;
+        sto:hasFileSize            sto:FileSizeIEC_60839_P7_4 ;
+        sto:hasICS                 sto:ICS_13_320 ;
+        sto:hasOfficialResource    <null//webstore.iec.ch/publication/3672> ;
+        sto:hasPages               "23"^^xsd:int ;
+        sto:hasPublicationDate     "68/03/01"^^xsd:date ;
+        sto:hasPublisher           sto:IEC ;
+        sto:hasStabilityDate       "2018"^^xsd:gYear ;
+        sto:hasTag                 "IEC 60839-7-4:2001"@en ;
+        sto:hasTechnicalCommittee  sto:TC_79 ;
+        sto:hasTitle               "Alarm systems - Part 7-4: Message formats and protocols for serial data interfaces in alarm transmission systems - Common transport layer protocol"@en .
 
 dbr:_California  a  owl:NamedIndividual .
 
@@ -3393,12 +3523,6 @@ sto:IEC_61784  a                 sto:Standard , owl:NamedIndividual ;
         sto:hasTag               "IEC Fieldbus (Profibus)"@en ;
         sto:relatedTo            sto:IEC_61158 .
 
-sto:hasICS  a         owl:ObjectProperty ;
-        rdfs:comment  "Serves as a catalogue of International Classification For Standards"@en ;
-        rdfs:domain   sto:Publication ;
-        rdfs:label    "has ICS"@en ;
-        rdfs:range    sto:InternationalClassificationForStandards .
-
 sto:ETSI_DECT  a                 owl:NamedIndividual , sto:Standard ;
         rdfs:comment             "Digital Enhanced Cordless Telecommunications (DECT) is the ETSI standard for short-range cordless communications, which can be adapted for many applications and can be used over unlicensed frequency allocations world-wide."@en ;
         rdfs:label               "ETSI DECT" ;
@@ -3408,6 +3532,12 @@ sto:ETSI_DECT  a                 owl:NamedIndividual , sto:Standard ;
         sto:hasPublisher         sto:ETSI ;
         sto:hasTag               "Digital Enhanced Cordless Telecommunications"@en ;
         sto:hasWikipediaArticle  "https://en.wikipedia.org/wiki/Digital_Enhanced_Cordless_Telecommunications" .
+
+sto:hasICS  a         owl:ObjectProperty ;
+        rdfs:comment  "Serves as a catalogue of International Classification For Standards"@en ;
+        rdfs:domain   sto:Publication ;
+        rdfs:label    "has ICS"@en ;
+        rdfs:range    sto:InternationalClassificationForStandards .
 
 sto:FileSizeIEC_60050_2013
         a                      owl:NamedIndividual , om2:Measure ;
@@ -3806,6 +3936,13 @@ sto:stoPartName  a    owl:DatatypeProperty ;
         rdfs:domain   sto:StandardPart ;
         rdfs:label    "std Part Name"@en ;
         rdfs:range    xsd:string .
+
+sto:FileSizeIEC_60839_P7_6
+        a                      om2:Measure , owl:NamedIndividual ;
+        rdfs:comment           "Specifies the file size of the document for standard IEC 60839-7-6:2001"@en ;
+        rdfs:label             "FileSize IEC 60839-7-6:2001"@en ;
+        om2:hasNumericalValue  "926.0"^^xsd:float ;
+        om2:hasUnit            om2:kilobyte .
 
 sto:FileSizeIEC_60864_P1
         a                      om2:Measure , owl:NamedIndividual ;

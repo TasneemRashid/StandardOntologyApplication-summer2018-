@@ -1,14 +1,14 @@
-@prefix schema: <http://schema.org/> .
 @prefix :      <https://w3id.org/i40/sto#> .
+@prefix schema: <http://schema.org/> .
 @prefix owl:   <http://www.w3.org/2002/07/owl#> .
 @prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
 @prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
 @prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix deo:   <http://purl.org/spar/deo/> .
-@prefix muto:  <http://purl.org/muto/core#> .
 @prefix geo:   <http://www.geonames.org/ontology#> .
-@prefix doap:  <http://usefulinc.com/ns/doap#> .
+@prefix muto:  <http://purl.org/muto/core#> .
 @prefix om2:   <http://www.ontology-of-units-of-measure.org/resource/om-2/> .
+@prefix doap:  <http://usefulinc.com/ns/doap#> .
 @prefix xml:   <http://www.w3.org/XML/1998/namespace> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix vann:  <http://purl.org/vocab/vann/> .
@@ -32,12 +32,12 @@ sto:hasImplementationFormat
         rdfs:label    "has Implementation Format"@en ;
         rdfs:range    rdfs:Literal .
 
-sto:IEC_PAS_63088  a             sto:Standard , owl:NamedIndividual ;
+sto:IEC_PAS_63088  a             owl:NamedIndividual , sto:Standard ;
         rdfs:comment             "IEC PAS 63088:2017(E) describes a reference architecture model in the form of a cubic layer model, RAMI model"@en ;
         rdfs:label               "IEC PAS 63088"@en ;
         sto:hasOfficialResource  "https://webstore.iec.ch/publication/30082?lipi=urn%3Ali%3Apage%3Ad_flagship3_pulse_read%3B2vZf0%2FOGS2CeRjny8ARziQ%3D%3D" ;
         sto:hasPublicationDate   "2017-03-07"^^xsd:date ;
-        sto:hasPublisher         sto:ISO , sto:IEC ;
+        sto:hasPublisher         sto:IEC , sto:ISO ;
         sto:hasTag               "RAMI 4.0" .
 
 sto:IEC_60870_P5_S101_2003
@@ -59,9 +59,12 @@ sto:IEC_60870_P5_S101_2003
         sto:hasTitle               "Telecontrol equipment and systems - Part 5-101: Transmissionprotocols - Companion standard for basic telecontrol tasks"@en ;
         sto:hasWikipediaArticle    <https://en.wikipedia.org/wiki/IEC_60870> .
 
+sto:Communication  a       owl:NamedIndividual , rami:AdminShellSubmodel ;
+        sto:isDescribedin  sto:AdministrationShell .
+
 skos:definition  a  owl:AnnotationProperty .
 
-sto:ICS_33_200  a     owl:NamedIndividual , sto:InternationalClassificationForStandards ;
+sto:ICS_33_200  a     sto:InternationalClassificationForStandards , owl:NamedIndividual ;
         rdfs:comment  "This is ICS for Telecontrol. Telemetering Including Supervising, Control and Data Acquisition System (SCADA)"@en ;
         rdfs:label    "ICS 33.200"@en ;
         sto:hasTitle  "Telecontrol. Telemetering Including Supervising, Control and Data Acquisition System (SCADA)"@en .
@@ -87,11 +90,17 @@ sto:IEC_60027_2006  a                owl:NamedIndividual , sto:Standard ;
         sto:hasWikipediaArticle      <https://en.wikipedia.org/wiki/IEC_60027> .
 
 sto:FileSizeIEC_60381_1978
-        a                      om2:Measure , owl:NamedIndividual ;
+        a                      owl:NamedIndividual , om2:Measure ;
         rdfs:comment           "Specifies the file size of the document for standard IEC 60381-2:1978"@en ;
         rdfs:label             "FileSize IEC 60381-2:1978"@en ;
         om2:hasNumericalValue  "483.0"^^xsd:float ;
         om2:hasUnit            om2:kilobyte .
+
+sto:BusinessProcessExecution
+        a                  owl:NamedIndividual , sto:BusinessCycleSCM ;
+        rdfs:comment       "Describes Business Process Execution concept."@en ;
+        rdfs:label         "Business Process Execution"@en ;
+        sto:isDescribedin  sto:NISTInitiative .
 
 sto:ISO_22745-11  a              sto:Standard , owl:NamedIndividual ;
         rdfs:comment             "ISO 22745-11:2010 provides guidelines that are recommended for the development of terminology for concepts in an open technical dictionary (OTD).Compliance with these guidelines is not required in order for a term or definition to be included in an OTD. These guidelines are provided as a framework for developers of industrial terminology to ensure that definitions are consistent and understandable. Terminology that complies with these guidelines will be marked as such in the OTD. This will allow a user to perform a search that filters terminology based on compliance with ISO 22745-11:2010."@en ;
@@ -101,12 +110,6 @@ sto:ISO_22745-11  a              sto:Standard , owl:NamedIndividual ;
         sto:hasOfficialResource  "https://www.iso.org/standard/53999.html" ;
         sto:hasPublicationDate   "2010-02-01"^^xsd:date ;
         sto:hasPublisher         sto:ISO .
-
-sto:BusinessProcessExecution
-        a                  sto:BusinessCycleSCM , owl:NamedIndividual ;
-        rdfs:comment       "Describes Business Process Execution concept."@en ;
-        rdfs:label         "Business Process Execution"@en ;
-        sto:isDescribedin  sto:NISTInitiative .
 
 sto:IEC_60286_4_2013  a              sto:Standard , owl:NamedIndividual ;
         rdfs:comment                 "IEC 60286-4:2013 is applicable to stick magazines (including end stoppers) intended to be used for storage of electronic components, for transport from the manufacturer to the customer and for in-house use in the manufacturing plant. They are also used to feed automatic placement machines for surface mounting as well as for through-hole mounting of electronic components. This edition includes the following significant technical changes with respect to the previous edition: Clause 4 describes the guidelines for customer specific stick magazine design. It replaces the magazine design rules for IEC outlined components and rules for orientation of components in stick magazines which have been moved to Annexes A to D."@en ;
@@ -136,7 +139,7 @@ sto:BPMN  a                      sto:Standard , owl:NamedIndividual ;
         sto:hasTag               "BPMN"@en ;
         sto:hasWikipediaArticle  "https://en.wikipedia.org/wiki/Business_Process_Model_and_Notation" .
 
-sto:ISO_15531  a                 sto:Standard , owl:NamedIndividual ;
+sto:ISO_15531  a                 owl:NamedIndividual , sto:Standard ;
         rdfs:comment             "This Standard models manufacturing management data such as, Resources management data (Resource model); Time related features (Time model); Flow management data in manufacturing (Flow management model)."@en ;
         rdfs:isDefinedBy         "https://www.researchgate.net/publication/220171079_ISO_15531_MANDATE_a_standardised_data_model_for_manufacturing_management" ;
         rdfs:label               "ISO 15531"@en ;
@@ -146,14 +149,14 @@ sto:ISO_15531  a                 sto:Standard , owl:NamedIndividual ;
         sto:hasTag               "MANDATE" .
 
 sto:FileSizeIEC_61334_1996_P4_S32
-        a                      owl:NamedIndividual , om2:Measure ;
+        a                      om2:Measure , owl:NamedIndividual ;
         rdfs:comment           "Specifies the file size of the document for standard IEC 61334-4-32:1996 "@en ;
         rdfs:label             "FileSize IEC 61334-4-32:1996 "@en ;
         om2:hasNumericalValue  "869.0"^^xsd:float ;
         om2:hasUnit            om2:kilobyte .
 
 sto:IndustrialProcessMeasurementControl
-        a               sto:Domain , owl:NamedIndividual ;
+        a               owl:NamedIndividual , sto:Domain ;
         rdfs:comment    "Industrial process measurement and control"@en ;
         sto:domainName  "Industrial process measurement and control"@en .
 
@@ -165,7 +168,7 @@ sto:IEC_62714  a                 owl:NamedIndividual , sto:Standard ;
         sto:hasDBpediaResource   "http://dbpedia.org/resource/AutomationML" ;
         sto:hasOfficialResource  "https://www.automationml.org/" ;
         sto:hasPublisher         sto:IEC ;
-        sto:hasTag               "AutomationML"@en , "AML"@en ;
+        sto:hasTag               "AML"@en , "AutomationML"@en ;
         sto:hasWikipediaArticle  "https://en.wikipedia.org/wiki/AutomationML" ;
         sto:relatedTo            sto:IEC_61360 , sto:eClass , sto:IEC_61987_X , sto:IEC_62541 ;
         sto:uses                 sto:MathML .
@@ -178,10 +181,6 @@ dcterms:LicenseDocument
         rdfs:isDefinedBy  dcterms: ;
         rdfs:label        "License Document"@en .
 
-sto:checkURL  a  sto:Standard , owl:NamedIndividual ;
-        <null//en.wikipedia.org/wiki/IEC_60870>
-                "https://en.wikipedia.org/wiki/IEC_60870"^^xsd:anyURI .
-
 sto:EndOfLifeReclying
         a       owl:NamedIndividual .
 
@@ -192,13 +191,13 @@ sto:hasPreviousVersion
         rdfs:subPropertyOf  sto:relatedTo .
 
 sto:FileSizeIEC_60050_1984
-        a                      om2:Measure , owl:NamedIndividual ;
+        a                      owl:NamedIndividual , om2:Measure ;
         rdfs:comment           "Specifies the file size of the document for standard IEC 60050-101:1998 "@en ;
         rdfs:label             "FileSize IEC 60050-371:1984"@en ;
         om2:hasNumericalValue  "2485.0"^^xsd:float ;
         om2:hasUnit            om2:kilobyte .
 
-sto:TC_57  a          owl:NamedIndividual , sto:TechnicalCommittee ;
+sto:TC_57  a          sto:TechnicalCommittee , owl:NamedIndividual ;
         rdfs:comment  "To prepare international standards for power systems control equipment and systems including EMS (Energy Management Systems), SCADA (Supervisory Control And Data Acquisition), distribution automation, teleprotection, and associated information exchange for real-time and non-real-time information, used in the planning, operation and maintenance of power systems. Power systems management comprises control within control centres, substations and individual pieces of primary equipment including telecontrol and interfaces to equipment, systems and databases, which may be outside the scope of TC 57.\n\nThe special conditions in a high voltage environment have to be taken into consideration.\nNote 1: Standards prepared by other technical committees of the IEC and organizations such as ITU and ISO shall be used where applicable.\nNote 2: Although the work of TC 57 is chiefly concerned with standards for electric power systems, these standards may also be useful for application by the relevant bodies to other geographical widespread processes.\nNote 3: Whereas standards related to measuring and protection relays and to the control and monitoring equipment used with these systems are treated by TC 95, TC 57 deals with the interface to the control systems and the transmission aspects for teleprotection systems. Whereas standards related to equipment for electrical measurement and load control are treated by TC 13, TC 57 deals with the interface of equipment for interconnection lines and industrial consumers and producers requiring energy management type interfaces to the control system."@en ;
         rdfs:label    "TC 57"@en ;
         sto:hasTitle  "Power systems management and associated information exchange"@en .
@@ -206,14 +205,14 @@ sto:TC_57  a          owl:NamedIndividual , sto:TechnicalCommittee ;
 rami:Other  a   owl:NamedIndividual .
 
 sto:FileSizeIEC_60870_P5_S6_2006
-        a                      owl:NamedIndividual , om2:Measure ;
+        a                      om2:Measure , owl:NamedIndividual ;
         rdfs:comment           "Specifies the file size of the document for standard IEC 60870-5-6::2006."@en ;
         rdfs:label             "FileSize IEC 60870-5-6:2006"@en ;
         om2:hasNumericalValue  "1342.0"^^xsd:float ;
         om2:hasUnit            om2:kilobyte .
 
 sto:ProductionLifeCycleDataManagement
-        a                  sto:ProductionSystemLifeCycle , owl:NamedIndividual ;
+        a                  owl:NamedIndividual , sto:ProductionSystemLifeCycle ;
         rdfs:comment       "Production lifecycle data management standards define general models of data integration, sharing, exchange, and hand-over for lifecycle support of production facilities."@en ;
         rdfs:label         "Production Life Cycle Data Management"@en ;
         sto:isDescribedin  sto:NISTInitiative .
@@ -238,7 +237,7 @@ sto:IEC_61334_P4_S511_2000
         sto:hasWikipediaArticle    <https://en.wikipedia.org/wiki/IEC_61334> .
 
 sto:FileSizeIEC_60870_P6_S701_1998
-        a                      owl:NamedIndividual , om2:Measure ;
+        a                      om2:Measure , owl:NamedIndividual ;
         rdfs:comment           "Specifies the file size of the document for standard IEC 60870-6-701:1998"@en ;
         rdfs:label             "FileSize IEC 60870-6-701:1998"@en ;
         om2:hasNumericalValue  "130.0"^^xsd:float ;
@@ -295,7 +294,7 @@ om2:hasUnit  a  owl:AnnotationProperty .
 
 sto:ProductDevelopmentLifeCycle
         a                 owl:Class ;
-        rdfs:comment      "Product Development Life-Cycle Phase"@en , "PLM is the process of managing the entire lifecycle of a product from inception, through engineering design and manufacture, to service and disposal of manufactured products. Related areas are PLMManagement, Modeling Practice, Product Model Data exchange, Manufacturing Model Data, Product Catalog Data."@en ;
+        rdfs:comment      "PLM is the process of managing the entire lifecycle of a product from inception, through engineering design and manufacture, to service and disposal of manufactured products. Related areas are PLMManagement, Modeling Practice, Product Model Data exchange, Manufacturing Model Data, Product Catalog Data."@en , "Product Development Life-Cycle Phase"@en ;
         rdfs:isDefinedBy  "https://en.wikipedia.org/wiki/Product_lifecycle" ;
         rdfs:label        "Product Development Life Cycle"@en ;
         rdfs:subClassOf   sto:StandardClassification .
@@ -333,7 +332,7 @@ sto:domainName  a     owl:DatatypeProperty ;
         rdfs:label    "has Domain Name"@en ;
         rdfs:range    rdf:PlainLiteral .
 
-sto:relatedTo  a       owl:TransitiveProperty , owl:SymmetricProperty , owl:ObjectProperty ;
+sto:relatedTo  a       owl:ObjectProperty , owl:SymmetricProperty , owl:TransitiveProperty ;
         rdfs:comment   "Represent any type of relation that connects two standards."@en ;
         rdfs:domain    sto:Publication ;
         rdfs:label     "related To"@en ;
@@ -418,7 +417,7 @@ sto:ISO_5459  a                  sto:Standard , owl:NamedIndividual ;
         sto:hasPublicationDate   "2011-08-01"^^xsd:date ;
         sto:hasPublisher         sto:ISO .
 
-sto:IEC_61400  a                 sto:Standard , owl:NamedIndividual ;
+sto:IEC_61400  a                 owl:NamedIndividual , sto:Standard ;
         rdfs:comment             "IEC 61334 , known as Distribution automation using distribution line carrier systems, is a standard for low-speed reliable power line communications by electricity meters, water meters and SCADA."@en ;
         rdfs:label               "IEC 61400"@en ;
         sto:hasDBpediaResource   "http://dbpedia.org/page/IEC_61400" ;
@@ -449,13 +448,13 @@ dbr:Beijing  a  owl:NamedIndividual .
 dcterms:linguisticSystem
         a       owl:Class .
 
-sto:GPLv2  a            dcterms:LicenseDocument , owl:NamedIndividual ;
+sto:GPLv2  a            owl:NamedIndividual , dcterms:LicenseDocument ;
         rdfs:comment    "Published under Open Content License."@en ;
         rdfs:label      "GNU General Public License"@en ;
         rdfs:seeAlso    "<https://opcfoundation.org/license/gpl.htm>" ;
         skos:prefLabel  "OCL 1.0" .
 
-rami:TypeMaintenance  a  rami:RAMILifeCycleLayer , owl:NamedIndividual ;
+rami:TypeMaintenance  a  owl:NamedIndividual , rami:RAMILifeCycleLayer ;
         rdfs:label  "Type Maintenance"@en .
 
 rami:Communications  a  owl:NamedIndividual .
@@ -478,18 +477,18 @@ sto:IEC_61010_P2_S202_2016
         sto:hasTitle               "Safety requirements for electrical equipment for measurement, control and laboratory use - Part 2-202: Particular requirements for electrically operated valve actuators"@en .
 
 sto:FileSizeIEC_61334_2001_P4_S512
-        a                      owl:NamedIndividual , om2:Measure ;
+        a                      om2:Measure , owl:NamedIndividual ;
         rdfs:comment           "Specifies the file size of the document for standard IEC 61334-4-512:2001"@en ;
         rdfs:label             "FileSize IEC 61334-4-512:2001"@en ;
         om2:hasNumericalValue  "459.0"^^xsd:float ;
         om2:hasUnit            om2:kilobyte .
 
-sto:TC_40  a          sto:TechnicalCommittee , owl:NamedIndividual ;
+sto:TC_40  a          owl:NamedIndividual , sto:TechnicalCommittee ;
         rdfs:comment  "To prepare international standards for:a) Capacitors, resistors, thermistors and varistors intended for use in electronic equipment.b) Capacitors, resistors and inductors and complete electromagnetic interference (EMI) suppression filter units for EMI suppression (see note).c) Passive integrated circuits or networks containing resistors, capacitors, inductors or their combinations. For the dimensional standardization of the final package, requirements laid down by TC 47 shall be adopted whenever possible.d) Packaging of electronic components for automatic handling, which is an activity undertaken on behalf of all relevant component technical committees.e) Electric double layer capacitors for use in electric and electronic equipment.Note: In this work, use has to be made as far as possible of any relevant work of TC 51 on inductors, the CISPR on the measurement of EMI suppression characteristics and TC 77 on electromagnetic compatibility (EMC). Liaison has also to be maintained with TC 61, TC 66, TC 108 and other appropriate IEC Technical Committees on the safety aspects of EMI suppression components and filter units."@en ;
         rdfs:label    "TC 40"@en ;
         sto:hasTitle  "Capacitors and resistors for electronic equipment"@en .
 
-sto:ISO_9000  a                  sto:Standard , owl:NamedIndividual ;
+sto:ISO_9000  a                  owl:NamedIndividual , sto:Standard ;
         rdfs:comment             "The ISO 9000 family of quality management systems standards is designed to help organizations ensure that they meet the needs of customers and other stakeholders while meeting statutory and regulatory requirements related to a product or program."@en ;
         rdfs:label               "ISO 9000"@en ;
         sto:hasClassification    sto:CrossLevel ;
@@ -498,7 +497,7 @@ sto:ISO_9000  a                  sto:Standard , owl:NamedIndividual ;
         sto:hasPublisher         sto:ISO ;
         sto:hasWikipediaArticle  "https://en.wikipedia.org/wiki/ISO_9000" .
 
-sto:ICS_35_240_50  a  owl:NamedIndividual , sto:InternationalClassificationForStandards ;
+sto:ICS_35_240_50  a  sto:InternationalClassificationForStandards , owl:NamedIndividual ;
         rdfs:comment  "This is ICS for IT applications in industry"@en ;
         rdfs:label    "ICS 35.240.50"@en ;
         sto:hasTitle  "IT applications in industry"@en .
@@ -549,7 +548,7 @@ sto:IEC_62443  a                 sto:Standard , owl:NamedIndividual ;
         sto:hasWikipediaArticle  <https://en.wikipedia.org/wiki/Cyber_security_standards#ISA.2FIEC-62443_.28formerly_ISA-99.29> .
 
 sto:ManufacturingModelData
-        a                  sto:ProductDevelopmentLifeCycle , owl:NamedIndividual ;
+        a                  owl:NamedIndividual , sto:ProductDevelopmentLifeCycle ;
         rdfs:comment       "Manufacturing Model Data Standards define the data needed to manufacture a product from a design."@en ;
         rdfs:label         "Manufacturing Model Data"@en ;
         sto:isDescribedin  sto:NISTInitiative .
@@ -573,7 +572,7 @@ sto:ModBus  a                    owl:NamedIndividual , sto:Standard ;
         sto:hasWikipediaArticle  "https://en.wikipedia.org/wiki/Modbus" .
 
 sto:FileSizeIEC_60946
-        a                      owl:NamedIndividual , om2:Measure ;
+        a                      om2:Measure , owl:NamedIndividual ;
         rdfs:comment           "Specifies the file size of the document for standard IEC 60946"@en ;
         rdfs:label             "FileSize IEC 60946"@en ;
         om2:hasNumericalValue  "546.0"^^xsd:float ;
@@ -581,7 +580,7 @@ sto:FileSizeIEC_60946
 
 sto:Manufacturing  a  owl:NamedIndividual .
 
-rami:Engineering  a        rami:AdminShellSubmodel , owl:NamedIndividual ;
+rami:Engineering  a        owl:NamedIndividual , rami:AdminShellSubmodel ;
         sto:isDescribedin  sto:AdministrationShell .
 
 sto:IEC_60050_2013  a                sto:Standard , owl:NamedIndividual ;
@@ -663,7 +662,7 @@ rami:RAMIITLayer  a          owl:Class ;
                              ] .
 
 sto:FileSizeIEC_60870_P5_S5_1995
-        a                      owl:NamedIndividual , om2:Measure ;
+        a                      om2:Measure , owl:NamedIndividual ;
         rdfs:comment           "Specifies the file size of the document for standard IEC 60870-5-5:1995"@en ;
         rdfs:label             "FileSize IEC 60870-5-5:1995"@en ;
         om2:hasNumericalValue  "3347.0"^^xsd:float ;
@@ -689,13 +688,13 @@ sto:IEC_60870_P6_S502_1995
         sto:hasWikipediaArticle    <https://en.wikipedia.org/wiki/IEC_60870> .
 
 sto:FileSizeIEC_60870_P6_S503_2014
-        a                      owl:NamedIndividual , om2:Measure ;
+        a                      om2:Measure , owl:NamedIndividual ;
         rdfs:comment           "Specifies the file size of the document for standard IEC 60870-6-503:2014"@en ;
         rdfs:label             "FileSize IEC 60870-6-503:2014"@en ;
         om2:hasNumericalValue  "2630.0"^^xsd:float ;
         om2:hasUnit            om2:kilobyte .
 
-sto:DMSC  a                      sto:StandardOrganization , owl:NamedIndividual ;
+sto:DMSC  a                      owl:NamedIndividual , sto:StandardOrganization ;
         rdfs:comment             "Dimensional Metrology Standards Consortium (DMSC) is to identify urgently needed standards in the field of dimensional metrology, and to promote, foster, and encourage the development and interoperability of these standards, along with related and supporting standards that will benefit the industry as a whole."@en ;
         rdfs:label               "Dimensional Metrology Standards Consortium"@en ;
         sto:hasHeadquaterIn      dbr:_Texas ;
@@ -768,13 +767,13 @@ sto:IEC_29161  a                 sto:Standard , owl:NamedIndividual ;
 sto:EnterpriseIntegration
         a       owl:NamedIndividual .
 
-sto:TC_94  a          owl:NamedIndividual , sto:TechnicalCommittee ;
+sto:TC_94  a          sto:TechnicalCommittee , owl:NamedIndividual ;
         rdfs:comment  "To prepare international standards applicable to all-or-nothing electrical relays used in the various fields of Electrical Engineering covered by the IEC, normally produced in very large\nnumbers as components of electromechanical or electronic\nequipment and eventually submitted to Quality Assurance requirements based on sampling techniques."@en ;
         rdfs:label    "TC 94"@en ;
         sto:hasTitle  "All-or-nothing electrical relays"@en .
 
 sto:FileSizeIEC_61334_2001_P5_S1
-        a                      owl:NamedIndividual , om2:Measure ;
+        a                      om2:Measure , owl:NamedIndividual ;
         rdfs:comment           "Specifies the file size of the document for standard IEC 61334-5-1:2001"@en ;
         rdfs:label             "FileSize IEC 61334-5-1:2001"@en ;
         om2:hasNumericalValue  "723.0"^^xsd:float ;
@@ -788,7 +787,7 @@ sto:hasTask  a        owl:DatatypeProperty ;
         rdfs:label    "has Task"@en ;
         rdfs:range    xsd:string .
 
-sto:hasTitle  a       owl:DatatypeProperty , owl:ObjectProperty ;
+sto:hasTitle  a       owl:ObjectProperty , owl:DatatypeProperty ;
         rdfs:comment  "Gives Title of the Thing"@en ;
         rdfs:domain   sto:Publication ;
         rdfs:label    "has Title"@en ;
@@ -810,17 +809,17 @@ sto:orgName  a        owl:DatatypeProperty ;
         rdfs:label    "Org Name"@en ;
         rdfs:range    rdf:PlainLiteral .
 
-sto:TC_1  a           sto:TechnicalCommittee , owl:NamedIndividual ;
+sto:TC_1  a           owl:NamedIndividual , sto:TechnicalCommittee ;
         rdfs:comment  "To sanction the terms and definitions used in the different electrotechnical fields and to determine the equivalence of the terms used in the different languages. As a consequence, to prepare an International Electrotechnical Vocabulary aiming at the standardization and coordination of the terms relating to electrical sciences and techniques for use in the technical language and literature, in teaching, in technical specifications and in commercial exchanges, and at giving their equivalents in the different languages."@en ;
         rdfs:label    "TC 1"@en ;
         sto:hasTitle  "Terminology" .
 
-sto:ICS_01_040_35  a  sto:InternationalClassificationForStandards , owl:NamedIndividual ;
+sto:ICS_01_040_35  a  owl:NamedIndividual , sto:InternationalClassificationForStandards ;
         rdfs:comment  "This is ICS for  Information technology. Office machines (Vocabularies)"@en ;
         rdfs:label    "ICS 01.040.35"@en ;
         sto:hasTitle  " Information technology. Office machines (Vocabularies)"@en .
 
-sto:ICS_33_040_40  a  sto:InternationalClassificationForStandards , owl:NamedIndividual ;
+sto:ICS_33_040_40  a  owl:NamedIndividual , sto:InternationalClassificationForStandards ;
         rdfs:comment  "This is ICS for “Data communication networks”"@en ;
         rdfs:label    "ICS 33.040.40"@en ;
         sto:hasTitle  "Data communication networks "@en .
@@ -832,11 +831,11 @@ dbr:Switzerland  a  owl:NamedIndividual .
 
 xsd:date  a     rdfs:Datatype .
 
-rami:Asset  a              rami:RAMIITLayer , owl:NamedIndividual ;
+rami:Asset  a              owl:NamedIndividual , rami:RAMIITLayer ;
         sto:isDescribedin  sto:RAMI40 .
 
 sto:FileSizeIEC_60870_P5_S104_2016
-        a                      owl:NamedIndividual , om2:Measure ;
+        a                      om2:Measure , owl:NamedIndividual ;
         rdfs:comment           "Specifies the file size of the document for standard IEC 60870-5-104:2006"@en ;
         rdfs:label             "FileSize IEC 60870-5-104:2006"@en ;
         om2:hasNumericalValue  "2994.0"^^xsd:float ;
@@ -852,7 +851,7 @@ sto:ISO_19439  a                 owl:NamedIndividual , sto:Standard ;
         sto:hasTag               "19439"@en ;
         sto:hasWikipediaArticle  "https://en.wikipedia.org/wiki/ISO_19439" .
 
-sto:ICS_31_240  a     sto:InternationalClassificationForStandards , owl:NamedIndividual ;
+sto:ICS_31_240  a     owl:NamedIndividual , sto:InternationalClassificationForStandards ;
         rdfs:comment  "This is ICS for  Mechanical structures for electronic equipment"@en ;
         rdfs:label    "ICS 31.240"@en ;
         sto:hasTitle  "Mechanical structures for electronic equipment"@en .
@@ -864,7 +863,7 @@ om2:hasNumericalValue
         a       owl:AnnotationProperty .
 
 sto:FileSizeIEC_60870_P6_S802_2014
-        a                      owl:NamedIndividual , om2:Measure ;
+        a                      om2:Measure , owl:NamedIndividual ;
         rdfs:comment           "Specifies the file size of the document for standard IEC 60870-6-802:2014"@en ;
         rdfs:label             "FileSize IEC 60870-6-802:2014"@en ;
         om2:hasNumericalValue  "1678.0"^^xsd:float ;
@@ -877,7 +876,7 @@ sto:StandardizationFramework
         skos:altLabel  "Reference Architecture"@en .
 
 sto:ProductModelDataExchange
-        a                  sto:ProductDevelopmentLifeCycle , owl:NamedIndividual ;
+        a                  owl:NamedIndividual , sto:ProductDevelopmentLifeCycle ;
         rdfs:comment       "These standards capture the representation of product and engineering information to enable data exchange between CAD software from different vendors."@en ;
         rdfs:label         "Product Model Data Exchange"@en ;
         sto:isDescribedin  sto:NISTInitiative .
@@ -895,7 +894,7 @@ sto:IEC_62890  a                 sto:Standard , owl:NamedIndividual ;
 sto:Standard  a             owl:Class , owl:NamedIndividual ;
         rdfs:comment        "Specifies that a given Publicaion is an International Standard"@en , "A document, established by consensus and approved by a recognized body, that provides, for common and repeated use, rules, guidelines or characteristics for activities or their results, aimed at the achievement of the optimum degree of order in a given context."@en ;
         rdfs:isDefinedBy    sto:IEC ;
-        rdfs:label          "Standard" , "Standard"@en ;
+        rdfs:label          "Standard"@en , "Standard" ;
         rdfs:seeAlso        <http://www.iec.ch/standardsdev/publications/is.htm> ;
         rdfs:subClassOf     sto:Publication ;
         cc:attributionName  "Copyright © 2016 IEC Geneva, Switzerland." ;
@@ -904,7 +903,7 @@ sto:Standard  a             owl:Class , owl:NamedIndividual ;
         sto:abbreviation    "IS" .
 
 sto:FileSizeIEC_60073_2002
-        a                      om2:Measure , owl:NamedIndividual ;
+        a                      owl:NamedIndividual , om2:Measure ;
         rdfs:comment           "Specifies the file size of the document for standard IEC 60073:2002"@en ;
         rdfs:label             "FileSize IEC 60073:2002"@en ;
         om2:hasNumericalValue  "525.0"^^xsd:float ;
@@ -949,7 +948,7 @@ sto:TechnicalSpecification
         a                  owl:NamedIndividual , owl:Class ;
         rdfs:comment       "Specifies that a given Publication is a Technical Specification"@en , "Technical Specifications are often published when the subject under question is still under development or when insufficient consensus for approval of an International Standard is available.Technical Specifications approach International Standards in terms of detail and completeness, but have not yet passed through all approval stages either because consensus has not been reached or because standardization is seen to be premature."@en ;
         rdfs:isDefinedBy   sto:IEC ;
-        rdfs:label         "Technical Specification" , "Technical Specification"@en ;
+        rdfs:label         "Technical Specification"@en , "Technical Specification" ;
         rdfs:seeAlso       <http://www.iec.ch/standardsdev/publications/ts.htm> ;
         rdfs:subClassOf    sto:Publication ;
         cc:attributionURL  "http://www.iec.ch" ;
@@ -958,16 +957,16 @@ sto:TechnicalSpecification
 <http://dbpedia.org/resource#Washington,_D.C.>
         a       owl:NamedIndividual .
 
-sto:DeviceLevel  a    sto:ISA95Level , owl:NamedIndividual ;
+sto:DeviceLevel  a    owl:NamedIndividual , sto:ISA95Level ;
         rdfs:comment  "Describes the device level according to the ISA95 level classification."@en ;
         rdfs:label    "Device Level"@en .
 
-sto:ICS_29_240_20  a  sto:InternationalClassificationForStandards , owl:NamedIndividual ;
+sto:ICS_29_240_20  a  owl:NamedIndividual , sto:InternationalClassificationForStandards ;
         rdfs:comment  "This is ICS for “Power transmission and distribution lines”"@en ;
         rdfs:label    "ICS 29.240.20"@en ;
         sto:hasTitle  "Power transmission and distribution lines"@en .
 
-sto:IEC_60870  a                 sto:Standard , owl:NamedIndividual ;
+sto:IEC_60870  a                 owl:NamedIndividual , sto:Standard ;
         rdfs:comment             "In electrical engineering and power system automation, the IEC 60870 series define systems used for telecontrol (supervisory control and data acquisition)"@en ;
         rdfs:label               "IEC 60870"@en ;
         sto:hasDBpediaResource   "http://dbpedia.org/page/IEC_60870" ;
@@ -975,7 +974,7 @@ sto:IEC_60870  a                 sto:Standard , owl:NamedIndividual ;
         sto:hasWikipediaArticle  "https://en.wikipedia.org/wiki/IEC_60870" .
 
 sto:FileSizeIEC_61334_2000_P4_S511
-        a                      owl:NamedIndividual , om2:Measure ;
+        a                      om2:Measure , owl:NamedIndividual ;
         rdfs:comment           "Specifies the file size of the document for standard IEC 61334-4-511:2000"@en ;
         rdfs:label             "FileSize IEC 61334-4-511:2000"@en ;
         om2:hasNumericalValue  "203.0"^^xsd:float ;
@@ -998,12 +997,12 @@ sto:IEC_61010_P2_S201_2017
         sto:hasTechnicalCommittee  sto:TC_65 ;
         sto:hasTitle               "Safety requirements for electrical equipment for measurement, control, and laboratory use - Part 2-201: Particular requirements for control equipment"@en .
 
-sto:TC_88  a          owl:NamedIndividual , sto:TechnicalCommittee ;
+sto:TC_88  a          sto:TechnicalCommittee , owl:NamedIndividual ;
         rdfs:comment  "TC 88 standardization in the field of wind energy generation systems including wind turbines, wind power plants onshore and offshore and interaction with the electrical system(s) to which energy is supplied.\n\nThese standards address site suitability and resource assessment, design\nrequirements, engineering integrity, modeling requirements, measurement techniques, test procedures, operation and maintenance. Their purpose is to provide a basis for design, quality assurance and technical aspects for certification. The standards address site-specific conditions, all systems and subsystems of wind turbines and wind power plants, such as mechanical, and electrical systems, support structures, control and protection as well as communication systems for monitoring, centralized and distributed control and evaluation, implementation of grid connection requirements for wind power plants, and environmental aspects of wind power development. The TC 88 standards will be developed based on and in agreement with appropriate IEC/ISO standards."@en ;
         rdfs:label    "TC 88"@en ;
         sto:hasTitle  "Wind energy generation systems"@en .
 
-sto:OAGi  a                      sto:StandardOrganization , owl:NamedIndividual ;
+sto:OAGi  a                      owl:NamedIndividual , sto:StandardOrganization ;
         rdfs:comment             "The Open Applications Group is a not-for-profit standards development organization. Founded in 1994, is focused on building enterprise ready process-based data exchange standards for both B2B and A2A integration."@en ;
         rdfs:label               "OAGi"@en ;
         sto:abbreviation         "OAGi" ;
@@ -1022,6 +1021,11 @@ sto:W3C_RIF  a                   owl:NamedIndividual , sto:Standard ;
         sto:hasTag               "RIF"@en ;
         sto:hasWikipediaArticle  "https://en.wikipedia.org/wiki/Rule_Interchange_Format" ;
         sto:relatedTo            sto:W3C_OWL .
+
+sto:ICS_19_08  a      sto:InternationalClassificationForStandards , owl:NamedIndividual ;
+        rdfs:comment  "This is ICS for “Electrical and electronic testing”"@en ;
+        rdfs:label    "ICS 19.08"@en ;
+        sto:hasTitle  "Electrical and electronic testing"@en .
 
 sto:ISO_13849  a                 owl:NamedIndividual , sto:Standard ;
         rdfs:comment             "Provides safety requirements and guidance on the principles for the design and integration of safety-related parts of control systems (SRP/CS), including the design of software."@en ;
@@ -1047,7 +1051,7 @@ sto:DIN  a                       owl:NamedIndividual , sto:StandardOrganization 
         sto:hasWikipediaArticle  <https://en.wikipedia.org/wiki/Deutsches_Institut_f%C3%BCr_Normung> ;
         sto:orgName              "Deutsches Institut für Normung"@en .
 
-sto:ISO_50001  a                 sto:Standard , owl:NamedIndividual ;
+sto:ISO_50001  a                 owl:NamedIndividual , sto:Standard ;
         rdfs:comment             "Energy management systems – Requirements with guidance for use is a specification created by the International Organization for Standardization (ISO) for an energy management system."@en ;
         rdfs:label               "ISO 50001"@en ;
         sto:hasClassification    sto:CrossLevel ;
@@ -1073,13 +1077,13 @@ sto:IEC_60286_5_2018  a              owl:NamedIndividual , sto:Standard ;
         sto:hasTechnicalCommittee    sto:TC_40 ;
         sto:hasTitle                 "Packaging of components for automatic handling - Part 5: Matrix trays"@en .
 
-sto:ISO_15531-4x  a        sto:StandardPart , owl:NamedIndividual ;
+sto:ISO_15531-4x  a        owl:NamedIndividual , sto:StandardPart ;
         rdfs:comment       "Manufacturing flow management data : refering to the material flow control and aiming at the representation of data and elements supporting the control and monitoring of the flow of materials in manufacturing processes."@en ;
         rdfs:isDefinedBy   "https://www.researchgate.net/publication/220171079_ISO_15531_MANDATE_a_standardised_data_model_for_manufacturing_management" ;
         rdfs:label         "ISO 15531 4x series"@en ;
         dul:isComponentOf  sto:ISO_15531 .
 
-rami:Product  a            rami:RAMIHierarchyLevel , owl:NamedIndividual ;
+rami:Product  a            owl:NamedIndividual , rami:RAMIHierarchyLevel ;
         sto:isDescribedin  sto:RAMI40 .
 
 sto:MTConnect  a                 sto:Standard , owl:NamedIndividual ;
@@ -1093,7 +1097,7 @@ sto:MTConnect  a                 sto:Standard , owl:NamedIndividual ;
         sto:hasTag               "MTConnect"@en ;
         sto:hasWikipediaArticle  "https://en.wikipedia.org/wiki/MTConnect" .
 
-sto:QIF  a                       sto:Standard , owl:NamedIndividual ;
+sto:QIF  a                       owl:NamedIndividual , sto:Standard ;
         rdfs:comment             " Quality Information Framework (QIF) standard defines an integrated set of information models which enable the effective exchange of metrology data throughout the entire manufacturing quality measurement process"@en ;
         rdfs:isDefinedBy         "http://qifstandards.org/about-qif/" ;
         rdfs:label               "Quality Information Framework"@en ;
@@ -1101,7 +1105,7 @@ sto:QIF  a                       sto:Standard , owl:NamedIndividual ;
         sto:hasOfficialResource  "http://qifstandards.org/" ;
         sto:hasPublisher         sto:DMSC .
 
-sto:IEC_61334  a                 sto:Standard , owl:NamedIndividual ;
+sto:IEC_61334  a                 owl:NamedIndividual , sto:Standard ;
         rdfs:comment             "IEC 61334 , known as Distribution automation using distribution line carrier systems, is a standard for low-speed reliable power line communications by electricity meters, water meters and SCADA."@en ;
         rdfs:label               "IEC 61334"@en ;
         sto:hasDBpediaResource   "http://dbpedia.org/page/IEC_61334" ;
@@ -1121,14 +1125,14 @@ sto:ISO_13584  a                 sto:Standard , owl:NamedIndividual ;
         sto:hasWikipediaArticle  "https://en.wikipedia.org/wiki/ISO_13584" ;
         sto:relatedTo            sto:IEC_61360 , sto:eClass .
 
-sto:Configuration  a       rami:AdminShellSubmodel , owl:NamedIndividual ;
+sto:Configuration  a       owl:NamedIndividual , rami:AdminShellSubmodel ;
         sto:isDescribedin  sto:AdministrationShell .
 
-rami:Safety  a             rami:AdminShellSubmodel , owl:NamedIndividual ;
+rami:Safety  a             owl:NamedIndividual , rami:AdminShellSubmodel ;
         sto:isDescribedin  sto:AdministrationShell .
 
 sto:FileSizeIEC_61334_2000_P6
-        a                      owl:NamedIndividual , om2:Measure ;
+        a                      om2:Measure , owl:NamedIndividual ;
         rdfs:comment           "Specifies the file size of the document for standard IEC 61334-6:2000"@en ;
         rdfs:label             "FileSize IEC 61334-6:2000"@en ;
         om2:hasNumericalValue  "294.0"^^xsd:float ;
@@ -1184,14 +1188,14 @@ sto:IEC_60870_P5_S2_1992
         sto:hasWikipediaArticle    <https://en.wikipedia.org/wiki/IEC_60870> .
 
 sto:InternationalClassificationForStandards
-        a                 owl:NamedIndividual , owl:Class ;
+        a                 owl:Class , owl:NamedIndividual ;
         rdfs:comment      "Serves as a structure for catalogues of international, regional and national standards and other normative documents, and as a basis for standing-order systems."@en ;
         rdfs:label        "International Classification For Standards"@en ;
         rdfs:seeAlso      <https://www.iso.org/publication/PUB100033.html> ;
         sto:abbreviation  "ICS"@en .
 
 sto:FileSizeIEC_60255_2009
-        a                      om2:Measure , owl:NamedIndividual ;
+        a                      owl:NamedIndividual , om2:Measure ;
         rdfs:comment           "Specifies the file size of the document for standard 60255-1:2009"@en ;
         rdfs:label             "FileSize IEC 60255-1:2009"@en ;
         om2:hasNumericalValue  "1411.0"^^xsd:float ;
@@ -1216,7 +1220,7 @@ rami:RAMILifeCycleLayer
         skos:prefLabel   "RAMI Life Cycle Layer"@en .
 
 sto:FileSizeIEC_61690_P1_2000
-        a                      owl:NamedIndividual , om2:Measure ;
+        a                      om2:Measure , owl:NamedIndividual ;
         rdfs:comment           "Specifies the file size of the document for standard IEC 61690-1:2000 ."@en ;
         rdfs:label             "FileSize IEC 61690-1:2000 "@en ;
         om2:hasNumericalValue  "1676.0"^^xsd:float ;
@@ -1224,7 +1228,7 @@ sto:FileSizeIEC_61690_P1_2000
 
 dbo:Place  a    owl:Class .
 
-sto:IIRC  a               sto:StandardizationFramework , owl:NamedIndividual ;
+sto:IIRC  a               owl:NamedIndividual , sto:StandardizationFramework ;
         rdfs:comment      "Industrial Internet Connectivity Framework"@en ;
         rdfs:isDefinedBy  "https://www.iiconsortium.org/IICF.htm"@en ;
         rdfs:label        "IICF"@en ;
@@ -1252,10 +1256,10 @@ sto:IBM  a                       owl:NamedIndividual , sto:StandardOrganization 
 
 dbo:Country  a  owl:Class .
 
-rami:Enterprise  a         rami:RAMIHierarchyLevel , owl:NamedIndividual ;
+rami:Enterprise  a         owl:NamedIndividual , rami:RAMIHierarchyLevel ;
         sto:isDescribedin  sto:RAMI40 .
 
-sto:VDMA_24582  a                sto:Standard , owl:NamedIndividual ;
+sto:VDMA_24582  a                owl:NamedIndividual , sto:Standard ;
         rdfs:comment             "Fieldbus neutral reference architecture for Condition Monitoring in production automation"@en ;
         rdfs:label               "VDMA 24582"@en ;
         sto:hasClassification    rami:ConditionMonitoring ;
@@ -1273,7 +1277,7 @@ sto:uses  a                 owl:ObjectProperty ;
         rdfs:subPropertyOf  sto:relatedTo .
 
 sto:FileSizeIEC_60255_2010
-        a                      om2:Measure , owl:NamedIndividual ;
+        a                      owl:NamedIndividual , om2:Measure ;
         rdfs:comment           "Specifies the file size of the document for standard IEC 60255-127:2010 "@en ;
         rdfs:label             "FileSize 60255-127:2010"@en ;
         om2:hasNumericalValue  "1215.0"^^xsd:float ;
@@ -1292,7 +1296,7 @@ sto:ISO_11898-1  a               owl:NamedIndividual , sto:Standard ;
         sto:relatedTo            sto:ISO_11783 .
 
 sto:FileSizeIEC_60870_1995_P2_S1
-        a                      owl:NamedIndividual , om2:Measure ;
+        a                      om2:Measure , owl:NamedIndividual ;
         rdfs:comment           "Specifies the file size of the document for standard IEC 60870-2-1:1995"@en ;
         rdfs:label             "FileSize IEC 60870-2-1:1995"@en ;
         om2:hasNumericalValue  "1674.0"^^xsd:float ;
@@ -1336,7 +1340,7 @@ sto:IEC_60050_1984  a                sto:Standard , owl:NamedIndividual ;
         sto:hasTechnicalCommittee    sto:TC_1 ;
         sto:hasTitle                 "International Electrotechnical Vocabulary. Chapter 371: Telecontrol"@en .
 
-sto:ICS_33_100_10  a  sto:InternationalClassificationForStandards , owl:NamedIndividual ;
+sto:ICS_33_100_10  a  owl:NamedIndividual , sto:InternationalClassificationForStandards ;
         rdfs:comment  "This is ICS for “Emission”"@en ;
         rdfs:label    "ICS 33.100.10"@en ;
         sto:hasTitle  "Emission"@en .
@@ -1365,13 +1369,13 @@ sto:IEC_62541  a                 owl:NamedIndividual , sto:Standard ;
         sto:relatedTo            sto:IEC_62714 , sto:IEC_61499 , sto:IEC_61850 ;
         sto:useStructureOf       sto:IEC_61804 .
 
-sto:ICS_01_070  a     sto:InternationalClassificationForStandards , owl:NamedIndividual ;
+sto:ICS_01_070  a     owl:NamedIndividual , sto:InternationalClassificationForStandards ;
         rdfs:comment  "This is ICS for Colour coding "@en ;
         rdfs:label    "ICS 01.070"@en ;
         sto:hasTitle  "Colour coding  "@en .
 
 sto:FileSizeIEC_60038_2009
-        a                      om2:Measure , owl:NamedIndividual ;
+        a                      owl:NamedIndividual , om2:Measure ;
         rdfs:comment           "Specifies the file size of the document for standard IEC 60038:2009"@en ;
         rdfs:label             "FileSize IEC 60038:2009"@en ;
         om2:hasNumericalValue  "946.0"^^xsd:float ;
@@ -1384,13 +1388,13 @@ sto:hasEdition  a     owl:DatatypeProperty ;
         rdfs:range    xsd:float .
 
 sto:FileSizeIEC_60255_151_2009
-        a                      om2:Measure , owl:NamedIndividual ;
+        a                      owl:NamedIndividual , om2:Measure ;
         rdfs:comment           "Specifies the file size of the document for standard IEC IEC 60255-151:2009"@en ;
         rdfs:label             "FileSize IEC 60255-151:2009 "@en ;
         om2:hasNumericalValue  "1341.0"^^xsd:float ;
         om2:hasUnit            om2:kilobyte .
 
-sto:ITSecurity  a   sto:Domain , owl:NamedIndividual ;
+sto:ITSecurity  a   owl:NamedIndividual , sto:Domain ;
         rdfs:label  "IT Security"@en .
 
 sto:BPEL  a                      owl:NamedIndividual , sto:Standard ;
@@ -1403,7 +1407,7 @@ sto:BPEL  a                      owl:NamedIndividual , sto:Standard ;
         sto:hasTag               "BPEL"@en ;
         sto:hasWikipediaArticle  "https://en.wikipedia.org/wiki/Business_Process_Execution_Language" .
 
-sto:TC_95  a          sto:TechnicalCommittee , owl:NamedIndividual ;
+sto:TC_95  a          owl:NamedIndividual , sto:TechnicalCommittee ;
         rdfs:comment  "Standardisation of measuring relays and protection equipment used in various fields of electrical engineering covered by IEC, taking into a ccount combinations of devices to form schemes for power system protection including the control, monitoring and process interface equipment used with those systems.Excluded are the following:All devices covered by standards prepared by other IEC Technical Committees, for example instrument transformers (TC 38)."@en ;
         rdfs:label    "TC 95"@en ;
         sto:hasTitle  "Measuring relays and protection equipment"@en .
@@ -1427,12 +1431,12 @@ sto:IEC_60870_P6_S601_1994
         sto:hasTitle               "Telecontrol equipment and systems - Part 6: Telecontrol protocol s compatible with ISO standards and ITU-T recommendations - Sect ion 601: Functional profile for providing the connection-oriente d transport service in an end system connected via permanent acc ess to a packet switched data network"@en ;
         sto:hasWikipediaArticle    <https://en.wikipedia.org/wiki/IEC_60870> .
 
-rami:Identification  a     rami:AdminShellSubmodel , owl:NamedIndividual ;
+rami:Identification  a     owl:NamedIndividual , rami:AdminShellSubmodel ;
         sto:isDescribedin  sto:AdministrationShell .
 
 foaf:maker  a   owl:ObjectProperty .
 
-sto:TC_65  a          sto:TechnicalCommittee , owl:NamedIndividual ;
+sto:TC_65  a          owl:NamedIndividual , sto:TechnicalCommittee ;
         rdfs:comment  "To prepare international standards for systems and elements used for industrial-process measurement and control concerning continuous and batch processes."@en ;
         rdfs:label    "TC 65"@en ;
         sto:hasTitle  "Industrial-process measurement, control and automation"@en .
@@ -1448,18 +1452,18 @@ sto:VDMA  a                      owl:NamedIndividual , sto:StandardOrganization 
         sto:orgName              "Verband Deutscher Maschinen- und Anlagenbau"@de , "Mechanical Engineering Industry Association"@en .
 
 sto:FileSizeIEC_60382_1991
-        a                      om2:Measure , owl:NamedIndividual ;
+        a                      owl:NamedIndividual , om2:Measure ;
         rdfs:comment           "Specifies the file size of the document for standard IEC 60382:1991"@en ;
         rdfs:label             "FileSize IEC 60382:1991"@en ;
         om2:hasNumericalValue  "557.0"^^xsd:float ;
         om2:hasUnit            om2:kilobyte .
 
-sto:ICS_25_040_40  a  sto:InternationalClassificationForStandards , owl:NamedIndividual ;
+sto:ICS_25_040_40  a  owl:NamedIndividual , sto:InternationalClassificationForStandards ;
         rdfs:comment  "This is ICS for industrial process measurement and control"@en ;
         rdfs:label    "ICS 25.040.40"@en ;
         sto:hasTitle  "Industrial process measurement and control"@en .
 
-sto:ModelingPractice  a    sto:ProductDevelopmentLifeCycle , owl:NamedIndividual ;
+sto:ModelingPractice  a    owl:NamedIndividual , sto:ProductDevelopmentLifeCycle ;
         rdfs:comment       "Modeling practice standards define digital product-definition data practices for both two-dimensional (2D) drawings and three-dimensional (3D) models."@en ;
         rdfs:label         "Modeling Practice"@en ;
         sto:isDescribedin  sto:NISTInitiative .
@@ -1513,7 +1517,7 @@ sto:IEC_61987_X  a               sto:Standard , owl:NamedIndividual ;
         sto:hasPublisher         sto:IEC ;
         sto:hasTag               "LOPs in PA"@en .
 
-rami:Integration  a        rami:RAMIITLayer , owl:NamedIndividual ;
+rami:Integration  a        owl:NamedIndividual , rami:RAMIITLayer ;
         sto:isDescribedin  sto:RAMI40 .
 
 sto:SysML  a                     owl:NamedIndividual , sto:Standard ;
@@ -1533,7 +1537,7 @@ sto:hasMotivation  a  owl:ObjectProperty ;
         rdfs:label    "has Motivation"@en ;
         rdfs:range    deo:Motivation .
 
-sto:TC_77  a          owl:NamedIndividual , sto:TechnicalCommittee ;
+sto:TC_77  a          sto:TechnicalCommittee , owl:NamedIndividual ;
         rdfs:comment  "Standardization - to prepare standards and technical reports -\n\nin the field of electromagnetic compatibility (EMC), with\nparticular emphasis on general application and use by product\ncommittees. (Horizontal function).\nThe scope covers the following aspects of EMC:\n- Immunity and related items, over the whole frequency range: basic and generic standards,\n- emission in the low frequency range (f <= 9 kHz, e.g. harmonics and voltage fluctuations): basic, generic and product (family) standards,\n- emission in the high frequency range (f > 9 kHz): disturbances not covered by CISPR 10 (1992), in co-ordination with CISPR (e.g. mains signalling).\nProduct immunity standards are not included. However, at the request of product committees, TC 77 may also prepare such standards under the co-ordination of ACEC.\nHorizontal Safety Function:\nElectromagnetic compatibility in so far as safety aspects are involved."@en ;
         rdfs:label    "TC 77"@en ;
         sto:hasTitle  "Electromagnetic compatibility\n"@en .
@@ -1556,7 +1560,7 @@ sto:hasWikipediaArticle
         rdfs:label    "has Wikipedia Article"@en ;
         rdfs:range    rdfs:Literal .
 
-sto:IEC_60086  a                 sto:Standard , owl:NamedIndividual ;
+sto:IEC_60086  a                 owl:NamedIndividual , sto:Standard ;
         rdfs:comment             "Standard battery nomenclature describes portable dry cell batteries that have physical dimensions and electrical characteristics interchangeable between manufacturers."@en ;
         rdfs:label               "IEC 60086"@en ;
         sto:hasDBpediaResource   "http://dbpedia.org/page/Battery_nomenclature#IEC_60086" ;
@@ -1602,7 +1606,7 @@ sto:B2MML  a                     sto:Standard , owl:NamedIndividual ;
         sto:isImplementationOf   sto:ISA-95 .
 
 sto:FileSizeIEC_60870_P6_S2_1995
-        a                      owl:NamedIndividual , om2:Measure ;
+        a                      om2:Measure , owl:NamedIndividual ;
         rdfs:comment           "Specifies the file size of the document for standard IEC 60870-6-2:1995"@en ;
         rdfs:label             "FileSize IEC 60870-6-2:1995"@en ;
         om2:hasNumericalValue  "3524.0"^^xsd:float ;
@@ -1633,31 +1637,31 @@ sto:belongsTo  a      owl:ObjectProperty ;
         rdfs:label    "belongs To"@en ;
         rdfs:range    dbo:Country .
 
-rami:Information  a        rami:RAMIITLayer , owl:NamedIndividual ;
+rami:Information  a        owl:NamedIndividual , rami:RAMIITLayer ;
         sto:isDescribedin  sto:RAMI40 .
 
-rami:Station  a            rami:RAMIHierarchyLevel , owl:NamedIndividual ;
+rami:Station  a            owl:NamedIndividual , rami:RAMIHierarchyLevel ;
         sto:isDescribedin  sto:RAMI40 .
 
-rami:Security  a           rami:AdminShellSubmodel , owl:NamedIndividual ;
+rami:Security  a           owl:NamedIndividual , rami:AdminShellSubmodel ;
         sto:isDescribedin  sto:AdministrationShell .
 
-sto:ISO_1302  a                  sto:Standard , owl:NamedIndividual ;
+sto:ISO_1302  a                  owl:NamedIndividual , sto:Standard ;
         rdfs:comment             "Geometrical product specifications Standards"@en ;
         rdfs:label               "ISO 1302"@en ;
         sto:hasClassification    sto:ModelingPractice ;
         sto:hasOfficialResource  "https://www.iso.org/standard/28089.html" ;
         sto:hasPublicationDate   "2002-02-01"^^xsd:date .
 
-rami:TypeDevelopment  a  rami:RAMILifeCycleLayer , owl:NamedIndividual ;
+rami:TypeDevelopment  a  owl:NamedIndividual , rami:RAMILifeCycleLayer ;
         rdfs:label  "Type Development"@en .
 
 xsd:gYear  a    rdfs:Datatype .
 
-rami:ControlDevice  a      rami:RAMIHierarchyLevel , owl:NamedIndividual ;
+rami:ControlDevice  a      owl:NamedIndividual , rami:RAMIHierarchyLevel ;
         sto:isDescribedin  sto:RAMI40 .
 
-sto:IEC_60364  a                 sto:Standard , owl:NamedIndividual ;
+sto:IEC_60364  a                 owl:NamedIndividual , sto:Standard ;
         rdfs:comment             "Electrical Installations for Buildings is the International Electrotechnical Commission's international standard on electrical installations of buildings"@en ;
         rdfs:label               "IEC 60364"@en ;
         sto:hasDBpediaResource   "http://dbpedia.org/page/IEC_60364" ;
@@ -1712,7 +1716,7 @@ sto:IEC_60870_P5_S6_2006
 
 dbr:_Georgia  a  owl:NamedIndividual .
 
-sto:ICS_19_020  a     owl:NamedIndividual , sto:InternationalClassificationForStandards ;
+sto:ICS_19_020  a     sto:InternationalClassificationForStandards , owl:NamedIndividual ;
         rdfs:comment  "This is ICS for “Test conditions and procedures in general"@en ;
         rdfs:label    "ICS 19.020"@en ;
         sto:hasTitle  "Test conditions and procedures in general"@en .
@@ -1751,13 +1755,13 @@ sto:hasPublicationDate
         rdfs:label    "has Publication Date"@en ;
         rdfs:range    xsd:date .
 
-sto:formationDate  a  owl:FunctionalProperty , owl:DatatypeProperty ;
+sto:formationDate  a  owl:DatatypeProperty , owl:FunctionalProperty ;
         rdfs:comment  "Formation date of the Organization"@en ;
         rdfs:domain   sto:StandardOrganization ;
         rdfs:label    "has Formation Date"@en ;
         rdfs:range    xsd:date .
 
-sto:TC_8  a           sto:TechnicalCommittee , owl:NamedIndividual ;
+sto:TC_8  a           owl:NamedIndividual , sto:TechnicalCommittee ;
         rdfs:comment  "To prepare and coordinate, in co-operation with other TC/SCs, the development of international standards and other deliverables with emphasis on overall system aspects of electricity supply systems and acceptable balance between cost and quality for the users of electrical energy. Electricity supply system encompasses transmission and distribution networks, generators and loads with their network interfaces."@en ;
         rdfs:label    "TC 8"@en ;
         sto:hasTitle  "Systems aspects of electrical energy supply"@en .
@@ -1773,23 +1777,23 @@ sto:IEC  a                       owl:NamedIndividual , sto:StandardOrganization 
         sto:orgName              "Commission électrotechnique internationale"@fr , "International Electrotechnical Commission"@en .
 
 sto:FileSizeIEC_60050_1998
-        a                      om2:Measure , owl:NamedIndividual ;
+        a                      owl:NamedIndividual , om2:Measure ;
         rdfs:comment           "Specifies the file size of the document for standard IEC 60050-101:1998 "@en ;
         rdfs:label             "FileSize IEC 60050-101:1998"@en ;
         om2:hasNumericalValue  "1712.0"^^xsd:float ;
         om2:hasUnit            om2:kilobyte .
 
-sto:Written  a        dcterms:linguisticSystem , owl:NamedIndividual ;
+sto:Written  a        owl:NamedIndividual , dcterms:linguisticSystem ;
         rdfs:comment  "Describes a Written Linguistic System"@en ;
         rdfs:label    "Written"@en .
 
 rami:InformationLayer
-        a                  rami:RAMIITLayer , owl:NamedIndividual ;
+        a                  owl:NamedIndividual , rami:RAMIITLayer ;
         rdfs:label         "Information Layer"@en ;
         sto:isDescribedin  sto:RAMI40 .
 
 sto:ProductionSystemEngineering
-        a                  sto:ProductionSystemLifeCycle , owl:NamedIndividual ;
+        a                  owl:NamedIndividual , sto:ProductionSystemLifeCycle ;
         rdfs:comment       "Standards can interconnect engineering tools from different disciplines, e.g., system engineering, mechanical plant engineering, electrical design, process engineering, process control engineering, Human Machine Interface (HMI) development, PLC programming, and robotic programming."@en ;
         rdfs:label         "Production System Engineering"@en ;
         sto:isDescribedin  sto:NISTInitiative .
@@ -1833,7 +1837,7 @@ sto:ISO_27000  a                 owl:NamedIndividual , sto:Standard ;
         sto:hasWikipediaArticle  "https://en.wikipedia.org/wiki/ISO/IEC_27000" .
 
 sto:FileSizeIEC_60870_P5_S4_1993
-        a                      owl:NamedIndividual , om2:Measure ;
+        a                      om2:Measure , owl:NamedIndividual ;
         rdfs:comment           "Specifies the file size of the document for standard IEC 60870-5-4:1993"@en ;
         rdfs:label             "FileSize IEC 60870-5-4:1993"@en ;
         om2:hasNumericalValue  "1776.0"^^xsd:float ;
@@ -1850,7 +1854,7 @@ sto:IEC_60839-5-2  a             owl:NamedIndividual , sto:Standard ;
         sto:hasPublisher         sto:IEC .
 
 sto:FileSizeIEC_60870_P5_S102_1996
-        a                      owl:NamedIndividual , om2:Measure ;
+        a                      om2:Measure , owl:NamedIndividual ;
         rdfs:comment           "Specifies the file size of the document for standard IEC 60870-5-102:1996"@en ;
         rdfs:label             "FileSize IEC 60870-5-102:1996"@en ;
         om2:hasNumericalValue  "505.0"^^xsd:float ;
@@ -1864,7 +1868,7 @@ sto:BusinessCycleSCM  a   owl:Class ;
         rdfs:subClassOf   sto:StandardClassification .
 
 sto:MTConnect_Institute
-        a                        sto:StandardOrganization , owl:NamedIndividual ;
+        a                        owl:NamedIndividual , sto:StandardOrganization ;
         rdfs:comment             "MTConnect Institute is a collaborative effort to develop technical standards and specifications intended to foster greater interoperability between automation/control applications, field systems/devices, and business/office applications in the manufacturing industry (\"MTConnect Specifications\"), as well as schema, prototype software examples, and related documentation in order to facilitate the implementation of the MTConnect Specifications in compliant applications, drivers, and other services"@en ;
         sto:abbreviation         "MTC" ;
         sto:formationDate        "2006-01-01"^^xsd:date ;
@@ -1872,10 +1876,10 @@ sto:MTConnect_Institute
         sto:orgName              "MTConnect Institute"@en .
 
 rami:InstanceMaintenance
-        a           rami:RAMILifeCycleLayer , owl:NamedIndividual ;
+        a           owl:NamedIndividual , rami:RAMILifeCycleLayer ;
         rdfs:label  "Instance Maintenance"@en .
 
-sto:ISO_29002  a                 sto:Standard , owl:NamedIndividual ;
+sto:ISO_29002  a                 owl:NamedIndividual , sto:Standard ;
         rdfs:comment             "ISO 29002 is an interoperability standard, which provides a repository to be used in various ISO XML formats. It is used in ontoML."@en ;
         rdfs:label               "ISO 29002"@en ;
         sto:hasDomain            sto:IndustrialProcessMeasurementControl ;
@@ -1885,7 +1889,7 @@ sto:ISO_29002  a                 sto:Standard , owl:NamedIndividual ;
         sto:relatedTo            sto:eClass .
 
 sto:ProductionSystemModelData
-        a                  sto:ProductionSystemLifeCycle , owl:NamedIndividual ;
+        a                  owl:NamedIndividual , sto:ProductionSystemLifeCycle ;
         rdfs:comment       "Provide information models for factory and production system design. They enhance information exchange among stakeholders, and enable virtual commissioning, which can improve manufacturing agility and reduce manufacturing cost."@en ;
         rdfs:label         "Production System Model Data"@en ;
         sto:isDescribedin  sto:NISTInitiative .
@@ -1916,14 +1920,14 @@ sto:IEC_62264  a                 sto:Standard , owl:NamedIndividual ;
 
 dbr:_Maryland  a  owl:NamedIndividual .
 
-sto:IEC_62656  a                 sto:Standard , owl:NamedIndividual ;
+sto:IEC_62656  a                 owl:NamedIndividual , sto:Standard ;
         rdfs:comment             "Specifies the logical structure for a set of spreadsheets, used as data parcels, to define, transfer and register product ontologies"@en ;
         rdfs:label               "IEC 62656"@en ;
         sto:hasOfficialResource  "https://webstore.iec.ch/publication/7326" ;
         sto:hasPublisher         sto:IEC .
 
 rami:EnergyEfficiency
-        a                  rami:AdminShellSubmodel , owl:NamedIndividual ;
+        a                  owl:NamedIndividual , rami:AdminShellSubmodel ;
         sto:isDescribedin  sto:AdministrationShell .
 
 sto:NISTIR_8107  a         owl:NamedIndividual ;
@@ -1931,9 +1935,9 @@ sto:NISTIR_8107  a         owl:NamedIndividual ;
         rdfs:isDefinedBy   "http://nvlpubs.nist.gov/nistpubs/ir/2016/NIST.IR.8107.pdf" ;
         rdfs:label         "NISTIR_8107"@en ;
         skos:note          "TODO - improve this classification" ;
-        sto:isDescribedin  sto:SCM , sto:BusinessProcessExecution .
+        sto:isDescribedin  sto:BusinessProcessExecution , sto:SCM .
 
-sto:IEC_62837  a                 sto:Standard , owl:NamedIndividual ;
+sto:IEC_62837  a                 owl:NamedIndividual , sto:Standard ;
         rdfs:comment             "Provides to the technical committees a framework for the development and adaptation of documents in order to improve energy efficiency in manufacturing, process control and industrial facility management."@en ;
         rdfs:label               "IEC 62837"@en ;
         sto:hasOfficialResource  "https://webstore.iec.ch/publication/7446" ;
@@ -1941,7 +1945,7 @@ sto:IEC_62837  a                 sto:Standard , owl:NamedIndividual ;
         sto:hasTag               "62837"@en .
 
 sto:FileSizeIEC_61010_P2_S012_2016
-        a                      owl:NamedIndividual , om2:Measure ;
+        a                      om2:Measure , owl:NamedIndividual ;
         rdfs:comment           "Specifies the file size of the document for standard IEC 61010-2-012:2016."@en ;
         rdfs:label             "FileSize IEC 61010-2-012:2016"@en ;
         om2:hasNumericalValue  "2717.0"^^xsd:float ;
@@ -1950,7 +1954,7 @@ sto:FileSizeIEC_61010_P2_S012_2016
 sto:eClass  a                    sto:Standard , owl:NamedIndividual ;
         rdfs:comment             "eCl@ss is the cross-industry product data standard for classification and clear description of products and services."@en ;
         rdfs:label               "eClass"@en ;
-        sto:hasClassification    rami:Station , rami:WorkCenter , rami:Product , rami:Engineering , rami:ConnectedWorld , rami:ControlDevice , rami:Enterprise ;
+        sto:hasClassification    rami:Station , rami:WorkCenter , rami:Product , rami:Engineering , rami:ConnectedWorld , rami:Enterprise , rami:ControlDevice ;
         sto:hasDBpediaResource   "http://de.dbpedia.org/page/ECl@ss" ;
         sto:hasDeveloper         sto:eClassAssoc ;
         sto:hasMotivation        "Global identification, semantic description and automatic product classification"@en ;
@@ -1968,7 +1972,7 @@ sto:IEC_61334_P4_S1_1996
         sto:hasDBpediaResource     <https://dbpedia.org/resource/IEC_61334> ;
         sto:hasEdition             "1.0"^^xsd:float ;
         sto:hasFileSize            sto:FileSizeIEC_61334_1996_P4_S1 ;
-        sto:hasICS                 sto:ICS_33_200 , sto:ICS_29_240_20 ;
+        sto:hasICS                 sto:ICS_29_240_20 , sto:ICS_33_200 ;
         sto:hasOfficialResource    <https://webstore.iec.ch/publication/5300> ;
         sto:hasPages               "43"^^xsd:int ;
         sto:hasPublicationDate     "1996-07-31"^^xsd:date ;
@@ -1979,8 +1983,8 @@ sto:IEC_61334_P4_S1_1996
         sto:hasTitle               "Distribution automation using distribution line carrier systems - Part 4: Data communication protocols - Section 1: Reference model of the communication system"@en ;
         sto:hasWikipediaArticle    <https://en.wikipedia.org/wiki/IEC_61334> .
 
-sto:FrameworkLayer  a     sto:ConnectivityLayer , owl:NamedIndividual ;
-        rdfs:comment      "Framework Layer an instance of the Connectivity Layer"@en , "Framework Layer"@en ;
+sto:FrameworkLayer  a     owl:NamedIndividual , sto:ConnectivityLayer ;
+        rdfs:comment      "Framework Layer"@en , "Framework Layer an instance of the Connectivity Layer"@en ;
         rdfs:isDefinedBy  "https://www.iiconsortium.org/pdf/IIC_PUB_G5_V1.01_PB_20180228.pdf" .
 
 sto:StandardClassification
@@ -2023,7 +2027,7 @@ sto:IEC_61360  a                 owl:NamedIndividual , sto:Standard ;
         sto:hasClassification    rami:Engineering , sto:ManufacturingModelData , rami:Asset ;
         sto:hasDomain            "Electrotechnical"@en ;
         sto:hasMotivation        "Standard data elements (properties) are used as elements in administration shell"@en ;
-        sto:hasOfficialResource  "https://webstore.iec.ch/publication/5380" , "http://cdd.iec.ch/cdd/iec61360/iec61360.nsf" ;
+        sto:hasOfficialResource  "http://cdd.iec.ch/cdd/iec61360/iec61360.nsf" , "https://webstore.iec.ch/publication/5380" ;
         sto:hasPublisher         sto:IEC ;
         sto:hasTag               "IEC Common Data Dictionary"@en ;
         sto:relatedTo            sto:eClass , sto:ISO_13584 .
@@ -2031,7 +2035,7 @@ sto:IEC_61360  a                 owl:NamedIndividual , sto:Standard ;
 dcterms:language  a  owl:ObjectProperty .
 
 sto:FileSizeIEC_61334_1996_P4_S41
-        a                      owl:NamedIndividual , om2:Measure ;
+        a                      om2:Measure , owl:NamedIndividual ;
         rdfs:comment           "Specifies the file size of the document for standard IEC 61334-4-41:1996"@en ;
         rdfs:label             "FileSize IEC 61334-4-41:1996"@en ;
         om2:hasNumericalValue  "834.0"^^xsd:float ;
@@ -2062,13 +2066,13 @@ sto:IEC_61511  a                 sto:Standard , owl:NamedIndividual ;
 dbr:Paris  a    owl:NamedIndividual .
 
 sto:FileSizeIEC_60870_P5_S101_2003
-        a                      owl:NamedIndividual , om2:Measure ;
+        a                      om2:Measure , owl:NamedIndividual ;
         rdfs:comment           "Specifies the file size of the document for standard IEC 60870-5-101:2003"@en ;
         rdfs:label             "FileSize IEC 60870-5-101:2003"@en ;
         om2:hasNumericalValue  "2651.0"^^xsd:float ;
         om2:hasUnit            om2:kilobyte .
 
-sto:CAD  a                      sto:Domain , owl:NamedIndividual ;
+sto:CAD  a                      owl:NamedIndividual , sto:Domain ;
         rdfs:comment            "Computer-Aided Design"@en ;
         rdfs:isDefinedBy        <https://en.wikipedia.org/wiki/Computer-aided_design> ;
         rdfs:label              "CAD" ;
@@ -2094,10 +2098,10 @@ sto:IEC_60870_P6_S701_1998
         sto:hasTitle               "Telecontrol equipment and systems - Part 6-701: Telecontrol protocols compatible with ISO standards and ITU-T recommendations - Functional profile for providing the TASE.1 application service in end systems"@en ;
         sto:hasWikipediaArticle    <https://en.wikipedia.org/wiki/IEC_60870> .
 
-rami:FieldDevice  a        rami:RAMIHierarchyLevel , owl:NamedIndividual ;
+rami:FieldDevice  a        owl:NamedIndividual , rami:RAMIHierarchyLevel ;
         sto:isDescribedin  sto:RAMI40 .
 
-sto:TC_3  a           sto:TechnicalCommittee , owl:NamedIndividual ;
+sto:TC_3  a           owl:NamedIndividual , sto:TechnicalCommittee ;
         rdfs:comment  "To prepare standards for the electrotechnical and related fields regarding:1) methods and rules associated with the human interpretation of information. This refers to:- presentation of information in technical documentation,- graphical symbols for use in technical documentation,- graphical symbols for the human interaction with equipment,2) methods and rules associated with the handling of information in computer sensible form. This refers to:- information models for the purpose of technical documentation and the exchange of technical information, and the identification of further needs for such models,- definition of data element types and data sets for use in information models and technical documentation, and for exchange of technical information.It includes definition and co-ordination of the information required during the whole life cycle of a device, system, or plant.3) General and safety application concerning the man-machine interface, marking and identification in electrical installations and equipment, marking systems and general rules for:- the meanings of colours and alternative means, when used for marking and identification,- the arrangement of indicating devices and actuators,- coding principles for indicating and actuating devices,- terminal designation of electrical and electronic components, apparatus and equipment,- the termination designation of certain designated conductors,- marking of electrical and electronic equipment with ratings related to supply and to its properties,- marking of bare and insulated conductors.These standards are principally intended for use by technical committees in the preparation of standards in accordance with the principles laid down in IEC Guide 104: Guide to the drafting of Safety Standards, and the role of committees with Safety Pilot Functions and Safety Group Functions, and in ISO/IEC Guide 51: Guidelines for the inclusion of safety aspects in standards."@en ;
         rdfs:label    "TC 3"@en ;
         sto:hasTitle  "Information structures and elements, identification and marking principles, documentation and graphical symbols"@en .
@@ -2120,14 +2124,14 @@ sto:IEC_60255_2009  a                owl:NamedIndividual , sto:Standard ;
         sto:hasTechnicalCommittee    sto:TC_95 ;
         sto:hasTitle                 "Measuring relays and protection equipment - Part 1: Common requirements"@en .
 
-sto:TC_66  a          owl:NamedIndividual , sto:TechnicalCommittee ;
+sto:TC_66  a          sto:TechnicalCommittee , owl:NamedIndividual ;
         rdfs:comment  "To prepare safety standards for test and measurement equipment, industrial-process control equipment, and laboratory equipment wherever they are used.\n\nSuch equipment includes:\na) equipment and systems to measure, test, generate, and analyse, simple and complex electromagnetic quantities and equipment that by electromagnetic means measure physical quantities.\nNote: Aspects of this equipment other than safety are covered by other technical committees.\nb) equipment and systems for industrial-process measurement and control.\nNote: Aspects of this equipment other than safety are covered by TC 65 except that SC 65A has a Horizontal Safety Function relating to the functional safety of electrical/electronic/ programmable electronic systems and SC 65B is responsible for the functional safety of programmable controllers.\nc) laboratory equipment for analysis, handling and preparation of materials.\nNote: This equipment includes measuring instruments, systems and their accessories, for preparation, treatment and analysis of materials in the fields of research, medicine, industry and education, and for environmental monitoring.\nTC 66 has a Group Safety Function in accordance with IEC Guide 104 for the equipment in categories a) to c) above."@en ;
         rdfs:label    "TC 66"@en ;
-        sto:hasTitle  "Safety of measuring"@en , " control and laboratory equipment"@en .
+        sto:hasTitle  " control and laboratory equipment"@en , "Safety of measuring"@en .
 
 rami:Work_Centers  a  owl:NamedIndividual .
 
-sto:ICS_01_040_07  a  sto:InternationalClassificationForStandards , owl:NamedIndividual ;
+sto:ICS_01_040_07  a  owl:NamedIndividual , sto:InternationalClassificationForStandards ;
         rdfs:comment  "This is ICS for Natural and applied sciences (Vocabularies)"@en ;
         rdfs:label    "ICS 01.040.07"@en ;
         sto:hasTitle  "Natural and applied sciences (Vocabularies)"@en .
@@ -2153,12 +2157,12 @@ sto:MESA  a                      sto:StandardOrganization , owl:NamedIndividual 
         sto:hasWikipediaArticle  "https://en.wikipedia.org/wiki/Manufacturing_Enterprise_Solutions_Association" ;
         sto:orgName              "Manufacturing Enterprise Solutions Association"@en .
 
-sto:IEC_15459  a                 sto:Standard , owl:NamedIndividual ;
+sto:IEC_15459  a                 owl:NamedIndividual , sto:Standard ;
         rdfs:comment             "ISO/IEC 15459-1:2014 specifies a unique string of characters for the identification of individual transport units. The character string is intended to be represented in a bar code label or other AIDC media attached to the entity to meet management needs. To address management needs, different types of entities are recognized in the various parts of ISO/IEC 15459, which allows different requirements to be met by the identities associated with each type. The rules for the unique identification for individual transport units, to identify physical logistical transfers, with the identity relevant for the duration of one or more items in the load being held or transported as part of that load, are defined and supported by example."@en ;
         rdfs:label               "IEC 15459"@en ;
         owl:sameAs               sto:ISO_15459 ;
         sto:hasOfficialResource  "https://www.iso.org/standard/54779.html" ;
-        sto:hasPublisher         sto:ISO , sto:IEC ;
+        sto:hasPublisher         sto:IEC , sto:ISO ;
         sto:hasTag               "Information technology -- Automatic identification and data capture techniques -- Unique identification"@en .
 
 sto:IEC_61131  a                 owl:NamedIndividual , sto:Standard ;
@@ -2210,7 +2214,7 @@ sto:KATS  a                      owl:NamedIndividual , sto:StandardOrganization 
         sto:orgName              "Korean Agency for Technology and Standards"@en .
 
 rami:AdminShellGeneral
-        a                  rami:AdminShellSubmodel , owl:NamedIndividual ;
+        a                  owl:NamedIndividual , rami:AdminShellSubmodel ;
         sto:isDescribedin  sto:AdministrationShell .
 
 sto:ISO_15926  a                 sto:Standard , owl:NamedIndividual ;
@@ -2224,20 +2228,20 @@ sto:ISO_15926  a                 sto:Standard , owl:NamedIndividual ;
         sto:relatedTo            sto:ISO_ASTM_52915 .
 
 sto:FileSizeIEC_60381_1982
-        a                      om2:Measure , owl:NamedIndividual ;
+        a                      owl:NamedIndividual , om2:Measure ;
         rdfs:comment           "Specifies the file size of the document for standard IEC 60381-1:1982 "@en ;
         rdfs:label             "FileSize IEC 60381-1:1982"@en ;
         om2:hasNumericalValue  "507.0"^^xsd:float ;
         om2:hasUnit            om2:kilobyte .
 
-sto:SCADALevel  a          sto:ISA95Level , owl:NamedIndividual ;
+sto:SCADALevel  a          owl:NamedIndividual , sto:ISA95Level ;
         rdfs:comment       "Describes the SCADA level according to the ISA95 level classification."@en ;
         rdfs:label         "SCADA Level"@en ;
         skos:definition    "Supervisory control and data acquisition according to ISA 95"@en ;
         sto:isDescribedin  sto:ISA95 .
 
 sto:FileSizeIEC_61334_1996_P3_S21
-        a                      owl:NamedIndividual , om2:Measure ;
+        a                      om2:Measure , owl:NamedIndividual ;
         rdfs:comment           "Specifies the file size of the document for standard IEC 61334-3-21:1996 "@en ;
         rdfs:label             "FileSize IEC 61334-3-21:1996 "@en ;
         om2:hasNumericalValue  "1112.0"^^xsd:float ;
@@ -2255,7 +2259,7 @@ sto:IEC_62832  a                   sto:TechnicalSpecification , owl:NamedIndivid
         sto:hasStabilityDate       "2020"^^xsd:gYear ;
         sto:hasTechnicalCommittee  sto:TC_65 .
 
-sto:ISO_15531-3x  a        sto:StandardPart , owl:NamedIndividual ;
+sto:ISO_15531-3x  a        owl:NamedIndividual , sto:StandardPart ;
         rdfs:comment       "Manufacturing resource usage management data : refering to the way of managing the use of resources, such as resource configuration and capabilities, operation management of manufacturing devices, installations and facilities."@en ;
         rdfs:isDefinedBy   "https://www.researchgate.net/publication/220171079_ISO_15531_MANDATE_a_standardised_data_model_for_manufacturing_management" ;
         rdfs:label         "ISO 15531 3x series"@en ;
@@ -2280,7 +2284,7 @@ sto:IEC_60870_P5_S3_1992
         sto:hasTitle               "Telecontrol equipment and systems - Part 5: Transmission protocols - Section 3: General structure of application data"@en ;
         sto:hasWikipediaArticle    <https://en.wikipedia.org/wiki/IEC_60870> .
 
-sto:ISO_11783  a                 sto:Standard , owl:NamedIndividual ;
+sto:ISO_11783  a                 owl:NamedIndividual , sto:Standard ;
         rdfs:comment             "ISO 11783, known as Tractors and machinery for agriculture and forestry—Serial control and communications data network is a communication protocol for the agriculture industry based on the SAE J1939 protocol (which includes CANbus)."@en ;
         rdfs:label               "ISO 11783"@en ;
         sto:hasDBpediaResource   "http://dbpedia.org/resource/ISO_11783" ;
@@ -2291,11 +2295,11 @@ sto:ISO_11783  a                 sto:Standard , owl:NamedIndividual ;
 
 dbr:_North_Carolina  a  owl:NamedIndividual .
 
-rami:Functional  a         rami:RAMIITLayer , owl:NamedIndividual ;
+rami:Functional  a         owl:NamedIndividual , rami:RAMIITLayer ;
         sto:isDescribedin  sto:RAMI40 .
 
 sto:FileSizeIEC_61690_P2_2000
-        a                      owl:NamedIndividual , om2:Measure ;
+        a                      om2:Measure , owl:NamedIndividual ;
         rdfs:comment           "Specifies the file size of the document for standard IEC 61690-2:2000 ."@en ;
         rdfs:label             "FileSize IEC 61690-2:2000 "@en ;
         om2:hasNumericalValue  "6700.0"^^xsd:float ;
@@ -2330,7 +2334,7 @@ sto:IEC_60038_2009  a                sto:Standard , owl:NamedIndividual ;
         sto:hasWikipediaArticle      <https://en.wikipedia.org/wiki/IEC_60038> .
 
 sto:FileSizeIEC_61000_P6_S2_2016
-        a                      owl:NamedIndividual , om2:Measure ;
+        a                      om2:Measure , owl:NamedIndividual ;
         rdfs:comment           "Specifies the file size of the document for standard IEC 61000-6-2:2016."@en ;
         rdfs:label             "FileSize IEC 61000-6-2:2016"@en ;
         om2:hasNumericalValue  "2028.0"^^xsd:float ;
@@ -2378,20 +2382,20 @@ sto:IEC_60870_P6_S503_2014
         sto:hasWikipediaArticle    <https://en.wikipedia.org/wiki/IEC_60870> .
 
 sto:FileSizeIEC_61334_1998_P3_S1
-        a                      owl:NamedIndividual , om2:Measure ;
+        a                      om2:Measure , owl:NamedIndividual ;
         rdfs:comment           "Specifies the file size of the document for standard IEC 61334-3-1:1998 "@en ;
         rdfs:label             "FileSize IEC 61334-3-1:1998 "@en ;
         om2:hasNumericalValue  "147.0"^^xsd:float ;
         om2:hasUnit            om2:kilobyte .
 
 sto:FileSizeIEC_60204_2000
-        a                      om2:Measure , owl:NamedIndividual ;
+        a                      owl:NamedIndividual , om2:Measure ;
         rdfs:comment           "Specifies the file size of the document for standard IEC 60204:2000"@en ;
         rdfs:label             "FileSize IEC 60204:2000"@en ;
         om2:hasNumericalValue  "494.0"^^xsd:float ;
         om2:hasUnit            om2:kilobyte .
 
-sto:TC_91  a          owl:NamedIndividual , sto:TechnicalCommittee ;
+sto:TC_91  a          sto:TechnicalCommittee , owl:NamedIndividual ;
         rdfs:comment  "To prepare international standards on design, manufacturing and testing of electronic assemblies including the requirements and tests for materials and components used to manufacture circuit boards and electronic assemblies, as well as the formats of electronic data and libraries for describing these products and processes."@en ;
         rdfs:label    "TC 91"@en ;
         sto:hasTitle  "Electronics assembly technology"@en .
@@ -2406,7 +2410,7 @@ sto:IEC_62337  a                 sto:Standard , owl:NamedIndividual ;
         sto:hasPublisher         sto:IEC .
 
 sto:FileSizeIEC_60870_P6_S501_1995
-        a                      owl:NamedIndividual , om2:Measure ;
+        a                      om2:Measure , owl:NamedIndividual ;
         rdfs:comment           "Specifies the file size of the document for standard IEC 60870-6-501:1995"@en ;
         rdfs:label             "FileSize IEC 60870-6-501:1995"@en ;
         om2:hasNumericalValue  "578.0"^^xsd:float ;
@@ -2415,7 +2419,7 @@ sto:FileSizeIEC_60870_P6_S501_1995
 deo:Motivation  a  owl:Class .
 
 sto:AdministrationShell
-        a             sto:StandardizationFramework , owl:NamedIndividual ;
+        a             owl:NamedIndividual , sto:StandardizationFramework ;
         rdfs:comment  "Represents the classifications of the standards according to the submodels of the administration shell."@en ;
         rdfs:label    "Administration Shell"@en .
 
@@ -2440,22 +2444,10 @@ sto:IEC_60382_1991  a                owl:NamedIndividual , sto:Standard ;
 dbr:Cologne  a  owl:NamedIndividual .
 
 sto:ProductCatalogData
-        a                  sto:ProductDevelopmentLifeCycle , owl:NamedIndividual ;
+        a                  owl:NamedIndividual , sto:ProductDevelopmentLifeCycle ;
         rdfs:comment       "Product catalog data standards support the description of particular instances of products or parts in a uniform, vendor-neutral way."@en ;
         rdfs:label         "Product Catalog Data"@en ;
         sto:isDescribedin  sto:NISTInitiative .
-
-dcterms:issued  a  owl:AnnotationProperty .
-
-sto:IEC_29182-1  a               sto:Standard , owl:NamedIndividual ;
-        rdfs:comment             "ISO/IEC 29182-1: provides a general overview of the characteristics of a sensor network and the organization of the entities that comprise such a network. It also describes the general requirements that are identified for sensor networks."@en ;
-        rdfs:label               "IEC 29182-1"@en ;
-        sto:hasClassification    rami:FieldDevice , rami:ControlDevice , rami:Communications , sto:ProductionSystemModelData ;
-        sto:hasDomain            sto:M2M ;
-        sto:hasOfficialResource  "https://www.iso.org/standard/45261.html" ;
-        sto:hasPublicationDate   "2013-06-01"^^xsd:date ;
-        sto:hasPublisher         sto:ISO , sto:IEC ;
-        sto:relatedTo            sto:IEC_61158 .
 
 sto:IEC_60870_P5_S104_2016
         a                          owl:NamedIndividual , sto:Standard ;
@@ -2476,18 +2468,23 @@ sto:IEC_60870_P5_S104_2016
         sto:hasTitle               "Telecontrol equipment and systems - Part 5-104: Transmission protocols - Network access for IEC 60870-5-101 using standardtransport profiles"@en ;
         sto:hasWikipediaArticle    <https://en.wikipedia.org/wiki/IEC_60870> .
 
+sto:IEC_29182-1  a               sto:Standard , owl:NamedIndividual ;
+        rdfs:comment             "ISO/IEC 29182-1: provides a general overview of the characteristics of a sensor network and the organization of the entities that comprise such a network. It also describes the general requirements that are identified for sensor networks."@en ;
+        rdfs:label               "IEC 29182-1"@en ;
+        sto:hasClassification    rami:FieldDevice , rami:ControlDevice , rami:Communications , sto:ProductionSystemModelData ;
+        sto:hasDomain            sto:M2M ;
+        sto:hasOfficialResource  "https://www.iso.org/standard/45261.html" ;
+        sto:hasPublicationDate   "2013-06-01"^^xsd:date ;
+        sto:hasPublisher         sto:ISO , sto:IEC ;
+        sto:relatedTo            sto:IEC_61158 .
+
+dcterms:issued  a  owl:AnnotationProperty .
+
 sto:hasDBpediaResource
         a             owl:DatatypeProperty ;
         rdfs:comment  "Instance's DBpedia Resource"@en ;
         rdfs:label    "has DBpedia Resource"@en ;
         rdfs:range    xsd:string .
-
-sto:hasClassification
-        a             owl:ObjectProperty ;
-        rdfs:comment  "An Standard is isCategorizedBy a given Categorization Area which is connected to a specific Standarization Initiative"@en ;
-        rdfs:domain   sto:Standard ;
-        rdfs:label    "has Classification"@en ;
-        rdfs:range    sto:StandardClassification .
 
 sto:IEC_60870_P2_S2_1996
         a                          sto:Standard , owl:NamedIndividual ;
@@ -2508,7 +2505,21 @@ sto:IEC_60870_P2_S2_1996
         sto:hasTitle               "Telecontrol equipment and systems - Part 2: Operating conditions -Section 2: Environmental conditions (climatic, mechanical and othernon electrical influences)"@en ;
         sto:hasWikipediaArticle    <https://en.wikipedia.org/wiki/IEC_60870> .
 
-sto:IEC_62591  a                 sto:Standard , owl:NamedIndividual ;
+sto:hasClassification
+        a             owl:ObjectProperty ;
+        rdfs:comment  "An Standard is isCategorizedBy a given Categorization Area which is connected to a specific Standarization Initiative"@en ;
+        rdfs:domain   sto:Standard ;
+        rdfs:label    "has Classification"@en ;
+        rdfs:range    sto:StandardClassification .
+
+sto:FileSizeIEC_61010_P2_S202_2016
+        a                      om2:Measure , owl:NamedIndividual ;
+        rdfs:comment           "Specifies the file size of the document for standard IEC 61010-2-202:2016."@en ;
+        rdfs:label             "FileSize IEC 61010-2-202:2016"@en ;
+        om2:hasNumericalValue  "1027.0"^^xsd:float ;
+        om2:hasUnit            om2:kilobyte .
+
+sto:IEC_62591  a                 owl:NamedIndividual , sto:Standard ;
         rdfs:comment             "Industrial networks - Wireless communication network and communication profiles."@en ;
         rdfs:label               "IEC 62591"@en ;
         sto:hasDBpediaResource   "http://dbpedia.org/page/WirelessHART" ;
@@ -2516,19 +2527,12 @@ sto:IEC_62591  a                 sto:Standard , owl:NamedIndividual ;
         sto:hasPublisher         sto:IEC ;
         sto:hasWikipediaArticle  "https://en.wikipedia.org/wiki/WirelessHART" .
 
-sto:FileSizeIEC_61010_P2_S202_2016
-        a                      owl:NamedIndividual , om2:Measure ;
-        rdfs:comment           "Specifies the file size of the document for standard IEC 61010-2-202:2016."@en ;
-        rdfs:label             "FileSize IEC 61010-2-202:2016"@en ;
-        om2:hasNumericalValue  "1027.0"^^xsd:float ;
-        om2:hasUnit            om2:kilobyte .
-
-sto:MOMLevel  a          sto:ISA95Level , owl:NamedIndividual ;
+sto:MOMLevel  a          owl:NamedIndividual , sto:ISA95Level ;
         rdfs:comment     "Describes the MOM level according to the ISA95 level classification."@en ;
         rdfs:label       "MOM Level"@en ;
         skos:definition  "Manufacturing Operation Management Level according to ISA 95"@en .
 
-sto:ISO_14443  a      sto:Standard , owl:NamedIndividual ;
+sto:ISO_14443  a      owl:NamedIndividual , sto:Standard ;
         rdfs:comment  "ISO 14443 Identification cards -- Contactless integrated circuit cards -- Proximity cards is an international standard that defines proximity cards used for identification, and the transmission protocols for communicating with it"@en ;
         rdfs:label    "ISO 14443"@en .
 
@@ -2542,7 +2546,7 @@ dcterms:hasLicense  a       owl:ObjectProperty ;
         dcterms:issued      "2004-06-14"^^xsd:date ;
         dcterms:modified    "2017-12-19"^^xsd:date .
 
-sto:ASME_Y1441  a                sto:Standard , owl:NamedIndividual ;
+sto:ASME_Y1441  a                owl:NamedIndividual , sto:Standard ;
         rdfs:comment             "ASME Y14.41 establishs requirements for model-based definition upon CAD software and those who use CAD software to create product definition within the 3D model."@en ;
         rdfs:label               "ASME Y14.41"@en ;
         sto:hasClassification    sto:ModelingPractice ;
@@ -2551,7 +2555,7 @@ sto:ASME_Y1441  a                sto:Standard , owl:NamedIndividual ;
         sto:hasPublisher         sto:ASME ;
         sto:hasWikipediaArticle  "https://en.wikipedia.org/wiki/ASME_Y14.41" .
 
-sto:ICS_01_060  a     sto:InternationalClassificationForStandards , owl:NamedIndividual ;
+sto:ICS_01_060  a     owl:NamedIndividual , sto:InternationalClassificationForStandards ;
         rdfs:comment  "This is ICS for Quantities and units"@en ;
         rdfs:label    "ICS 01.060"@en ;
         sto:hasTitle  "Quantities and units "@en .
@@ -2566,11 +2570,11 @@ sto:ISO_22400  a                 owl:NamedIndividual , sto:Standard ;
         sto:hasPublisher         sto:ISO ;
         sto:relatedTo            sto:IEC_62541 .
 
-sto:FileSizeIEC_60255_149_2013
+sto:FileSizeIEC_60870_P6_S502_1995
         a                      om2:Measure , owl:NamedIndividual ;
-        rdfs:comment           "Specifies the file size of the document for standard IEC 60255-149:2013 "@en ;
-        rdfs:label             "FileSize 60255-149:2013"@en ;
-        om2:hasNumericalValue  "1722.0"^^xsd:float ;
+        rdfs:comment           "Specifies the file size of the document for standard IEC 60870-6-502:1995"@en ;
+        rdfs:label             "FileSize IEC 60870-6-502:1995"@en ;
+        om2:hasNumericalValue  "1963.0"^^xsd:float ;
         om2:hasUnit            om2:kilobyte .
 
 sto:MIIT  a                      owl:NamedIndividual , sto:StandardOrganization ;
@@ -2584,11 +2588,11 @@ sto:MIIT  a                      owl:NamedIndividual , sto:StandardOrganization 
         sto:hasWikipediaArticle  "https://en.wikipedia.org/wiki/Ministry_of_Industry_and_Information_Technology" ;
         sto:orgName              "Ministry of Industry and Information Technology"@en .
 
-sto:FileSizeIEC_60870_P6_S502_1995
+sto:FileSizeIEC_60255_149_2013
         a                      owl:NamedIndividual , om2:Measure ;
-        rdfs:comment           "Specifies the file size of the document for standard IEC 60870-6-502:1995"@en ;
-        rdfs:label             "FileSize IEC 60870-6-502:1995"@en ;
-        om2:hasNumericalValue  "1963.0"^^xsd:float ;
+        rdfs:comment           "Specifies the file size of the document for standard IEC 60255-149:2013 "@en ;
+        rdfs:label             "FileSize 60255-149:2013"@en ;
+        om2:hasNumericalValue  "1722.0"^^xsd:float ;
         om2:hasUnit            om2:kilobyte .
 
 sto:IEC_81714  a                 owl:NamedIndividual , sto:Standard ;
@@ -2608,22 +2612,22 @@ rami:AdminShellSubmodel
         rdfs:subClassOf   sto:StandardClassification .
 
 sto:FileSizeIEC_61334_1996_P4_S42
-        a                      owl:NamedIndividual , om2:Measure ;
+        a                      om2:Measure , owl:NamedIndividual ;
         rdfs:comment           "Specifies the file size of the document for standard IEC 61334-4-42:1996"@en ;
         rdfs:label             "FileSize IEC 61334-4-42:1996"@en ;
         om2:hasNumericalValue  "305.0"^^xsd:float ;
         om2:hasUnit            om2:kilobyte .
 
-sto:SCM  a                 sto:BusinessCycleSCM , owl:NamedIndividual ;
+sto:SCM  a                 owl:NamedIndividual , sto:BusinessCycleSCM ;
         rdfs:comment       "Describes Plan-Source-Make-Deliver-Return cycle for managing the manufacturing supply chain."@en ;
         rdfs:label         "Supply Chain Management"@en ;
         sto:isDescribedin  sto:NISTInitiative .
 
-sto:EnterpriseLevel  a  sto:ISA95Level , owl:NamedIndividual ;
+sto:EnterpriseLevel  a  owl:NamedIndividual , sto:ISA95Level ;
         rdfs:comment  "Describes the Enterprise level according to the ISA95 level classification."@en ;
         rdfs:label    "Enterprise Level"@en .
 
-sto:TC_25  a          sto:TechnicalCommittee , owl:NamedIndividual ;
+sto:TC_25  a          owl:NamedIndividual , sto:TechnicalCommittee ;
         rdfs:comment  "To prepare international standards on quantities and units to be used in electrical technology. Such standards may relate to their definitions, names, letter symbols and use; to the relations in which they appear; and to the signs and symbols used with them."@en ;
         rdfs:label    "TC 25"@en ;
         sto:hasTitle  "Quantities and units"@en .
@@ -2647,18 +2651,23 @@ sto:IEC_61334_P6_2000
         sto:hasTitle               "Distribution automation using distribution line carrier systems - Part 6: A-XDR encoding rule"@en ;
         sto:hasWikipediaArticle    <https://en.wikipedia.org/wiki/IEC_61334> .
 
-sto:ICS_13_110  a     owl:NamedIndividual , sto:InternationalClassificationForStandards ;
+skos:altLabel  a  owl:AnnotationProperty .
+
+sto:ICS_13_110  a     sto:InternationalClassificationForStandards , owl:NamedIndividual ;
         rdfs:comment  "This is ICS for Safety of machinery "@en ;
         rdfs:label    "ICS 13.110"@en ;
         sto:hasTitle  "Safety of machinery"@en .
-
-skos:altLabel  a  owl:AnnotationProperty .
 
 sto:hasObjective  a   owl:DatatypeProperty ;
         rdfs:comment  "Specifies the objectives for the different ISA 95 levels."@en ;
         rdfs:domain   sto:ISA95Level ;
         rdfs:label    "has Objective"@en ;
         rdfs:range    xsd:string .
+
+sto:ICS_31_020  a     owl:NamedIndividual , sto:InternationalClassificationForStandards ;
+        rdfs:comment  "This is ICS for Electronic components in general "@en ;
+        rdfs:label    "ICS 31.020"@en ;
+        sto:hasTitle  "Electronic components in general "@en .
 
 sto:IEC_61512  a                 owl:NamedIndividual , sto:Standard ;
         rdfs:comment             "Batch control - Models and terminology"@en ;
@@ -2671,13 +2680,8 @@ sto:IEC_61512  a                 owl:NamedIndividual , sto:Standard ;
         sto:hasTag               "ISA-88"@en ;
         sto:hasWikipediaArticle  "https://en.wikipedia.org/wiki/ISA-88" .
 
-sto:ICS_31_020  a     sto:InternationalClassificationForStandards , owl:NamedIndividual ;
-        rdfs:comment  "This is ICS for Electronic components in general "@en ;
-        rdfs:label    "ICS 31.020"@en ;
-        sto:hasTitle  "Electronic components in general "@en .
-
 sto:FileSizeIEC_60286_3_2013
-        a                      om2:Measure , owl:NamedIndividual ;
+        a                      owl:NamedIndividual , om2:Measure ;
         rdfs:comment           "Specifies the file size of the document for standard IEC IEC 60286-3:2013 "@en ;
         rdfs:label             "FileSize IEC 60286-3:2013  "@en ;
         om2:hasNumericalValue  "1764.0"^^xsd:float ;
@@ -2710,7 +2714,7 @@ sto:IEC_60050_1998  a                owl:NamedIndividual , sto:Standard ;
         sto:hasTitle                 "International Electrotechnical Vocabulary - Part 101: Mathematics"@en ;
         sto:hasWikipediaArticle      <https://en.wikipedia.org/wiki/International_Electrotechnical_Vocabulary> .
 
-sto:ISO_20140_5  a               sto:Standard , owl:NamedIndividual ;
+sto:ISO_20140_5  a               owl:NamedIndividual , sto:Standard ;
         rdfs:comment             "Automation systems and integration -- Evaluating energy efficiency and other factors of manufacturing systems that influence the environment"@en ;
         rdfs:label               "ISO 20140-5"@en ;
         sto:hasClassification    rami:EnergyEfficiency ;
@@ -2721,19 +2725,23 @@ sto:ISO_20140_5  a               sto:Standard , owl:NamedIndividual ;
 cc:attributionURL  a  owl:AnnotationProperty .
 
 sto:FileSizeIEC_60870_P5_S103_1997
-        a                      owl:NamedIndividual , om2:Measure ;
+        a                      om2:Measure , owl:NamedIndividual ;
         rdfs:comment           "Specifies the file size of the document for standard IEC 60870-5-103:1997"@en ;
         rdfs:label             "FileSize IEC 60870-5-103:1997"@en ;
         om2:hasNumericalValue  "964.0"^^xsd:float ;
         om2:hasUnit            om2:kilobyte .
 
-sto:IEC_61850  a                 sto:Standard , owl:NamedIndividual ;
-        rdfs:comment             "IEC 61850 is a standard for vendor-agnostic engineering of the configuration of Intelligent Electronic Devices for electrical substation automation systems to be able to communicate with each other.."@en ;
-        rdfs:label               "IEC 61850"@en ;
-        sto:hasDBpediaResource   "http://dbpedia.org/page/IEC_61850" ;
-        sto:hasOfficialResource  "https://webstore.iec.ch/publication/4550" ;
+sto:IEC_61499  a                 owl:NamedIndividual , sto:Standard ;
+        rdfs:comment             "Function Blocks - Architecture Related Applications http://www.eclipse.org/4diac/ (sourceforge.net/projects/oooneida-fbench/) http://timeme.io/  not accepted by the Industry yet. http://www.holobloc.com/Proposed for IEC to overcome the restricctions of IEC 61131"@en ;
+        rdfs:label               "IEC 61499"@en ;
+        sto:hasClassification    rami:FieldDevice , rami:ControlDevice ;
+        sto:hasDBpediaResource   "http://dbpedia.org/resource/IEC_61499" ;
+        sto:hasMotivation        "Functional description, informational representation and communication mapping of application functionality. This standard describes how a distributed control application is composed of functional units (FB), which are executed in different context. It may help to describe how functions are distributed between different I40-Components and how the execution of the functions between the different I40-Components is controled."@en ;
+        sto:hasOfficialResource  "https://webstore.iec.ch/publication/5506" ;
         sto:hasPublisher         sto:IEC ;
-        sto:hasWikipediaArticle  "https://en.wikipedia.org/wiki/IEC_61850" .
+        sto:hasTag               "FBs distributed systems"@en ;
+        sto:hasWikipediaArticle  "https://en.wikipedia.org/wiki/IEC_61499" ;
+        sto:relatedTo            sto:IEC_62541 , sto:IEC_61131 .
 
 sto:IEC_61000_P6_S2_2016
         a                          sto:Standard , owl:NamedIndividual ;
@@ -2752,17 +2760,13 @@ sto:IEC_61000_P6_S2_2016
         sto:hasTechnicalCommittee  sto:TC_77 ;
         sto:hasTitle               "Electromagnetic compatibility (EMC) - Part 6-2: Generic standards - Immunity standard for industrial environments"@en .
 
-sto:IEC_61499  a                 owl:NamedIndividual , sto:Standard ;
-        rdfs:comment             "Function Blocks - Architecture Related Applications http://www.eclipse.org/4diac/ (sourceforge.net/projects/oooneida-fbench/) http://timeme.io/  not accepted by the Industry yet. http://www.holobloc.com/Proposed for IEC to overcome the restricctions of IEC 61131"@en ;
-        rdfs:label               "IEC 61499"@en ;
-        sto:hasClassification    rami:FieldDevice , rami:ControlDevice ;
-        sto:hasDBpediaResource   "http://dbpedia.org/resource/IEC_61499" ;
-        sto:hasMotivation        "Functional description, informational representation and communication mapping of application functionality. This standard describes how a distributed control application is composed of functional units (FB), which are executed in different context. It may help to describe how functions are distributed between different I40-Components and how the execution of the functions between the different I40-Components is controled."@en ;
-        sto:hasOfficialResource  "https://webstore.iec.ch/publication/5506" ;
+sto:IEC_61850  a                 owl:NamedIndividual , sto:Standard ;
+        rdfs:comment             "IEC 61850 is a standard for vendor-agnostic engineering of the configuration of Intelligent Electronic Devices for electrical substation automation systems to be able to communicate with each other.."@en ;
+        rdfs:label               "IEC 61850"@en ;
+        sto:hasDBpediaResource   "http://dbpedia.org/page/IEC_61850" ;
+        sto:hasOfficialResource  "https://webstore.iec.ch/publication/4550" ;
         sto:hasPublisher         sto:IEC ;
-        sto:hasTag               "FBs distributed systems"@en ;
-        sto:hasWikipediaArticle  "https://en.wikipedia.org/wiki/IEC_61499" ;
-        sto:relatedTo            sto:IEC_62541 , sto:IEC_61131 .
+        sto:hasWikipediaArticle  "https://en.wikipedia.org/wiki/IEC_61850" .
 
 sto:useStructureOf  a       owl:ObjectProperty ;
         rdfs:comment        "Standard A uses the structure of Standard B. For example, OPC UA uses Structure Of IEC_61804 (EDDL)"@en ;
@@ -2770,7 +2774,7 @@ sto:useStructureOf  a       owl:ObjectProperty ;
         rdfs:subPropertyOf  sto:relatedTo .
 
 sto:FileSizeIEC_60870_1992_P5_S2
-        a                      owl:NamedIndividual , om2:Measure ;
+        a                      om2:Measure , owl:NamedIndividual ;
         rdfs:comment           "Specifies the file size of the document for standard IEC 60870-5-2:1992"@en ;
         rdfs:label             "FileSize IEC 60870-5-2:1992"@en ;
         om2:hasNumericalValue  "3658.0"^^xsd:float ;
@@ -2786,7 +2790,7 @@ sto:ISO_15704  a                 sto:Standard , owl:NamedIndividual ;
         sto:hasPublisher         sto:ISO ;
         sto:relatedTo            sto:ISO_19439 , sto:ISO_13374 .
 
-rami:LifecycleStatus  a    rami:AdminShellSubmodel , owl:NamedIndividual ;
+rami:LifecycleStatus  a    owl:NamedIndividual , rami:AdminShellSubmodel ;
         sto:isDescribedin  sto:AdministrationShell .
 
 sto:ETSI_ULE  a                  sto:Standard , owl:NamedIndividual ;
@@ -2803,7 +2807,7 @@ sto:ETSI_ULE  a                  sto:Standard , owl:NamedIndividual ;
 sto:edition  a  owl:AnnotationProperty .
 
 sto:FileSizeIEC_60027_2006
-        a                      om2:Measure , owl:NamedIndividual ;
+        a                      owl:NamedIndividual , om2:Measure ;
         rdfs:comment           "Specifies the file size of the document for standard IEC 60027:2006"@en ;
         rdfs:label             "FileSize IEC 60027:2006"@en ;
         om2:hasNumericalValue  "661.0"^^xsd:float ;
@@ -2818,10 +2822,17 @@ sto:isImplementationOf
 sto:ProcessPlanning  a  owl:NamedIndividual .
 
 sto:FileSizeIEC_60870_P6_S702_2014
-        a                      owl:NamedIndividual , om2:Measure ;
+        a                      om2:Measure , owl:NamedIndividual ;
         rdfs:comment           "Specifies the file size of the document for standard IEC 60870-6-702:2014"@en ;
         rdfs:label             "FileSize IEC 60870-6-702:2014"@en ;
         om2:hasNumericalValue  "1374.0"^^xsd:float ;
+        om2:hasUnit            om2:kilobyte .
+
+sto:FileSizeIEC_61334_1998_P4_S61
+        a                      om2:Measure , owl:NamedIndividual ;
+        rdfs:comment           "Specifies the file size of the document for standard IEC 61334-4-61:1998"@en ;
+        rdfs:label             "FileSize IEC 61334-4-61:1998"@en ;
+        om2:hasNumericalValue  "753.0"^^xsd:float ;
         om2:hasUnit            om2:kilobyte .
 
 sto:OPC_Foundation  a            owl:NamedIndividual , sto:StandardOrganization ;
@@ -2835,17 +2846,10 @@ sto:OPC_Foundation  a            owl:NamedIndividual , sto:StandardOrganization 
         sto:hasWikipediaArticle  "https://en.wikipedia.org/wiki/OPC_Foundation" ;
         sto:orgName              "OPC Foundation"@en .
 
-sto:FileSizeIEC_61334_1998_P4_S61
-        a                      owl:NamedIndividual , om2:Measure ;
-        rdfs:comment           "Specifies the file size of the document for standard IEC 61334-4-61:1998"@en ;
-        rdfs:label             "FileSize IEC 61334-4-61:1998"@en ;
-        om2:hasNumericalValue  "753.0"^^xsd:float ;
-        om2:hasUnit            om2:kilobyte .
-
 foaf:Organization  a  owl:Class .
 
 sto:TechnicalCommittee
-        a                 owl:NamedIndividual , owl:Class ;
+        a                 owl:Class , owl:NamedIndividual ;
         rdfs:comment      "Specifies the representitive code name of the Technical Committee that covers a Standard for e.g, TC 1, SC 3C. Many thousand experts carry out standardization work in the IEC in TCs (technical committees) and SCs (subcommittees), in hundreds of working groups, project and maintenance teams. They represent the national electrotechnical needs of IEC Member countries and of many Affiliates at the global level in the IEC. These technical experts are sent by industry, governments, test and research laboratories, academia and even consumer groups to work on the global, neutral and independent platform of the IEC. That's where they develop globally relevant, voluntary, consensus based IEC International Standards."@en ;
         rdfs:isDefinedBy  sto:IEC ;
         rdfs:label        "Technical Committe"@en ;
@@ -2854,7 +2858,7 @@ sto:TechnicalCommittee
         sto:abbreviation  "TC" ;
         sto:hasTitle      xsd:string .
 
-sto:ICS_29_020  a     owl:NamedIndividual , sto:InternationalClassificationForStandards ;
+sto:ICS_29_020  a     sto:InternationalClassificationForStandards , owl:NamedIndividual ;
         rdfs:comment  "This is ICS for Electrical engineering in general"@en ;
         rdfs:label    "ICS 29.020"@en ;
         sto:hasTitle  "Electrical engineering in general "@en .
@@ -2870,7 +2874,7 @@ sto:ISO_15746  a                 sto:Standard , owl:NamedIndividual ;
         sto:relatedTo            sto:ISO_15926 .
 
 sto:FileSizeIEC_60286_5_2018
-        a                      om2:Measure , owl:NamedIndividual ;
+        a                      owl:NamedIndividual , om2:Measure ;
         rdfs:comment           "Specifies the file size of the document for standard IEC IEC 60286-5:2018 "@en ;
         rdfs:label             "FileSize IEC 60286-5:2018  "@en ;
         om2:hasNumericalValue  "3481.0"^^xsd:float ;
@@ -2878,18 +2882,27 @@ sto:FileSizeIEC_60286_5_2018
 
 muto:Tag  a     owl:Class .
 
-sto:hasTag  a         owl:DatatypeProperty , owl:ObjectProperty ;
+sto:hasTag  a         owl:ObjectProperty , owl:DatatypeProperty ;
         rdfs:comment  "Points to the identification of the standards"@en ;
         rdfs:domain   sto:Publication ;
         rdfs:label    "has Tag"@en ;
-        rdfs:range    rdfs:Literal , muto:Tag .
+        rdfs:range    muto:Tag , rdfs:Literal .
 
 sto:FileSizeIEC_61334_1996_P3_S22
-        a                      owl:NamedIndividual , om2:Measure ;
+        a                      om2:Measure , owl:NamedIndividual ;
         rdfs:comment           "Specifies the file size of the document for standard IEC 61334-3-22:2001"@en ;
         rdfs:label             "FileSize IEC 61334-4-1:1996"@en ;
         om2:hasNumericalValue  "165.0"^^xsd:float ;
         om2:hasUnit            om2:kilobyte .
+
+rami:WorkCenter  a         owl:NamedIndividual , rami:RAMIHierarchyLevel ;
+        sto:isDescribedin  sto:RAMI40 .
+
+sto:ASAM_ODS  a                  owl:NamedIndividual , sto:Standard ;
+        rdfs:comment             "Set up a test data management system on top of test systems that produce measured or calculated data from testing activities"@en ;
+        rdfs:label               "ASAM ODS"@en ;
+        sto:hasOfficialResource  "https://wiki.asam.net/display/STANDARDS/ASAM+ODS" ;
+        sto:hasPublisher         sto:ASAM .
 
 sto:SCOR  a                      owl:NamedIndividual , sto:Standard ;
         rdfs:comment             "APICS Supply Chain Operations Reference."@en ;
@@ -2900,24 +2913,6 @@ sto:SCOR  a                      owl:NamedIndividual , sto:Standard ;
         sto:hasOfficialResource  "http://www.apics.org/apics-for-business/products-and-services/apics-scc-frameworks/scor" ;
         sto:hasTag               "SCOR"@en ;
         sto:hasWikipediaArticle  "https://en.wikipedia.org/wiki/Supply-chain_operations_reference" .
-
-sto:ASAM_ODS  a                  sto:Standard , owl:NamedIndividual ;
-        rdfs:comment             "Set up a test data management system on top of test systems that produce measured or calculated data from testing activities"@en ;
-        rdfs:label               "ASAM ODS"@en ;
-        sto:hasOfficialResource  "https://wiki.asam.net/display/STANDARDS/ASAM+ODS" ;
-        sto:hasPublisher         sto:ASAM .
-
-rami:WorkCenter  a         rami:RAMIHierarchyLevel , owl:NamedIndividual ;
-        sto:isDescribedin  sto:RAMI40 .
-
-sto:ICS_29_120_70  a  sto:InternationalClassificationForStandards , owl:NamedIndividual ;
-        rdfs:comment  "This is ICS for Relays"@en ;
-        rdfs:label    "ICS 29.120.70"@en ;
-        sto:hasTitle  "Relays"@en .
-
-sto:ISA95  a          sto:StandardizationFramework , owl:NamedIndividual ;
-        rdfs:comment  "Describes the ISA95 as a Standarization Initiative that classifies Standards"@en ;
-        rdfs:label    "ISA 95"@en .
 
 sto:IEC_60870_P6_S2_1995
         a                          sto:Standard , owl:NamedIndividual ;
@@ -2938,27 +2933,41 @@ sto:IEC_60870_P6_S2_1995
         sto:hasTitle               "Telecontrol equipment and systems - Part 6: Telecontrol protocols compatible with ISO standards and ITU-T recommendations - Section 2: Use of basic standards (OSI layers 1-4)"@en ;
         sto:hasWikipediaArticle    <https://en.wikipedia.org/wiki/IEC_60870> .
 
-rami:Business  a           rami:RAMIITLayer , owl:NamedIndividual ;
+sto:ISA95  a          owl:NamedIndividual , sto:StandardizationFramework ;
+        rdfs:comment  "Describes the ISA95 as a Standarization Initiative that classifies Standards"@en ;
+        rdfs:label    "ISA 95"@en .
+
+sto:ICS_29_120_70  a  owl:NamedIndividual , sto:InternationalClassificationForStandards ;
+        rdfs:comment  "This is ICS for Relays"@en ;
+        rdfs:label    "ICS 29.120.70"@en ;
+        sto:hasTitle  "Relays"@en .
+
+rami:Business  a           owl:NamedIndividual , rami:RAMIITLayer ;
         sto:isDescribedin  sto:RAMI40 .
 
 sto:FileSizeIEC_61010_P2_S201_2017
-        a                      owl:NamedIndividual , om2:Measure ;
+        a                      om2:Measure , owl:NamedIndividual ;
         rdfs:comment           "Specifies the file size of the document for standard IEC 61010-2-201:2017."@en ;
         rdfs:label             "FileSize IEC 61010-2-201:2017"@en ;
         om2:hasNumericalValue  "5743.0"^^xsd:float ;
         om2:hasUnit            om2:kilobyte .
 
+sto:TC_103  a         owl:NamedIndividual , sto:TechnicalCommittee ;
+        rdfs:comment  "Standardization of transmitting equipment for radiocom-\n\nmunications purposes and electronic devices employing similar\ntechniques. The standardization work deals with methods of\nmeasurement, safety requirements and transmitter control and\nInterconnection"@en ;
+        rdfs:label    "TC 103"@en ;
+        sto:hasTitle  "Transmitting equipment for radiocommunication"@en .
+
 sto:FileSizeIEC_60286_4_2013
-        a                      om2:Measure , owl:NamedIndividual ;
+        a                      owl:NamedIndividual , om2:Measure ;
         rdfs:comment           "Specifies the file size of the document for standard IEC IEC 60286-4:2013 "@en ;
         rdfs:label             "FileSize IEC 60286-4:2013  "@en ;
         om2:hasNumericalValue  "1129.0"^^xsd:float ;
         om2:hasUnit            om2:kilobyte .
 
-rami:ConnectedWorld  a     rami:RAMIHierarchyLevel , owl:NamedIndividual ;
+rami:ConnectedWorld  a     owl:NamedIndividual , rami:RAMIHierarchyLevel ;
         sto:isDescribedin  sto:RAMI40 .
 
-sto:CrossLevel  a          sto:ISA95Level , owl:NamedIndividual ;
+sto:CrossLevel  a          owl:NamedIndividual , sto:ISA95Level ;
         rdfs:comment       "Describes the cross-level according to the ISA95 level classification. It means standards that are used at more than one level, e.g., manufacturing system security, etc"@en ;
         rdfs:label         "Cross Level"@en ;
         sto:isDescribedin  sto:ISA95 .
@@ -3001,22 +3010,22 @@ sto:IEC_62453  a                 owl:NamedIndividual , sto:Standard ;
         sto:hasTag               "FDT"@en .
 
 sto:FileSizeIEC_62832
-        a                      om2:Measure , owl:NamedIndividual ;
+        a                      owl:NamedIndividual , om2:Measure ;
         om2:hasNumericalValue  "2722.0"^^xsd:float ;
         om2:hasUnit            om2:kilobyte .
 
 dbr:New_York_City  a  owl:NamedIndividual .
 
+xsd:string  a   owl:NamedIndividual .
+
 sto:ProductionSystemMaintenance
-        a                  sto:ProductionSystemLifeCycle , owl:NamedIndividual ;
+        a                  owl:NamedIndividual , sto:ProductionSystemLifeCycle ;
         rdfs:comment       "Classifies standards define data processing, communication, and presentation standards for condition monitoring and diagnostics of machines, for maintaining the adequate performance of the system, and for searching ways to improve performance"@en ;
         rdfs:label         "Production System Maintenance"@en ;
         sto:isDescribedin  sto:NISTInitiative .
 
-xsd:string  a   owl:NamedIndividual .
-
 sto:FileSizeIEC_61334_1998_P4_S3
-        a                      owl:NamedIndividual , om2:Measure ;
+        a                      om2:Measure , owl:NamedIndividual ;
         rdfs:comment           "Specifies the file size of the document for standard IEC 61334-4-33:1998 "@en ;
         rdfs:label             "FileSize IEC 61334-4-33:1998"@en ;
         om2:hasNumericalValue  "135.0"^^xsd:float ;
@@ -3025,20 +3034,10 @@ sto:FileSizeIEC_61334_1998_P4_S3
 dbr:Frankfurt  a  owl:NamedIndividual .
 
 rami:InstanceProduction
-        a           rami:RAMILifeCycleLayer , owl:NamedIndividual ;
+        a           owl:NamedIndividual , rami:RAMILifeCycleLayer ;
         rdfs:label  "Instance Production"@en .
 
 dbr:Valbonne  a  owl:NamedIndividual .
-
-sto:ISO_14739-1  a               owl:NamedIndividual , sto:Standard ;
-        rdfs:comment             "Document management -- 3D use of Product Representation Compact (PRC) format-ISO 14739-1:2014 describes PRC 10001 of a product representation compact (PRC) file format for three dimensional (3D) content data. This format is designed to be included in PDF (ISO 32000) and other similar document formats for the purpose of 3D visualization and exchange. "@en ;
-        rdfs:label               "ISO 14739-1"@en ;
-        skos:altLabel            "STEP"@en ;
-        sto:hasClassification    sto:ProductModelDataExchange ;
-        sto:hasDomain            sto:CAD ;
-        sto:hasOfficialResource  "https://www.iso.org/standard/54948.html" ;
-        sto:hasPublicationDate   "2014-12-01"^^xsd:date ;
-        sto:hasPublisher         sto:ISO .
 
 sto:IEC_61690_P1_2000
         a                          sto:Standard , owl:NamedIndividual ;
@@ -3056,13 +3055,21 @@ sto:IEC_61690_P1_2000
         sto:hasTechnicalCommittee  sto:TC_91 ;
         sto:hasTitle               "Electronic design interchange format (EDIF) - Part 1: Version 3 0 0. (This publication is available in electronic HTML format only)"@en .
 
-sto:checkL  a   sto:Standard , owl:NamedIndividual .
+sto:ISO_14739-1  a               owl:NamedIndividual , sto:Standard ;
+        rdfs:comment             "Document management -- 3D use of Product Representation Compact (PRC) format-ISO 14739-1:2014 describes PRC 10001 of a product representation compact (PRC) file format for three dimensional (3D) content data. This format is designed to be included in PDF (ISO 32000) and other similar document formats for the purpose of 3D visualization and exchange. "@en ;
+        rdfs:label               "ISO 14739-1"@en ;
+        skos:altLabel            "STEP"@en ;
+        sto:hasClassification    sto:ProductModelDataExchange ;
+        sto:hasDomain            sto:CAD ;
+        sto:hasOfficialResource  "https://www.iso.org/standard/54948.html" ;
+        sto:hasPublicationDate   "2014-12-01"^^xsd:date ;
+        sto:hasPublisher         sto:ISO .
 
 rami:Lifecycle_Status
         a       owl:NamedIndividual .
 
 sto:FileSizeIEC_60870_1990_P5_S1
-        a                      owl:NamedIndividual , om2:Measure ;
+        a                      om2:Measure , owl:NamedIndividual ;
         rdfs:comment           "Specifies the file size of the document for standard IEC 60870-5-1:1990"@en ;
         rdfs:label             "FileSize IEC 60870-5-1:1990"@en ;
         om2:hasNumericalValue  "2954.0"^^xsd:float ;
@@ -3102,14 +3109,14 @@ sto:    a                              owl:Ontology , owl:NamedIndividual , sto:
         sto:hasTitle                   "IEC standard voltages"@en , "International Electrotechnical Vocabulary - Part 101: Mathematics"@en ;
         sto:hasWikipediaArticle        <https://en.wikipedia.org/wiki/IEC_60038> , <https://en.wikipedia.org/wiki/International_Electrotechnical_Vocabulary> .
 
-dbr:_Michigan  a  owl:NamedIndividual .
-
 sto:hasTechnicalCommittee
         a             owl:ObjectProperty ;
         rdfs:comment  "Specifies the Technical Committe or a Sub-Committee that is responsible for creation and maintenance of a standard"@en ;
         rdfs:domain   sto:Publication ;
         rdfs:label    "has Technical Committee"@en ;
         rdfs:range    sto:TechnicalCommittee .
+
+dbr:_Michigan  a  owl:NamedIndividual .
 
 sto:IEC_42010  a                 owl:NamedIndividual , sto:Standard ;
         rdfs:comment             "ISO/IEC/IEEE 42010:2011 defines requirements on the description of system, software and enterprise architectures. It aims to standardise the practice of architecture description by defining standard terms, presenting a conceptual foundation for expressing, communicating and reviewing architectures and specifying requirements that apply to architecture descriptions, architecture frameworks and architecture description languages."@en ;
@@ -3183,10 +3190,6 @@ sto:IEC_60381_1982  a                sto:Standard , owl:NamedIndividual ;
         sto:hasTechnicalCommittee    sto:TC_40 ;
         sto:hasTitle                 "Analogue signals for process control systems. Part 1: Direct current signals"@en .
 
-sto:FunctionalSafety  a  sto:Domain , owl:NamedIndividual ;
-        rdfs:comment  "Functional Safety"@en ;
-        rdfs:label    "Functional Safety"@en .
-
 sto:IEC_60870_P5_S1_1990
         a                          owl:NamedIndividual , sto:Standard ;
         rdfs:comment               "Covers asynchronous data transmission with half duplex and duplex link protocols operating with window size one for message transfers. Specifies the basic requirements for services to be provided by the link plus physical layers, for telecontrol applications. In particular it specifies standards on coding, formatting and synchronizing data frames of variable and filed lengths which meet specified data integrity requirements."@en ;
@@ -3206,19 +3209,23 @@ sto:IEC_60870_P5_S1_1990
         sto:hasTitle               "Telecontrol equipment and systems. Part 5: Transmission protocols - Section One: Transmission frame formats"@en ;
         sto:hasWikipediaArticle    <https://en.wikipedia.org/wiki/IEC_60870> .
 
+sto:FunctionalSafety  a  owl:NamedIndividual , sto:Domain ;
+        rdfs:comment  "Functional Safety"@en ;
+        rdfs:label    "Functional Safety"@en .
+
 sto:FileSizeIEC_60255_2013
-        a                      om2:Measure , owl:NamedIndividual ;
+        a                      owl:NamedIndividual , om2:Measure ;
         rdfs:comment           "Specifies the file size of the document for standard IEC 60255-27:2013"@en ;
         rdfs:label             "FileSize IEC 60255-27:2013"@en ;
         om2:hasNumericalValue  "2520.0"^^xsd:float ;
         om2:hasUnit            om2:kilobyte .
 
-sto:ISO_29161  a                 sto:Standard , owl:NamedIndividual ;
+sto:ISO_29161  a                 owl:NamedIndividual , sto:Standard ;
         rdfs:comment             "ISO/IEC 29161:2016 establishes a unique identification scheme for the Internet of Things (IoT), based on existing and evolving data structures."@en ;
         rdfs:label               "ISO 29161" ;
         sto:hasOfficialResource  "https://www.iso.org/standard/45240.html" .
 
-sto:TC_44  a          sto:TechnicalCommittee , owl:NamedIndividual ;
+sto:TC_44  a          owl:NamedIndividual , sto:TechnicalCommittee ;
         rdfs:comment  "Standardization in the field of the application of electro-technical equipment and systems to machinery (including a group of machines working together in a coordinated manner, excluding higher-level systems aspects) not portable by hand while working, but which may include mobile equipment. The equipment covered commences at the point of connection of the electrical supply to the machinery.Standardization of interfaces (excluding local area networks and fieldbus) between control equipment and the electro-technical equipment of machinery.Standardization of electrotechnical equipment and systems relating to the safeguarding of persons from hazards of the machinery, its associated equipment and the environment.To coordinate with ISO all matters concerning the safety of machinery.."@en ;
         rdfs:label    "TC 44"@en ;
         sto:hasTitle  "Safety of machinery - Electrotechnical aspects"@en .
@@ -3237,24 +3244,19 @@ sto:ISO_18629  a                 owl:NamedIndividual , sto:Standard ;
 
 dbr:Eumseong  a  owl:NamedIndividual .
 
-sto:RAMI40  a         sto:StandardizationFramework , owl:NamedIndividual ;
+sto:RAMI40  a         owl:NamedIndividual , sto:StandardizationFramework ;
         rdfs:comment  "Describes the Reference Architecture Model for Industry 4.0, i.e., the RAMI Initiative."@en ;
         rdfs:label    "RAMI 4.0"@en .
 
 dbr:_California  a  owl:NamedIndividual .
 
-sto:ISO_13485  a                 sto:Standard , owl:NamedIndividual ;
+sto:ISO_13485  a                 owl:NamedIndividual , sto:Standard ;
         rdfs:comment             "Medical devices -- Quality management systems -- Requirements for regulatory purposes."@en ;
         rdfs:label               "ISO 13485"@en ;
         sto:hasClassification    rami:Safety ;
         sto:hasDBpediaResource   "http://dbpedia.org/page/ISO_13485" ;
         sto:hasOfficialResource  "https://www.iso.org/iso-9001-quality-management.html" ;
         sto:hasPublisher         sto:ISO .
-
-sto:NISTInitiative  a     sto:StandardizationFramework , owl:NamedIndividual ;
-        rdfs:comment      "Describes the National Institute of Standards and Technology Initiative, i.e., NIST which provides a standard landascape"@en ;
-        rdfs:isDefinedBy  "http://nvlpubs.nist.gov/nistpubs/ir/2016/NIST.IR.8107.pdf" ;
-        rdfs:label        "NIST Initiative"@en .
 
 sto:hasStabilityDate  a  owl:DatatypeProperty ;
         rdfs:comment  "The contents of the publications will remain unchanged up to the Stability date. At this date, the publication will be either reconfirmed, withdrawn, replaced by a revised edition or amended. If there is a revision or amendment on-going then this is mentioned under the publication in the \"Work in progress\" tab, if you don't see this tab it means that there is no project under development."@en ;
@@ -3264,10 +3266,15 @@ sto:hasStabilityDate  a  owl:DatatypeProperty ;
         rdfs:seeAlso  <https://webstore.iec.ch/webstore/webstore.nsf/xpFAQ.xsp?Open&id=ADMN-7NALM5> ;
         skos:note     "The data specified is not actually a Date but an Year " .
 
-sto:DIN_SPEC_16592  a            sto:Standard , owl:NamedIndividual ;
+sto:NISTInitiative  a     owl:NamedIndividual , sto:StandardizationFramework ;
+        rdfs:comment      "Describes the National Institute of Standards and Technology Initiative, i.e., NIST which provides a standard landascape"@en ;
+        rdfs:isDefinedBy  "http://nvlpubs.nist.gov/nistpubs/ir/2016/NIST.IR.8107.pdf" ;
+        rdfs:label        "NIST Initiative"@en .
+
+sto:DIN_SPEC_16592  a            owl:NamedIndividual , sto:Standard ;
         rdfs:comment             "Combining OPC Unified Architecture and Automation Markup Language."@en ;
         rdfs:label               "DIN SPEC 16592"@en ;
-        prov:wasGeneratedBy      sto:IEC_62714 , sto:IEC_62541 ;
+        prov:wasGeneratedBy      sto:IEC_62541 , sto:IEC_62714 ;
         sto:hasDeveloper         sto:DIN ;
         sto:hasOfficialResource  <https://www.beuth.de/de/technische-regel/din-spec-16592/265597431> ;
         sto:hasPublisher         sto:DIN .
@@ -3302,13 +3309,13 @@ sto:hasICS  a         owl:ObjectProperty ;
         rdfs:range    sto:InternationalClassificationForStandards .
 
 sto:FileSizeIEC_60050_2013
-        a                      om2:Measure , owl:NamedIndividual ;
+        a                      owl:NamedIndividual , om2:Measure ;
         rdfs:comment           "Specifies the file size of the document for standard IEC 60050-351:2013 "@en ;
         rdfs:label             "FileSize IEC 60050-351:2013"@en ;
         om2:hasNumericalValue  "3999.0"^^xsd:float ;
         om2:hasUnit            om2:kilobyte .
 
-sto:TC_56  a          owl:NamedIndividual , sto:TechnicalCommittee ;
+sto:TC_56  a          sto:TechnicalCommittee , owl:NamedIndividual ;
         rdfs:comment  "To prepare international standards in the field of dependability, in all appropriate technological areas, including those not normally dealt with by IEC Technical Committees. Dependability covers the availability performance and its influencing factors: reliability performance, maintainability performance and maintenance support performance (including management of obsolescence). The standards provide systematic methods and tools for the dependability assessment and management of equipment, services and systems throughout their life cycles.\nThe standards cover generic aspects on reliability and maintainability programme management, testing and analytical techniques, software and system dependability, life cycle costing, technical risk analysis and project risk management. This includes standards related to product issues from component reliability to guidance for engineering dependability of systems, standards related to process issues from technological risk analysis to integrated logistics support and standards related to management issues from dependability program management to managing for obsolescence.\nThe application of these standards may raise safety related issues, though the standards themselves do not cover safety. They may be applied to business risk analysis but these risk areas are not dealt with by TC 56."@en ;
         rdfs:label    "TC 56"@en ;
         sto:hasTitle  "Dependability"@en .
@@ -3345,7 +3352,7 @@ sto:OASIS  a                     sto:StandardOrganization , owl:NamedIndividual 
         sto:hasWikipediaArticle  "https://en.wikipedia.org/wiki/OASIS_(organization)" ;
         sto:orgName              "Organization for the Advancement of Structured Information Standards"@en .
 
-sto:MathML  a                    sto:Standard , owl:NamedIndividual ;
+sto:MathML  a                    owl:NamedIndividual , sto:Standard ;
         rdfs:comment             "MathML is a low-level specification for mathematical and scientific content on the Web and beyond"@en ;
         rdfs:label               "MathML"@en ;
         sto:hasDBpediaResource   "http://dbpedia.org/page/MathML" ;
@@ -3360,13 +3367,13 @@ sto:hasPages  a       owl:DatatypeProperty ;
         rdfs:range    xsd:integer .
 
 sto:FileSizeIEC_60870_P6_S601_1994
-        a                      owl:NamedIndividual , om2:Measure ;
+        a                      om2:Measure , owl:NamedIndividual ;
         rdfs:comment           "Specifies the file size of the document for standard IEC 60870-6-601:1994"@en ;
         rdfs:label             "FileSize IEC 60870-6-601:1994"@en ;
         om2:hasNumericalValue  "1112.0"^^xsd:float ;
         om2:hasUnit            om2:kilobyte .
 
-sto:IEC_60904  a                 sto:Standard , owl:NamedIndividual ;
+sto:IEC_60904  a                 owl:NamedIndividual , sto:Standard ;
         rdfs:comment             "Photovoltaic devices"@en ;
         rdfs:label               "IEC 60904"@en ;
         sto:hasOfficialResource  "https://webstore.iec.ch/publication/3881" ;
@@ -3395,23 +3402,6 @@ sto:IEC_61334_P3_S21_1996
 rami:GeneralAdminShell
         a       owl:NamedIndividual .
 
-sto:W3C_OWL  a                   sto:Standard , owl:NamedIndividual ;
-        rdfs:comment             "The W3C Web Ontology Language (OWL) is a Semantic Web language designed to represent rich and complex knowledge about things, groups of things, and relations between things. OWL is a computational logic-based language such that knowledge expressed in OWL can be exploited by computer programs, e.g., to verify the consistency of that knowledge or to make implicit knowledge explicit. OWL documents, known as ontologies, can be published in the World Wide Web and may refer to or be referred from other OWL ontologies. OWL is part of the W3C’s Semantic Web technology stack, which includes RDF, RDFS, SPARQL, etc."@en ;
-        rdfs:label               "Web Ontology Language"@en ;
-        dcterms:hasLicense       "Public"@en ;
-        sto:hasDBpediaResource   "http://dbpedia.org/resource/Web_Ontology_Language" ;
-        sto:hasOfficialResource  "https://www.w3.org/OWL/" ;
-        sto:hasPublisher         sto:W3C ;
-        sto:hasTag               "OWL"@en ;
-        sto:hasWikipediaArticle  "https://en.wikipedia.org/wiki/Web_Ontology_Language?oldformat=true" ;
-        sto:relatedTo            sto:W3C_RDF .
-
-sto:hasDomain  a      owl:ObjectProperty ;
-        rdfs:comment  "Describes the domain, in which the standard is used"@en ;
-        rdfs:domain   sto:Publication ;
-        rdfs:label    "has Domain"@en ;
-        rdfs:range    sto:Domain .
-
 sto:IEC_60870_P6_S802_2014
         a                          owl:NamedIndividual , sto:Standard ;
         rdfs:comment               "IEC 60870-6-802:2014 specifies a method of exchanging time-critical control centre data through wide-area and local-area networks using a full ISO compliant protocol stack. It contains provisions for supporting both centralized and distributed architectures. The standard includes the exchange of real-time data indications, control operations, time series data, scheduling and accounting information, remote program control and event notification. This new edition includes the following significant technical changes with respect to the previous edition:\n- certain objects have been changed from informative to normative;\n- certain TASE.2 conformance blocks have been made out of scope."@en ;
@@ -3431,6 +3421,23 @@ sto:IEC_60870_P6_S802_2014
         sto:hasTitle               "Telecontrol equipment and systems - Part 6-802: Telecontrol protocols compatible with ISO standards and ITU-T recommendations - TASE.2 Object models"@en ;
         sto:hasWikipediaArticle    <https://en.wikipedia.org/wiki/IEC_60870> .
 
+sto:hasDomain  a      owl:ObjectProperty ;
+        rdfs:comment  "Describes the domain, in which the standard is used"@en ;
+        rdfs:domain   sto:Publication ;
+        rdfs:label    "has Domain"@en ;
+        rdfs:range    sto:Domain .
+
+sto:W3C_OWL  a                   sto:Standard , owl:NamedIndividual ;
+        rdfs:comment             "The W3C Web Ontology Language (OWL) is a Semantic Web language designed to represent rich and complex knowledge about things, groups of things, and relations between things. OWL is a computational logic-based language such that knowledge expressed in OWL can be exploited by computer programs, e.g., to verify the consistency of that knowledge or to make implicit knowledge explicit. OWL documents, known as ontologies, can be published in the World Wide Web and may refer to or be referred from other OWL ontologies. OWL is part of the W3C’s Semantic Web technology stack, which includes RDF, RDFS, SPARQL, etc."@en ;
+        rdfs:label               "Web Ontology Language"@en ;
+        dcterms:hasLicense       "Public"@en ;
+        sto:hasDBpediaResource   "http://dbpedia.org/resource/Web_Ontology_Language" ;
+        sto:hasOfficialResource  "https://www.w3.org/OWL/" ;
+        sto:hasPublisher         sto:W3C ;
+        sto:hasTag               "OWL"@en ;
+        sto:hasWikipediaArticle  "https://en.wikipedia.org/wiki/Web_Ontology_Language?oldformat=true" ;
+        sto:relatedTo            sto:W3C_RDF .
+
 sto:StandardPart  a      owl:Class ;
         rdfs:comment     "Typically Standards are divided into parts. E.g., ISA 95 has part Part 1: Models and Terminology, Part 2: Object Model Attributes, etc."@en ;
         rdfs:label       "StandardPart" ;
@@ -3441,6 +3448,39 @@ sto:hasHeadquaterIn  a  owl:ObjectProperty ;
         rdfs:domain   sto:StandardOrganization ;
         rdfs:label    "has Headquater In"@en ;
         rdfs:range    dbo:Place .
+
+sto:ConditionMonitoring
+        a                  owl:NamedIndividual , rami:AdminShellSubmodel ;
+        sto:isDescribedin  sto:AdministrationShell .
+
+rami:Communication  a      owl:NamedIndividual , rami:RAMIITLayer ;
+        sto:isDescribedin  sto:RAMI40 .
+
+sto:UN-CEFACT  a                 owl:NamedIndividual , sto:StandardOrganization ;
+        rdfs:comment             "UN/CEFACT is the United Nations Centre for Trade Facilitation and Electronic Business. It was established as an intergovernmental body of the United Nations Economic Commission for Europe (UNECE) in 1996 and evolved from UNECE’s long tradition of work in trade facilitation."@en ;
+        sto:abbreviation         "UN/CEFACT" ;
+        sto:hasDBpediaResource   "http://dbpedia.org/page/UN/CEFACT" ;
+        sto:hasHeadquaterIn      dbr:Geneva ;
+        sto:hasOfficialResource  "https://www.unece.org/cefact/" ;
+        sto:hasWikipediaArticle  "https://en.wikipedia.org/wiki/UN/CEFACT" ;
+        sto:orgName              "United Nations Centre for Trade Facilitation and Electronic Business"@en .
+
+sto:FileSizeIEC_60870_1992_P5_S3
+        a                      om2:Measure , owl:NamedIndividual ;
+        rdfs:comment           "Specifies the file size of the document for standard IEC 60870-5-3:1992"@en ;
+        rdfs:label             "FileSize IEC 60870-5-3:1992"@en ;
+        om2:hasNumericalValue  "1629.0"^^xsd:float ;
+        om2:hasUnit            om2:kilobyte .
+
+sto:IEC_TS_62832  a              owl:NamedIndividual , sto:Standard ;
+        rdfs:comment             "Digital Factory Reference model TS"@en ;
+        rdfs:label               "IEC TS 62832"@en ;
+        dcterms:hasLicense       "Private"@en ;
+        sto:hasClassification    rami:GeneralAdminShell , rami:WorkCenter , rami:ControlDevice , rami:Station , rami:FieldDevice , rami:AdminShellGeneral ;
+        sto:hasMotivation        "The standards for Digital Factory define methods and information models, which are required for self description of I40-components. IEC TS 62832 defines methods, which allow to validate or plan connections between assets."@en ;
+        sto:hasOfficialResource  "https://webstore.iec.ch/publication/33023" ;
+        sto:hasPublisher         sto:IEC ;
+        sto:hasTag               "DF/TS"@en .
 
 sto:IEC_60946  a                   sto:Standard , owl:NamedIndividual ;
         rdfs:comment               "Applies to non-multiplexed two wire binary direct voltage signals of nominal 24 V level that are used in industrial-process measurement and control systems to transmit information between elements of systems."@en ;
@@ -3457,73 +3497,6 @@ sto:IEC_60946  a                   sto:Standard , owl:NamedIndividual ;
         sto:hasTag                 "IEC 60946:1988"@en ;
         sto:hasTechnicalCommittee  sto:TC_65 ;
         sto:hasTitle               "Binary direct voltage signals for process measurement and control systems"@en .
-
-sto:IEC_TS_62832  a              owl:NamedIndividual , sto:Standard ;
-        rdfs:comment             "Digital Factory Reference model TS"@en ;
-        rdfs:label               "IEC TS 62832"@en ;
-        dcterms:hasLicense       "Private"@en ;
-        sto:hasClassification    rami:GeneralAdminShell , rami:WorkCenter , rami:ControlDevice , rami:Station , rami:FieldDevice , rami:AdminShellGeneral ;
-        sto:hasMotivation        "The standards for Digital Factory define methods and information models, which are required for self description of I40-components. IEC TS 62832 defines methods, which allow to validate or plan connections between assets."@en ;
-        sto:hasOfficialResource  "https://webstore.iec.ch/publication/33023" ;
-        sto:hasPublisher         sto:IEC ;
-        sto:hasTag               "DF/TS"@en .
-
-sto:UN-CEFACT  a                 sto:StandardOrganization , owl:NamedIndividual ;
-        rdfs:comment             "UN/CEFACT is the United Nations Centre for Trade Facilitation and Electronic Business. It was established as an intergovernmental body of the United Nations Economic Commission for Europe (UNECE) in 1996 and evolved from UNECE’s long tradition of work in trade facilitation."@en ;
-        sto:abbreviation         "UN/CEFACT" ;
-        sto:hasDBpediaResource   "http://dbpedia.org/page/UN/CEFACT" ;
-        sto:hasHeadquaterIn      dbr:Geneva ;
-        sto:hasOfficialResource  "https://www.unece.org/cefact/" ;
-        sto:hasWikipediaArticle  "https://en.wikipedia.org/wiki/UN/CEFACT" ;
-        sto:orgName              "United Nations Centre for Trade Facilitation and Electronic Business"@en .
-
-sto:FileSizeIEC_60870_1992_P5_S3
-        a                      owl:NamedIndividual , om2:Measure ;
-        rdfs:comment           "Specifies the file size of the document for standard IEC 60870-5-3:1992"@en ;
-        rdfs:label             "FileSize IEC 60870-5-3:1992"@en ;
-        om2:hasNumericalValue  "1629.0"^^xsd:float ;
-        om2:hasUnit            om2:kilobyte .
-
-rami:Communication  a      rami:RAMIITLayer , owl:NamedIndividual ;
-        sto:isDescribedin  sto:RAMI40 .
-
-sto:ConditionMonitoring
-        a                  rami:AdminShellSubmodel , owl:NamedIndividual ;
-        sto:isDescribedin  sto:AdministrationShell .
-
-sto:W3C_RDF  a                   sto:Standard , owl:NamedIndividual ;
-        rdfs:comment             "RDF is a standard model for data interchange on the Web. RDF has features that facilitate data merging even if the underlying schemas differ, and it specifically supports the evolution of schemas over time without requiring all the data consumers to be changed. "@en ;
-        rdfs:label               "Resource Description Framework"@en ;
-        dcterms:hasLicense       "Public"@en ;
-        sto:hasDBpediaResource   "http://dbpedia.org/resource/Resource_Description_Framework" ;
-        sto:hasOfficialResource  "https://www.w3.org/RDF/" ;
-        sto:hasPublisher         sto:W3C ;
-        sto:hasTag               "RDF"@en ;
-        sto:hasWikipediaArticle  "https://en.wikipedia.org/wiki/Resource_Description_Framework" .
-
-sto:IIRA  a                      sto:StandardizationFramework , owl:NamedIndividual ;
-        rdfs:comment             "Industrial Internet Reference Architecture"@en ;
-        rdfs:label               "IIRA"@en ;
-        sto:hasOfficialResource  "http://www.iiconsortium.org/IIRA.htm" .
-
-sto:IEC_61334_P3_S1_1998
-        a                          owl:NamedIndividual , sto:Standard ;
-        rdfs:comment               "Applies to electrical equipment used in distribution line carrier systems on both medium-voltage and low-voltage distribution networks. Specifies requirements such as frequency bands, output levels, spurious emissions, etc.\nThis publication is of high relevance for Smart Grid."@en ;
-        rdfs:label                 "IEC 61334-3-1:1998 "@en ;
-        sto:hasAvailableLanguage   "English/French"@en ;
-        sto:hasDBpediaResource     <https://dbpedia.org/resource/IEC_61334> ;
-        sto:hasEdition             "1.0"^^xsd:float ;
-        sto:hasFileSize            sto:FileSizeIEC_61334_1998_P3_S1 ;
-        sto:hasICS                 sto:ICS_29_240_20 , sto:ICS_33_200 ;
-        sto:hasOfficialResource    <https://webstore.iec.ch/publication/5297> ;
-        sto:hasPages               "27"^^xsd:int ;
-        sto:hasPublicationDate     "1998-11-328"^^xsd:date ;
-        sto:hasPublisher           sto:IEC ;
-        sto:hasStabilityDate       "2018"^^xsd:gYear ;
-        sto:hasTag                 "IEC 61334-3-1:1998 "@en ;
-        sto:hasTechnicalCommittee  sto:TC_57 ;
-        sto:hasTitle               "Distribution automation using distribution line carrier systems - Part 3-1: Mains signalling requirements - Frequency bands and output levels"@en ;
-        sto:hasWikipediaArticle    <https://en.wikipedia.org/wiki/IEC_61334> .
 
 sto:IEC_61334_P4_S61_1998
         a                          owl:NamedIndividual , sto:Standard ;
@@ -3544,13 +3517,47 @@ sto:IEC_61334_P4_S61_1998
         sto:hasTitle               "Distribution automation using distribution line carrier systems - Part 4-61: Data communication protocols - Network layer - Connectionless protocol"@en ;
         sto:hasWikipediaArticle    <https://en.wikipedia.org/wiki/IEC_61334> .
 
-sto:Product  a  owl:NamedIndividual .
+sto:IEC_61334_P3_S1_1998
+        a                          owl:NamedIndividual , sto:Standard ;
+        rdfs:comment               "Applies to electrical equipment used in distribution line carrier systems on both medium-voltage and low-voltage distribution networks. Specifies requirements such as frequency bands, output levels, spurious emissions, etc.\nThis publication is of high relevance for Smart Grid."@en ;
+        rdfs:label                 "IEC 61334-3-1:1998 "@en ;
+        sto:hasAvailableLanguage   "English/French"@en ;
+        sto:hasDBpediaResource     <https://dbpedia.org/resource/IEC_61334> ;
+        sto:hasEdition             "1.0"^^xsd:float ;
+        sto:hasFileSize            sto:FileSizeIEC_61334_1998_P3_S1 ;
+        sto:hasICS                 sto:ICS_29_240_20 , sto:ICS_33_200 ;
+        sto:hasOfficialResource    <https://webstore.iec.ch/publication/5297> ;
+        sto:hasPages               "27"^^xsd:int ;
+        sto:hasPublicationDate     "1998-11-328"^^xsd:date ;
+        sto:hasPublisher           sto:IEC ;
+        sto:hasStabilityDate       "2018"^^xsd:gYear ;
+        sto:hasTag                 "IEC 61334-3-1:1998 "@en ;
+        sto:hasTechnicalCommittee  sto:TC_57 ;
+        sto:hasTitle               "Distribution automation using distribution line carrier systems - Part 3-1: Mains signalling requirements - Frequency bands and output levels"@en ;
+        sto:hasWikipediaArticle    <https://en.wikipedia.org/wiki/IEC_61334> .
 
-sto:ISO_15531-2x  a        sto:StandardPart , owl:NamedIndividual ;
+sto:IIRA  a                      owl:NamedIndividual , sto:StandardizationFramework ;
+        rdfs:comment             "Industrial Internet Reference Architecture"@en ;
+        rdfs:label               "IIRA"@en ;
+        sto:hasOfficialResource  "http://www.iiconsortium.org/IIRA.htm" .
+
+sto:W3C_RDF  a                   sto:Standard , owl:NamedIndividual ;
+        rdfs:comment             "RDF is a standard model for data interchange on the Web. RDF has features that facilitate data merging even if the underlying schemas differ, and it specifically supports the evolution of schemas over time without requiring all the data consumers to be changed. "@en ;
+        rdfs:label               "Resource Description Framework"@en ;
+        dcterms:hasLicense       "Public"@en ;
+        sto:hasDBpediaResource   "http://dbpedia.org/resource/Resource_Description_Framework" ;
+        sto:hasOfficialResource  "https://www.w3.org/RDF/" ;
+        sto:hasPublisher         sto:W3C ;
+        sto:hasTag               "RDF"@en ;
+        sto:hasWikipediaArticle  "https://en.wikipedia.org/wiki/Resource_Description_Framework" .
+
+sto:ISO_15531-2x  a        owl:NamedIndividual , sto:StandardPart ;
         rdfs:comment       "Production data for external exchanges. refering to the representation of product information to be exchanged with the external environment (customers and suppliers), with the aim to model the main production information exchanged between industrial companies, in order to improve exchanges and integration through the use of EDI protocols."@en ;
         rdfs:isDefinedBy   "https://www.researchgate.net/publication/220171079_ISO_15531_MANDATE_a_standardised_data_model_for_manufacturing_management" ;
         rdfs:label         "ISO 15531 2x series"@en ;
         dul:isComponentOf  sto:ISO_15531 .
+
+sto:Product  a  owl:NamedIndividual .
 
 sto:APICS  a                     sto:StandardOrganization , owl:NamedIndividual ;
         rdfs:comment             "American Production and Inventory Control Society."@en ;
@@ -3619,7 +3626,7 @@ sto:IEC_TR_62794  a              owl:NamedIndividual , sto:Standard ;
         sto:relatedTo            sto:IEC_TS_62832 .
 
 sto:FileSizeIEC_61334_1996_P4_S1
-        a                      owl:NamedIndividual , om2:Measure ;
+        a                      om2:Measure , owl:NamedIndividual ;
         rdfs:comment           "Specifies the file size of the document for standard IEC 61334-4-1:1996"@en ;
         rdfs:label             "FileSize IEC 61334-3-22:2000"@en ;
         om2:hasNumericalValue  "1707.0"^^xsd:float ;
@@ -3660,13 +3667,6 @@ sto:IEC_61010_P2_S012_2016
         sto:hasTechnicalCommittee  sto:TC_66 ;
         sto:hasTitle               "Safety requirements for electrical equipment for measurement, control, and laboratory use - Part 2-012: Particular requirements for climatic and environmental testing and other temperature conditioning equipment"@en .
 
-sto:IndustrialAutomation
-        a                        sto:Domain , owl:NamedIndividual ;
-        rdfs:comment             "Industrial automation deals primarily with the automation of manufacturing, quality control and material handling processes. General purpose controllers for industrial processes include Programmable logic controllers, stand-alone I/O modules, and computers. Industrial automation is to replace the decision making of humans and manual command-response activities with the use of mechanized equipment and logical programming commands. One trend is increased use of Machine vision to provide automatic inspection and robot guidance functions, another is a continuing increase in the use of robots. Industrial automation is simply done at the industrial level."@en ;
-        sto:domainName           "Industrial Automation"@en ;
-        sto:hasDBpediaResource   "http://dbpedia.org/resource/Category:IndustrialAutomation" ;
-        sto:hasWikipediaArticle  "https://en.wikipedia.org/wiki/Automation" .
-
 sto:IEC_61334_P5_S1_2001
         a                          owl:NamedIndividual , sto:Standard ;
         rdfs:comment               "Describes the requirements of S-FSK (frequency shift keying modulation) in conjunction with the services provided by the physical layer entity and the MAC sublayer. The transmission medium is assumed to be the distribution network on both MV or LV level. To be used in conjunction with IEC 61334-4-32.\nThis publication is of high relevance for Smart Grid."@en ;
@@ -3686,11 +3686,25 @@ sto:IEC_61334_P5_S1_2001
         sto:hasTitle               "Distribution automation using distribution line carrier systems - Part 5-1: Lower layer profiles - The spread frequency shift keying (S-FSK) profile"@en ;
         sto:hasWikipediaArticle    <https://en.wikipedia.org/wiki/IEC_61334> .
 
+sto:IndustrialAutomation
+        a                        owl:NamedIndividual , sto:Domain ;
+        rdfs:comment             "Industrial automation deals primarily with the automation of manufacturing, quality control and material handling processes. General purpose controllers for industrial processes include Programmable logic controllers, stand-alone I/O modules, and computers. Industrial automation is to replace the decision making of humans and manual command-response activities with the use of mechanized equipment and logical programming commands. One trend is increased use of Machine vision to provide automatic inspection and robot guidance functions, another is a continuing increase in the use of robots. Industrial automation is simply done at the industrial level."@en ;
+        sto:domainName           "Industrial Automation"@en ;
+        sto:hasDBpediaResource   "http://dbpedia.org/resource/Category:IndustrialAutomation" ;
+        sto:hasWikipediaArticle  "https://en.wikipedia.org/wiki/Automation" .
+
 sto:stoPartName  a    owl:DatatypeProperty ;
         rdfs:comment  "Name of the standard part."@en ;
         rdfs:domain   sto:StandardPart ;
         rdfs:label    "std Part Name"@en ;
         rdfs:range    xsd:string .
+
+sto:FileSizeIEC_60864_P1
+        a                      om2:Measure , owl:NamedIndividual ;
+        rdfs:comment           "Specifies the file size of the document for standard IEC 60864-1:1986 "@en ;
+        rdfs:label             "FileSizeIEC 60864-1:1986"@en ;
+        om2:hasNumericalValue  "1540.0"^^xsd:float ;
+        om2:hasUnit            om2:kilobyte .
 
 sto:SE  a                        sto:StandardOrganization , owl:NamedIndividual ;
         rdfs:comment             "The Broadband Forum is a non-profit industry consortium dedicated to developing broadband network specifications. Members include telecommunications networking and service provider companies, broadband device and equipment vendors, consultants and independent testing labs (ITLs). Service provider members are primarily wire-line service providers (non-mobile) telephone companies."@en ;
@@ -3721,7 +3735,7 @@ sto:IEC_61334_P3_S22_2001
         sto:hasTitle               "Distribution automation using distribution line carrier systems - Part 3-22: Mains signalling requirements - MV phase-to-earth and screen-to-earth intrusive coupling devices"@en ;
         sto:hasWikipediaArticle    <https://en.wikipedia.org/wiki/IEC_61334> .
 
-sto:M2M  a                       sto:Domain , owl:NamedIndividual ;
+sto:M2M  a                       owl:NamedIndividual , sto:Domain ;
         rdfs:comment             "Machine to machine refers to direct communication between devices using any communications channel, including wired and wireless"@en ;
         sto:domainName           "Machine to machine Communication"@en ;
         sto:hasDBpediaResource   "http://dbpedia.org/resource/Machine_to_machine" ;
@@ -3747,7 +3761,7 @@ sto:StandardOrganization
 
 dbr:China  a    owl:NamedIndividual .
 
-sto:ICS_17_020  a     owl:NamedIndividual , sto:InternationalClassificationForStandards ;
+sto:ICS_17_020  a     sto:InternationalClassificationForStandards , owl:NamedIndividual ;
         rdfs:comment  "This is ICS for “Metrology and measurement in general ”"@en ;
         rdfs:label    "ICS 17.020"@en ;
         sto:hasTitle  "Metrology and measurement in general "@en .
@@ -3763,7 +3777,7 @@ sto:ebXML  a                     sto:Standard , owl:NamedIndividual ;
         sto:hasWikipediaArticle  "https://en.wikipedia.org/wiki/EbXML" .
 
 sto:ProductLifeCycleManagement
-        a                  sto:ProductDevelopmentLifeCycle , owl:NamedIndividual ;
+        a                  owl:NamedIndividual , sto:ProductDevelopmentLifeCycle ;
         rdfs:comment       "Product lifecycle data management focuses on the needs of long-term retention and access to data consistently throughout the product lifecycle."@en ;
         rdfs:label         "Production Life Cycle Management"@en ;
         sto:isDescribedin  sto:NISTInitiative .
@@ -3799,6 +3813,13 @@ sto:IEC_62424  a                 owl:NamedIndividual , sto:Standard ;
         sto:hasTag               "CAEX"@en ;
         sto:hasWikipediaArticle  "https://en.wikipedia.org/wiki/CAEX" .
 
+sto:ICS_33_100_20  a  sto:InternationalClassificationForStandards , owl:NamedIndividual ;
+        rdfs:comment  "This is ICS for “Immunity”"@en ;
+        rdfs:label    "ICS 33.100.20"@en ;
+        sto:hasTitle  "Immunity"@en .
+
+dcterms:hasVersion  a  owl:AnnotationProperty .
+
 sto:BBF  a                       sto:StandardOrganization , owl:NamedIndividual ;
         rdfs:comment             "The Broadband Forum is a non-profit industry consortium dedicated to developing broadband network specifications. Members include telecommunications networking and service provider companies, broadband device and equipment vendors, consultants and independent testing labs (ITLs). Service provider members are primarily wire-line service providers (non-mobile) telephone companies."@en ;
         rdfs:label               "Broadband Forum"@en ;
@@ -3810,14 +3831,7 @@ sto:BBF  a                       sto:StandardOrganization , owl:NamedIndividual 
         sto:hasWikipediaArticle  "https://en.wikipedia.org/wiki/Broadband_Forum" ;
         sto:orgName              "Broadband Forum"@en .
 
-dcterms:hasVersion  a  owl:AnnotationProperty .
-
-sto:ICS_33_100_20  a  owl:NamedIndividual , sto:InternationalClassificationForStandards ;
-        rdfs:comment  "This is ICS for “Immunity”"@en ;
-        rdfs:label    "ICS 33.100.20"@en ;
-        sto:hasTitle  "Immunity"@en .
-
-sto:OAGIS  a                     sto:Standard , owl:NamedIndividual ;
+sto:OAGIS  a                     owl:NamedIndividual , sto:Standard ;
         rdfs:comment             "The Open Applications Group Integration Specification (OAGIS) is an effort to provide a canonical business language for information integration. It uses XML as the common alphabet for defining business messages, and for identifying business processes (scenarios) that allow businesses and business applications to communicate."@en ;
         rdfs:label               "OAGIS"@en ;
         sto:hasOfficialResource  "http://www.oagi.org/dnn2/DownloadsandResources/OAGIS100PublicDownload.aspx" ;
@@ -3833,6 +3847,3 @@ sto:eClassAssoc  a               sto:StandardOrganization , owl:NamedIndividual 
         sto:hasOfficialResource  "https://www.eclass.eu" ;
         sto:hasWikipediaArticle  "https://www.wikiwand.com/de/ECl@ss" ;
         sto:orgName              "eCl@ss e. V."@de .
-
-sto:Communication  a       rami:AdminShellSubmodel , owl:NamedIndividual ;
-        sto:isDescribedin  sto:AdministrationShell .

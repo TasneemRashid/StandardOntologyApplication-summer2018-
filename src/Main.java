@@ -26,9 +26,9 @@ public class Main
         
         //create file path for all files
         CreateFilePath cfp = new CreateFilePath();
-        String excelFilePath = cfp.createFilePath("inputPri.xls");
-        String turtleFilePath = cfp.createFilePath("checkSTO.ttl");
-        String outputTurtleFilePath = cfp.createFilePath("checkSTO.ttl");
+        String excelFilePath = cfp.createFilePath("inputTTR.xls");
+        String turtleFilePath = cfp.createFilePath("ttlFileTTR.ttl");
+        String outputTurtleFilePath = cfp.createFilePath("ttlFileTTR.ttl");
         ReadExcel  r = new ReadExcel(excelFilePath);
         try
         {
